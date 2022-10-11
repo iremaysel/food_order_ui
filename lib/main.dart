@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.orange,
       ),
-      home: StartPageView(),
+      home: const StartPageView(),
     );
   }
 }

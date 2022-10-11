@@ -24,15 +24,15 @@ class _HomePageViewState extends State<HomePageView> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            UserNameText(),
-            SearchFood(),
-            DiscountCard(),
+            const UserNameText(),
+            const SearchFood(),
+            const DiscountCard(),
             FoodPart(partName: "Categories"),
-            CategoriesFood(),
+            const CategoriesFood(),
             FoodPart(partName: "Recommed"),
-            RecommedFoods(),
+            const RecommedFoods(),
             FoodPart(partName: "Popular"),
-            PopularFoods(),
+            const PopularFoods(),
           ],
         ),
       ),
