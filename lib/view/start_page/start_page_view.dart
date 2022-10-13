@@ -1,73 +1,117 @@
 import 'package:flutter/material.dart';
 import 'package:food_order_ui/view/home_page/components/size_config.dart';
 import 'package:food_order_ui/view/login_page/widgets/text_title.dart';
-import 'package:food_order_ui/view/start_page/widgets/login_button_widget.dart';
-import 'package:food_order_ui/view/start_page/widgets/register_button_widget.dart';
 
-class StartPageView extends StatefulWidget {
+import 'widgets/start_page_body_login_button.dart';
+import 'widgets/start_page_sing_up_button.dart';
+
+class StartPageView extends StatelessWidget {
   const StartPageView({Key? key}) : super(key: key);
 
-  @override
-  _StartPageViewState createState() => _StartPageViewState();
-}
-
-class _StartPageViewState extends State<StartPageView> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
-        fit: StackFit.expand,
-        children: [
-          Container(
-            height: SizeConfig.screenHeight!/2.732,    /// 250.0
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('assets/main/bg.png'),
-                    fit: BoxFit.fill
-                )
-            ),
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                width: SizeConfig.screenWidth!/1.83,     /// 225.0
-                height: SizeConfig.screenHeight!/5.174,  /// 132.0
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage("assets/main/logo.png",),
-                    fit: BoxFit.cover
-                  )
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(
-                    0,
-                    SizeConfig.screenHeight!/68.3,               /// 10.0
-                    0,
-                    SizeConfig.screenHeight!/11.38               /// 60.0
-                ),
-                child: Column(
-                  children:[
-                    Center(
-                      child: TextTitle(title: "WELCOME",),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: SizeConfig.screenWidth!/10.28, vertical: SizeConfig.screenHeight!/136.6),    /// 40.0 - 5.0
-                      child: Center(child: Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", style: TextStyle(color: Colors.white60),
-                        textAlign: TextAlign.center,),),
-                    )
-                  ]
-                ),
-              ),
-              LoginButton(),
-              RegisterButtonWidget()
-            ],
-          )
+        children: const [
+          _PageBackGround(),
+          _PageBody(),
         ],
       ),
+    );
+  }
+}
+
+class _PageBody extends StatelessWidget {
+  const _PageBody({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: const [
+        _PageBodyLogo(),
+        _PageBodyTexts(),
+        StartPageBodyLoginButton(),
+        StartPageBodySingUpButton(),
+      ],
+    );
+  }
+}
+
+class _PageBodyTexts extends StatelessWidget {
+  const _PageBodyTexts({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.fromLTRB(
+        0,
+        SizeConfig.blocksizeVertical! * 3,
+        0,
+        SizeConfig.blocksizeVertical! * 8,
+      ),
+      child: Column(children: [
+        const Center(
+          child: TextTitle(
+            title: "Bienvenidos",
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(
+              horizontal: SizeConfig.blockSizeHorizontal! * 10,
+              vertical: SizeConfig.blocksizeVertical! * 1),
+
+          /// 40.0 - 5.0
+          child: const Center(
+            child: Text(
+              "Bienvenidos a nuetra paladar LA MACIAS donde encontrara las mejores ofertas de Pinar",
+              style: TextStyle(color: Colors.white60),
+              textAlign: TextAlign.center,
+            ),
+          ),
+        )
+      ]),
+    );
+  }
+}
+
+class _PageBodyLogo extends StatelessWidget {
+  const _PageBodyLogo({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: SizeConfig.blockSizeHorizontal! * 45,
+      height: SizeConfig.blocksizeVertical! * 20,
+      decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage(
+                "assets/main/logo.png",
+              ),
+              fit: BoxFit.cover)),
+    );
+  }
+}
+
+class _PageBackGround extends StatelessWidget {
+  const _PageBackGround({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('assets/main/bg.png'), fit: BoxFit.fill)),
     );
   }
 }

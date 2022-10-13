@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_order_ui/view/splash_screen.dart';
+ 
 import 'package:food_order_ui/view/start_page/start_page_view.dart';
 
 void main() {
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Food Ordering',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.orange,

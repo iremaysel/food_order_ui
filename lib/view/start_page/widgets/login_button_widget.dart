@@ -1,48 +1,58 @@
 import 'package:flutter/material.dart';
-import 'package:food_order_ui/view/home_page/components/colors.dart';
 import 'package:food_order_ui/view/home_page/components/size_config.dart';
-import 'package:food_order_ui/view/login_page/login_page_view.dart';
 
-class LoginButton extends StatefulWidget {
-  const LoginButton({Key? key}) : super(key: key);
+class LoginButton extends StatelessWidget {
+  final String textButton;
+  final Color colorButton;
+  final Color colorTextButton;
+  final VoidCallback onPressed;
 
-  @override
-  _LoginButtonState createState() => _LoginButtonState();
-}
+  const LoginButton({
+    Key? key,
+    required this.textButton,
+    required this.colorButton,
+    required this.colorTextButton,
+    required this.onPressed,
+  }) : super(key: key);
 
-class _LoginButtonState extends State<LoginButton> {
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
     return Padding(
       padding: EdgeInsets.fromLTRB(
-          SizeConfig.screenWidth!/20.55,
-          0,
-          SizeConfig.screenWidth!/20.55,
-          SizeConfig.screenHeight!/45.54),
+        SizeConfig.blockSizeHorizontal! * 2,
+        0,
+        SizeConfig.blockSizeHorizontal! * 2,
+        SizeConfig.blocksizeVertical! * 2,
+      ),
       child: Container(
         decoration: BoxDecoration(
           //boxShadow: [BoxShadow(color: Colors.black26, offset: Offset(0, 4), blurRadius: 5.0)],
-          color: lightColor,
-          borderRadius: BorderRadius.circular(30),
+          color: colorButton,
+          borderRadius:
+              BorderRadius.circular(SizeConfig.blockSizeHorizontal! * 10),
         ),
         child: ElevatedButton(
           style: ButtonStyle(
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
               RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20.0),
+                borderRadius:
+                    BorderRadius.circular(SizeConfig.blockSizeHorizontal! * 10),
               ),
             ),
-            minimumSize: MaterialStateProperty.all(Size(SizeConfig.screenWidth!/1.37, SizeConfig.screenHeight!/13.66)),
+            minimumSize: MaterialStateProperty.all(Size(
+                SizeConfig.blockSizeHorizontal! * 75,
+                SizeConfig.blocksizeVertical! * 7)),
             backgroundColor: MaterialStateProperty.all(Colors.transparent),
             shadowColor: MaterialStateProperty.all(Colors.transparent),
           ),
-          onPressed: () {
-            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPageView()));
-          },
+          onPressed: onPressed,
           child: Text(
-            "LOGIN",
-            style: TextStyle(fontSize: 16,  fontWeight: FontWeight.w700, color: Colors.white,),
+            textButton.toUpperCase(),
+            style: TextStyle(
+              fontSize: SizeConfig.blockSizeHorizontal! * 5,
+              fontWeight: FontWeight.w700,
+              color: colorTextButton,
+            ),
           ),
         ),
       ),
