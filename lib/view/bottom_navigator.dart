@@ -37,7 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
       Icon(Icons.favorite, size: SizeConfig.screenHeight! / 22.77),
       Icon(Icons.person, size: SizeConfig.screenHeight! / 22.77),
     ];
-    Size size = MediaQuery.of(context).size;
+
     return Container(
       color: buttonColor,
       child: SafeArea(

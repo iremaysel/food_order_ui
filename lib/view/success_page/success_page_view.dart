@@ -11,14 +11,14 @@ class CheckCart extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Column(
-          children: [
-            LottieWidget(),
-            RouterText(),
-            SizedBox(height: SizeConfig.screenHeight!/68.3,),
-            OkButton(),
-          ]
-      ),
+      body: Column(children: [
+        const LottieWidget(),
+        const RouterText(),
+        SizedBox(
+          height: SizeConfig.screenHeight! / 68.3,
+        ),
+        const OkButton(),
+      ]),
     );
   }
 }

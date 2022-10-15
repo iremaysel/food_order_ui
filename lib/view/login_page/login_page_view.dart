@@ -16,11 +16,10 @@ class _LoginPageViewState extends State<LoginPageView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Container(
-        child: SingleChildScrollView(
+        backgroundColor: Colors.white,
+        body: SingleChildScrollView(
           child: Column(
-            children: [
+            children: const [
               LogoImage(),
               LoginTextField(),
               ForgotPassword(),
@@ -28,8 +27,6 @@ class _LoginPageViewState extends State<LoginPageView> {
               TextSignUp()
             ],
           ),
-        ),
-      )
-    );
+        ));
   }
 }

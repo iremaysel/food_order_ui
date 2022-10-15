@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_order_ui/view/login_page/widgets/text_field_widget/text_field_input.dart';
+import 'package:food_order_ui/view/login_page/widgets/text_field_widget/text_email_field_input.dart';
 import 'package:food_order_ui/view/login_page/widgets/text_field_widget/text_field_password.dart';
 
 class LoginTextField extends StatefulWidget {
@@ -12,15 +12,16 @@ class LoginTextField extends StatefulWidget {
 class _LoginTextFieldState extends State<LoginTextField> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
+    return Column(
         mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            TextFieldInput(text: "email", iconName: Icons.mail, ltext: "Email",),
-            TextFieldPassword(),
-          ]
-        )
-    );
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: const [
+          TextFieldInput(
+            text: "email",
+            iconName: Icons.mail,
+            ltext: "Email",
+          ),
+          TextFieldPassword(),
+        ]);
   }
 }

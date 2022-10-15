@@ -4,36 +4,43 @@ import 'package:food_order_ui/view/home_page/components/size_config.dart';
 import 'package:food_order_ui/view/register_page/register_page_view.dart';
 
 class TextSignUp extends StatelessWidget {
+  const TextSignUp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
     return Padding(
       padding: EdgeInsets.fromLTRB(
-          SizeConfig.screenWidth!/20.55,
-          SizeConfig.screenHeight!/136.6,
-          SizeConfig.screenWidth!/20.55,
-          0
+        SizeConfig.blockSizeHorizontal! * 5,
+        SizeConfig.blocksizeVertical! * 1,
+        SizeConfig.blockSizeHorizontal! * 5,
+        0,
       ),
-      child: Container(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("Don't have an account?", style: TextStyle(color: texthint),),
-            GestureDetector(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterPageView()));
-              },
-              child: Text(
-                " Sign up",
-                style: TextStyle(
-                    color: buttonColor,
-                    fontWeight: FontWeight.w600,
-                    fontSize: SizeConfig.screenHeight!/45.54          /// 15
-                ),
-              ),
-            )
-          ],
-        ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            "No tienes una cuenta?",
+            style: TextStyle(color: texthint),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const RegisterPageView()));
+            },
+            child: Text(
+              " Registrar",
+              style: TextStyle(
+                  color: buttonColor,
+                  fontWeight: FontWeight.w600,
+                  fontSize: SizeConfig.blockSizeHorizontal! * 5
+
+                  /// 15
+                  ),
+            ),
+          )
+        ],
       ),
     );
   }

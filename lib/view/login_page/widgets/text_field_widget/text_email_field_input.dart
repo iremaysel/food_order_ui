@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:food_order_ui/view/home_page/components/colors.dart';
 import 'package:food_order_ui/view/home_page/components/size_config.dart';
 
-class TextFieldPassword extends StatefulWidget {
-  const TextFieldPassword({Key? key}) : super(key: key);
-
-  @override
-  _TextFieldPasswordState createState() => _TextFieldPasswordState();
-}
-
-class _TextFieldPasswordState extends State<TextFieldPassword> {
-  bool passwordObscure = true;
+class TextFieldInput extends StatelessWidget {
+  final String text;
+  final IconData iconName;
+  final String ltext;
+  const TextFieldInput(
+      {Key? key,
+      required this.text,
+      required this.iconName,
+      required this.ltext})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,18 +24,12 @@ class _TextFieldPasswordState extends State<TextFieldPassword> {
           SizeConfig.blocksizeVertical! + 10,
         ),
         child: TextField(
-          obscureText: passwordObscure,
+          //TODO: Hacer para Procesar los datos...
+
           style: TextStyle(color: textColor),
           cursorColor: textColor,
           decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.vpn_key),
-              suffixIcon: IconButton(
-                onPressed: () => setState(() {
-                  passwordObscure = !passwordObscure;
-                }),
-                icon: Icon(
-                    passwordObscure ? Icons.visibility_off : Icons.visibility),
-              ),
+              prefixIcon: Icon(iconName),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.all(
                     Radius.circular(SizeConfig.blockSizeHorizontal! * 5)),
@@ -53,9 +48,9 @@ class _TextFieldPasswordState extends State<TextFieldPassword> {
                 borderRadius:
                     BorderRadius.circular(SizeConfig.blockSizeHorizontal! * 5),
               ),
-              hintText: "contraseña",
+              hintText: text,
               hintStyle: TextStyle(color: texthint.withOpacity(0.3)),
-              labelText: "Contraseña",
+              labelText: ltext,
               labelStyle: TextStyle(color: texthint.withOpacity(0.6))),
         ),
       ),

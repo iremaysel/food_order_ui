@@ -14,19 +14,20 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Future.delayed(Duration(seconds: 4), () {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPageView()));
+    Future.delayed(const Duration(seconds: 4), () {
+      Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (context) => const LoginPageView()));
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
               image: AssetImage("assets/main/splashscreen.gif"),
-              fit: BoxFit.cover
-          ),
+              fit: BoxFit.cover),
         ),
       ),
     );

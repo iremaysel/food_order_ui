@@ -13,10 +13,15 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(right: SizeConfig.screenWidth!/15.3),         /// 27.0
+      padding: EdgeInsets.only(right: SizeConfig.blockSizeHorizontal! * 8),
+
+      /// 27.0
       child: Container(
         alignment: Alignment.centerRight,
-        child: Text("Forgot Password?" , style: TextStyle(color: textColor),),
+        child: Text(
+          "¿Olvidaste la contraseña?",
+          style: TextStyle(color: textColor),
+        ),
       ),
     );
   }
