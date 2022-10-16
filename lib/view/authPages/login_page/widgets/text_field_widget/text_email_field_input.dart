@@ -18,10 +18,10 @@ class TextFieldInput extends StatelessWidget {
     return Center(
       child: Padding(
         padding: EdgeInsets.fromLTRB(
-          SizeConfig.blockSizeHorizontal! + 20,
-          SizeConfig.blocksizeVertical! + 10,
-          SizeConfig.blockSizeHorizontal! + 20,
-          SizeConfig.blocksizeVertical! + 10,
+          SizeConfig.blockSizeHorizontal! * 5,
+          SizeConfig.blocksizeVertical! * 2,
+          SizeConfig.blockSizeHorizontal! * 5,
+          SizeConfig.blocksizeVertical! * 2,
         ),
         child: TextField(
           //TODO: Hacer para Procesar los datos...

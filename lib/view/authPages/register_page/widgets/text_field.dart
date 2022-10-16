@@ -17,16 +17,17 @@ class _RegisterTextFieldState extends State<RegisterTextField> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: const [
           TextFieldInput(
-              text: "username",
+              text: "nombre de usuario",
               iconName: Icons.account_circle,
-              ltext: "User Name"),
+              ltext: "Nombre de usuario"),
           TextFieldInput(
             text: "email",
             iconName: Icons.mail,
             ltext: "Email",
           ),
-          TextFieldPassword(),
-          TextFieldPassword(),
+          TextFieldPassword(hintText: 'contraseña', labelText: 'Contraseña'),
+          TextFieldPassword(
+              hintText: 'repetir contraseña', labelText: 'Repetir Contraseña'),
         ]);
   }
 }

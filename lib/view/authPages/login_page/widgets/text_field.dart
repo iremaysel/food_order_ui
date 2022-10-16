@@ -21,7 +21,7 @@ class _LoginTextFieldState extends State<LoginTextField> {
             iconName: Icons.mail,
             ltext: "Email",
           ),
-          TextFieldPassword(),
+          TextFieldPassword(hintText: 'contraseña', labelText: 'Contraseña'),
         ]);
   }
 }

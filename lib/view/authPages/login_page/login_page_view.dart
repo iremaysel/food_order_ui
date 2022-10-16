@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:food_order_ui/view/authPages/login_page/widgets/text_field.dart';
+import 'package:food_order_ui/view/authPages/register_page/register_page_view.dart';
 import '../../bottom_navigator.dart';
 import 'widgets/forgot_password.dart';
 import '../common/login_button.dart';
 import 'widgets/logo.dart';
-import 'widgets//text_signup.dart';
+import '../common/text_signup_or_singin.dart';
 
 class LoginPageView extends StatefulWidget {
   const LoginPageView({Key? key}) : super(key: key);
@@ -33,7 +34,15 @@ class _LoginPageViewState extends State<LoginPageView> {
                           builder: (context) => const MyHomePage()));
                 },
               ),
-              const TextSignUp()
+              TextSignUpOrSingIn(
+                  phrase: "¿No tienes una cuenta? ",
+                  singInOrSingUpText: 'Registrar',
+                  onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const RegisterPageView(),
+                        ),
+                      ))
             ],
           ),
         ));

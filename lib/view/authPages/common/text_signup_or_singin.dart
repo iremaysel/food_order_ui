@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:food_order_ui/view/home_page/components/colors.dart';
 import 'package:food_order_ui/view/home_page/components/size_config.dart';
-import 'package:food_order_ui/view/authPages/register_page/register_page_view.dart';
 
-class TextSignUp extends StatelessWidget {
-  const TextSignUp({Key? key}) : super(key: key);
+class TextSignUpOrSingIn extends StatelessWidget {
+  final String phrase;
+  final String singInOrSingUpText;
+  final VoidCallback onPressed;
+  const TextSignUpOrSingIn({
+    Key? key,
+    required this.phrase,
+    required this.singInOrSingUpText,
+    required this.onPressed,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,18 +26,13 @@ class TextSignUp extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            "No tienes una cuenta?",
+            phrase,
             style: TextStyle(color: texthint),
           ),
           GestureDetector(
-            onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const RegisterPageView()));
-            },
+            onTap: onPressed,
             child: Text(
-              " Registrar",
+              singInOrSingUpText,
               style: TextStyle(
                   color: buttonColor,
                   fontWeight: FontWeight.w600,
