@@ -24,7 +24,8 @@ class _HomePageViewState extends State<HomePageView> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const UserNameText(),
+            const UserNameText(username: 'Roger'),
+            //TODO: Me quede Por aqui.
             const SearchFood(),
             const DiscountCard(),
             FoodPart(partName: "Categories"),
