@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:food_order_ui/view/bottom_navigator.dart';
 import 'package:food_order_ui/view/home_page/components/colors.dart';
 import 'package:food_order_ui/view/home_page/components/size_config.dart';
 
-class LoginButonColor extends StatefulWidget {
-  const LoginButonColor({Key? key}) : super(key: key);
+class AuthButonColor extends StatelessWidget {
+  final String buttonText;
+  final VoidCallback onPressed;
+  const AuthButonColor({
+    Key? key,
+    required this.buttonText,
+    required this.onPressed,
+  }) : super(key: key);
 
-  @override
-  _LoginButonColorState createState() => _LoginButonColorState();
-}
-
-class _LoginButonColorState extends State<LoginButonColor> {
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
     return Padding(
       padding: EdgeInsets.fromLTRB(
         SizeConfig.blockSizeHorizontal! * 5,
@@ -53,12 +52,9 @@ class _LoginButonColorState extends State<LoginButonColor> {
             backgroundColor: MaterialStateProperty.all(Colors.transparent),
             shadowColor: MaterialStateProperty.all(Colors.transparent),
           ),
-          onPressed: () {
-            Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (context) => const MyHomePage()));
-          },
+          onPressed: onPressed,
           child: Text(
-            "Iniciar",
+            buttonText,
             style: TextStyle(
               fontSize: SizeConfig.blockSizeHorizontal! * 6,
               fontWeight: FontWeight.w700,

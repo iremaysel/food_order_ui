@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_order_ui/view/login_page/login_page_view.dart';
-import 'package:food_order_ui/view/start_page/start_page_view.dart';
+import 'package:food_order_ui/view/authPages/login_page/login_page_view.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);

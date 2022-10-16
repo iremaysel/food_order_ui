@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../home_page/components/colors.dart';
-import '../../register_page/register_page_view.dart';
+import '../../authPages/register_page/register_page_view.dart';
 import 'login_button_widget.dart';
 
 class StartPageBodySingUpButton extends StatelessWidget {

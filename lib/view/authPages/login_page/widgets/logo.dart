@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_order_ui/view/home_page/components/size_config.dart';
-import 'package:food_order_ui/view/login_page/widgets//text_title.dart';
+import 'package:food_order_ui/view/authPages/login_page/widgets/text_title.dart';
 
 class LogoImage extends StatelessWidget {
   const LogoImage({Key? key}) : super(key: key);

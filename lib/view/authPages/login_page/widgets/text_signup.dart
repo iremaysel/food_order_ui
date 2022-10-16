@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_order_ui/view/home_page/components/colors.dart';
 import 'package:food_order_ui/view/home_page/components/size_config.dart';
-import 'package:food_order_ui/view/register_page/register_page_view.dart';
+import 'package:food_order_ui/view/authPages/register_page/register_page_view.dart';
 
 class TextSignUp extends StatelessWidget {
   const TextSignUp({Key? key}) : super(key: key);

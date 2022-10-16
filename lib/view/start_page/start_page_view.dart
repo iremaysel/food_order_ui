@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_order_ui/view/home_page/components/size_config.dart';
-import 'package:food_order_ui/view/login_page/widgets/text_title.dart';
+import 'package:food_order_ui/view/authPages/login_page/widgets/text_title.dart';
 
 import 'widgets/start_page_body_login_button.dart';
 import 'widgets/start_page_sing_up_button.dart';
