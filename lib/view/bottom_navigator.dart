@@ -28,41 +28,40 @@ class _MyHomePageState extends State<MyHomePage> {
   ];
   @override
   Widget build(BuildContext context) {
+    // SystemChrome.setSystemUIOverlayStyle(
+    //     const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
+    SizeConfig().init(context);
     final items = [
-      Icon(Icons.home, size: SizeConfig.screenHeight! / 22.77),
+      Icon(Icons.home, size: SizeConfig.blockSizeHorizontal! * 8.5),
 
       /// 30.0
-      Icon(Icons.search, size: SizeConfig.screenHeight! / 22.77),
-      Icon(Icons.shopping_cart, size: SizeConfig.screenHeight! / 22.77),
-      Icon(Icons.favorite, size: SizeConfig.screenHeight! / 22.77),
-      Icon(Icons.person, size: SizeConfig.screenHeight! / 22.77),
+      Icon(Icons.search, size: SizeConfig.blockSizeHorizontal! * 8.5),
+      Icon(Icons.shopping_cart, size: SizeConfig.blockSizeHorizontal! * 8.5),
+      Icon(Icons.favorite, size: SizeConfig.blockSizeHorizontal! * 8.5),
+      Icon(Icons.person, size: SizeConfig.blockSizeHorizontal! * 8.5),
     ];
 
-    return Container(
-      color: buttonColor,
-      child: SafeArea(
-        top: false,
-        child: Scaffold(
-          extendBody: true,
-          backgroundColor: Colors.white,
-          body: screen[index],
-          bottomNavigationBar: Theme(
-            data: Theme.of(context)
-                .copyWith(iconTheme: const IconThemeData(color: Colors.white)),
-            child: CurvedNavigationBar(
-              key: navigationKey,
-              color: Colors.black45,
-              backgroundColor: Colors.transparent,
-              buttonBackgroundColor: buttonColor,
-              height: SizeConfig.screenHeight! / 11.39,
+    return SafeArea(
+      child: Scaffold(
+        extendBody: true,
+        backgroundColor: Colors.white,
+        body: screen[index],
+        bottomNavigationBar: Theme(
+          data: Theme.of(context)
+              .copyWith(iconTheme: const IconThemeData(color: Colors.white)),
+          child: CurvedNavigationBar(
+            key: navigationKey,
+            color: Colors.black45,
+            backgroundColor: Colors.transparent,
+            buttonBackgroundColor: buttonColor,
+            height: SizeConfig.blocksizeVertical! * 8,
 
-              /// 60.0
-              animationCurve: Curves.easeInOut,
-              animationDuration: const Duration(milliseconds: 400),
-              index: index,
-              items: items,
-              onTap: (index) => setState(() => this.index = index),
-            ),
+            /// 60.0
+            animationCurve: Curves.easeInOut,
+            animationDuration: const Duration(milliseconds: 400),
+            index: index,
+            items: items,
+            onTap: (index) => setState(() => this.index = index),
           ),
         ),
       ),

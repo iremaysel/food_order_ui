@@ -42,8 +42,8 @@ class LoginButton extends StatelessWidget {
             minimumSize: MaterialStateProperty.all(Size(
                 SizeConfig.blockSizeHorizontal! * 75,
                 SizeConfig.blocksizeVertical! * 7)),
-            backgroundColor: MaterialStateProperty.all(Colors.transparent),
-            shadowColor: MaterialStateProperty.all(Colors.transparent),
+            backgroundColor: MaterialStateProperty.all(colorButton),
+            // shadowColor: MaterialStateProperty.all(Colors.transparent),
           ),
           onPressed: onPressed,
           child: Text(

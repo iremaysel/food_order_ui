@@ -10,7 +10,6 @@ class StartPageView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
@@ -30,6 +29,8 @@ class _PageBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    /// Aqui se [inicializa el Media query]...///
+    SizeConfig().init(context);
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: const [

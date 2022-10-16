@@ -17,15 +17,18 @@ class _SearchPageViewState extends State<SearchPageView> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         centerTitle: true,
-        title : Text("Search", style: TextStyle(color: Colors.black),),
+        title: const Text(
+          "Search",
+          style: TextStyle(color: Colors.black),
+        ),
         elevation: 0,
         backgroundColor: Colors.white,
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.black),
       ),
       body: Column(
         children: [
           SearchTextField(hint_text: "Search"),
-          RecentSearch(),
+          const RecentSearch(),
           PastSearch(search_text: "Grillled Chicken"),
           PastSearch(search_text: "Organic Orange"),
         ],

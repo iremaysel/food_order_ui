@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:food_order_ui/view/home_page/components/colors.dart';
 import 'package:food_order_ui/view/home_page/components/size_config.dart';
+
+import '../../home_page/components/colors.dart';
 
 class AuthButonColor extends StatelessWidget {
   final String buttonText;
@@ -49,8 +50,6 @@ class AuthButonColor extends StatelessWidget {
             minimumSize: MaterialStateProperty.all(Size(
                 SizeConfig.blockSizeHorizontal! * 70,
                 SizeConfig.blocksizeVertical! * 7.5)),
-            backgroundColor: MaterialStateProperty.all(Colors.transparent),
-            shadowColor: MaterialStateProperty.all(Colors.transparent),
           ),
           onPressed: onPressed,
           child: Text(
