@@ -23,17 +23,17 @@ class _HomePageViewState extends State<HomePageView> {
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
-          children: [
-            const UserNameText(username: 'Roger'),
+          children: const [
+            UserNameText(username: 'Roger'),
             //TODO: Me quede Por aqui.
-            const SearchFood(),
-            const DiscountCard(),
-            FoodPart(partName: "Categories"),
-            const CategoriesFood(),
-            FoodPart(partName: "Recommed"),
-            const RecommedFoods(),
+            SearchFood(),
+            DiscountCard(),
+            FoodPart(partName: "Categorias"),
+            CategoriesFood(),
+            FoodPart(partName: "Recomendados"),
+            RecommedFoods(),
             FoodPart(partName: "Popular"),
-            const PopularFoods(),
+            PopularFoods(),
           ],
         ),
       ),

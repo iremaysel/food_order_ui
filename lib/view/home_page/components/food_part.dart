@@ -2,33 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:food_order_ui/view/home_page/components/size_config.dart';
 
 class FoodPart extends StatelessWidget {
-  String partName;
-  FoodPart({required this.partName});
+  final String partName;
+  const FoodPart({Key? key, required this.partName}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.fromLTRB(
-          SizeConfig.screenWidth! / 27.4,
-
-          /// 15.0
-          SizeConfig.screenHeight! / 68.3,
-
-          /// 10.0
-          SizeConfig.screenWidth! / 41.1,
-
-          /// 10.0
-          SizeConfig.screenHeight! / 68.3
-
-          /// 10.0
-          ),
+        SizeConfig.blockSizeHorizontal! * 4,
+        SizeConfig.blockSizeVertical! * 0.5,
+        SizeConfig.blockSizeHorizontal! * 3,
+        SizeConfig.blockSizeVertical! * 0.5,
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
             partName,
             style: TextStyle(
-                fontSize: SizeConfig.screenHeight! / 34.15,
+                fontSize: SizeConfig.blockSizeHorizontal! * 5.8,
                 fontWeight: FontWeight.w500,
                 color: Colors.black87),
           ),
@@ -37,7 +29,7 @@ class FoodPart extends StatelessWidget {
           Icon(
             Icons.keyboard_arrow_right,
             color: Colors.black45,
-            size: SizeConfig.screenHeight! / 21.35,
+            size: SizeConfig.blockSizeHorizontal! * 6,
           )
 
           /// 32.0

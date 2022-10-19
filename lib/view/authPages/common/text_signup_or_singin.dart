@@ -18,7 +18,7 @@ class TextSignUpOrSingIn extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.fromLTRB(
         SizeConfig.blockSizeHorizontal! * 5,
-        SizeConfig.blocksizeVertical! * 1,
+        SizeConfig.blockSizeVertical! * 1,
         SizeConfig.blockSizeHorizontal! * 5,
         0,
       ),

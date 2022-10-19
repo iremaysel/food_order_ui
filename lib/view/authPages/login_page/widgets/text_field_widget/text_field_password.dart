@@ -24,9 +24,9 @@ class _TextFieldPasswordState extends State<TextFieldPassword> {
       child: Padding(
         padding: EdgeInsets.fromLTRB(
           SizeConfig.blockSizeHorizontal! * 5,
-          SizeConfig.blocksizeVertical! * 2,
+          SizeConfig.blockSizeVertical! * 2,
           SizeConfig.blockSizeHorizontal! * 5,
-          SizeConfig.blocksizeVertical! * 2,
+          SizeConfig.blockSizeVertical! * 2,
         ),
         child: TextField(
           obscureText: passwordObscure,

@@ -13,48 +13,61 @@ class RecommedFoods extends StatefulWidget {
 class _RecommedFoodsState extends State<RecommedFoods> {
   @override
   Widget build(BuildContext context) {
-    return  FutureBuilder<List<Food>>(
+    return FutureBuilder<List<Food>>(
       future: bringTheFoods(),
-      builder: (context, snapshot){
-        if(snapshot.hasData){
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
           var foodList = snapshot.data;
           return SizedBox(
-            height: SizeConfig.screenHeight!/2.58,               /// 265.0
+            height: SizeConfig.screenHeight! / 2.58,
+
+            /// 265.0
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: foodList!.length,
-              itemBuilder: (context, index){
+              itemBuilder: (context, index) {
                 var food = foodList[index];
                 return Column(
                   children: [
                     GestureDetector(
-                      onTap: (){},
+                      onTap: () {},
                       child: Container(
                         margin: EdgeInsets.fromLTRB(
-                            SizeConfig.screenWidth!/34.25,             /// 12.0
-                            SizeConfig.screenHeight!/170.75,           /// 4.0
-                            SizeConfig.screenWidth!/41.1,              /// 10.0
-                            SizeConfig.screenHeight!/170.75,           /// 4.0
+                          SizeConfig.screenWidth! / 34.25,
+
+                          /// 12.0
+                          SizeConfig.screenHeight! / 170.75,
+
+                          /// 4.0
+                          SizeConfig.screenWidth! / 41.1,
+
+                          /// 10.0
+                          SizeConfig.screenHeight! / 170.75,
+
+                          /// 4.0
                         ),
-                        height: SizeConfig.screenHeight!/2.73,             /// 250.0
-                        width: SizeConfig.screenWidth!/2.055,              /// 200.0
+                        height: SizeConfig.screenHeight! / 2.73,
+
+                        /// 250.0
+                        width: SizeConfig.screenWidth! / 2.055,
+
+                        /// 200.0
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
-                          boxShadow: [
-                            BoxShadow(
-                              offset: Offset(4, 6),
-                              blurRadius: 4,
-                              color: Colors.black.withOpacity(0.3),
-                            )
-                          ]
-                        ),
+                            boxShadow: [
+                              BoxShadow(
+                                offset: const Offset(4, 6),
+                                blurRadius: 4,
+                                color: Colors.black.withOpacity(0.3),
+                              )
+                            ]),
                         child: Stack(
                           fit: StackFit.expand,
                           children: [
                             Container(
                               decoration: BoxDecoration(
                                 image: DecorationImage(
-                                  image: AssetImage("${food.foodImageName}"),
+                                  image: AssetImage(food.foodImageName),
                                   fit: BoxFit.cover,
                                 ),
                                 borderRadius: BorderRadius.circular(20),
@@ -67,22 +80,49 @@ class _RecommedFoodsState extends State<RecommedFoods> {
                               ),
                             ),
                             Positioned(
-                                left: SizeConfig.screenWidth!/34.25,            /// 12.0
-                                bottom: SizeConfig.screenHeight!/45.54,         /// 15.0
+                                left: SizeConfig.screenWidth! / 34.25,
+
+                                /// 12.0
+                                bottom: SizeConfig.screenHeight! / 45.54,
+
+                                /// 15.0
                                 child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text("${food.foodName}", style: TextStyle(fontSize: SizeConfig.screenHeight!/34.15, color: Colors.white)),       /// 20
-                                    Text("${food.foodCategory}", style: TextStyle(fontSize: SizeConfig.screenHeight!/48.79, color: Colors.white)),   /// 14
-                                    Text("\$${food.foodPrice}", style: TextStyle(fontSize: SizeConfig.screenHeight!/37.95, color: Colors.white))     /// 18
+                                    Text(food.foodName,
+                                        style: TextStyle(
+                                            fontSize: SizeConfig.screenHeight! /
+                                                34.15,
+                                            color: Colors.white)),
+
+                                    /// 20
+                                    Text(food.foodCategory,
+                                        style: TextStyle(
+                                            fontSize: SizeConfig.screenHeight! /
+                                                48.79,
+                                            color: Colors.white)),
+
+                                    /// 14
+                                    Text("\$${food.foodPrice}",
+                                        style: TextStyle(
+                                            fontSize: SizeConfig.screenHeight! /
+                                                37.95,
+                                            color: Colors.white))
+
+                                    /// 18
                                   ],
-                                )
-                            ),
+                                )),
                             Positioned(
-                              top: SizeConfig.screenHeight!/68.3,              /// 10.0
-                              right: SizeConfig.screenWidth!/41.1,             /// 10.0
-                              child: Icon(Icons.favorite, color: Colors.white))
+                                top: SizeConfig.screenHeight! / 68.3,
+
+                                /// 10.0
+                                right: SizeConfig.screenWidth! / 41.1,
+
+                                /// 10.0
+                                child: const Icon(Icons.favorite,
+                                    color: Colors.white))
                           ],
                         ),
                       ),
@@ -92,9 +132,8 @@ class _RecommedFoodsState extends State<RecommedFoods> {
               },
             ),
           );
-        }
-        else{
-          return Center();
+        } else {
+          return const Center();
         }
       },
     );

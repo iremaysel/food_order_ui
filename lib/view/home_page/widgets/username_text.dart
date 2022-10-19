@@ -12,9 +12,9 @@ class UserNameText extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.fromLTRB(
         SizeConfig.blockSizeHorizontal! * 8,
-        SizeConfig.blocksizeVertical! * 2.5,
+        SizeConfig.blockSizeVertical! * 2.5,
         SizeConfig.blockSizeHorizontal! * 8,
-        SizeConfig.blocksizeVertical! * 3,
+        SizeConfig.blockSizeVertical! * 3,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -29,8 +29,8 @@ class UserNameText extends StatelessWidget {
                 children: [
                   Padding(
                     padding: EdgeInsets.only(
-                        top: SizeConfig.blocksizeVertical! * 1,
-                        bottom: SizeConfig.blocksizeVertical! * 1),
+                        top: SizeConfig.blockSizeVertical! * 1,
+                        bottom: SizeConfig.blockSizeVertical! * 1),
 
                     child: Text(
                       "Hola $username",
@@ -43,7 +43,7 @@ class UserNameText extends StatelessWidget {
                     /// 23
                   ),
                   Container(
-                    height: SizeConfig.blocksizeVertical! * 4,
+                    height: SizeConfig.blockSizeVertical! * 4,
 
                     /// 30.0
                     width: SizeConfig.blockSizeHorizontal! * 10,
@@ -68,7 +68,7 @@ class UserNameText extends StatelessWidget {
           Stack(
             children: [
               Container(
-                height: SizeConfig.blocksizeVertical! * 6,
+                height: SizeConfig.blockSizeVertical! * 6,
 
                 /// 40.0
                 width: SizeConfig.blockSizeHorizontal! * 20,
@@ -82,7 +82,7 @@ class UserNameText extends StatelessWidget {
               Positioned(
                 left: SizeConfig.blockSizeHorizontal! * 0.25,
                 child: Container(
-                    height: SizeConfig.blocksizeVertical! * 6,
+                    height: SizeConfig.blockSizeVertical! * 6,
 
                     /// 40.0
                     width: SizeConfig.blockSizeHorizontal! * 11,
@@ -101,7 +101,7 @@ class UserNameText extends StatelessWidget {
                   right: SizeConfig.blockSizeHorizontal! * 4,
 
                   /// 20.0
-                  bottom: SizeConfig.blocksizeVertical! * 1.9, //
+                  bottom: SizeConfig.blockSizeVertical! * 1.9, //
 
                   /// 11.0
                   child: const Text(

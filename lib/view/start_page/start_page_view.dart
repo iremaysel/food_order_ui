@@ -53,9 +53,9 @@ class _PageBodyTexts extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.fromLTRB(
         0,
-        SizeConfig.blocksizeVertical! * 3,
+        SizeConfig.blockSizeVertical! * 3,
         0,
-        SizeConfig.blocksizeVertical! * 8,
+        SizeConfig.blockSizeVertical! * 8,
       ),
       child: Column(children: [
         const Center(
@@ -66,7 +66,7 @@ class _PageBodyTexts extends StatelessWidget {
         Padding(
           padding: EdgeInsets.symmetric(
               horizontal: SizeConfig.blockSizeHorizontal! * 10,
-              vertical: SizeConfig.blocksizeVertical! * 1),
+              vertical: SizeConfig.blockSizeVertical! * 1),
 
           /// 40.0 - 5.0
           child: const Center(
@@ -91,7 +91,7 @@ class _PageBodyLogo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: SizeConfig.blockSizeHorizontal! * 45,
-      height: SizeConfig.blocksizeVertical! * 20,
+      height: SizeConfig.blockSizeVertical! * 20,
       decoration: const BoxDecoration(
           image: DecorationImage(
               image: AssetImage(

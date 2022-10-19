@@ -17,9 +17,9 @@ class AuthButonColor extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.fromLTRB(
         SizeConfig.blockSizeHorizontal! * 5,
-        SizeConfig.blocksizeVertical! * 10,
+        SizeConfig.blockSizeVertical! * 10,
         SizeConfig.blockSizeHorizontal! * 5,
-        SizeConfig.blocksizeVertical! * 2,
+        SizeConfig.blockSizeVertical! * 2,
       ),
       child: Container(
         decoration: BoxDecoration(
@@ -49,7 +49,7 @@ class AuthButonColor extends StatelessWidget {
             ),
             minimumSize: MaterialStateProperty.all(Size(
                 SizeConfig.blockSizeHorizontal! * 70,
-                SizeConfig.blocksizeVertical! * 7.5)),
+                SizeConfig.blockSizeVertical! * 7.5)),
           ),
           onPressed: onPressed,
           child: Text(

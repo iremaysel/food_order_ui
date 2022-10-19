@@ -11,7 +11,7 @@ class BackgroundImage extends StatelessWidget {
     return Column(
       children: <Widget>[
         Container(
-          height: SizeConfig.blocksizeVertical! * 25,
+          height: SizeConfig.blockSizeVertical! * 25,
           decoration: const BoxDecoration(
               image: DecorationImage(
                   image: AssetImage('assets/main/background_image.png'),

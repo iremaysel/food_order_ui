@@ -2,53 +2,56 @@ import 'package:flutter/material.dart';
 import 'package:food_order_ui/view/home_page/components/size_config.dart';
 import 'package:food_order_ui/view/search_page/search_page_view.dart';
 
-class SearchFood extends StatefulWidget {
+class SearchFood extends StatelessWidget {
   const SearchFood({Key? key}) : super(key: key);
 
-  @override
-  _SearchFoodState createState() => _SearchFoodState();
-}
-
-class _SearchFoodState extends State<SearchFood> {
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: EdgeInsets.fromLTRB(
-            SizeConfig.screenWidth!/20.55,                /// 20.0
-            SizeConfig.screenHeight!/85.375,              /// 8.0
-            SizeConfig.screenWidth!/20.55,                /// 20.0
-            SizeConfig.screenHeight!/85.375,              /// 8.0
+        padding: EdgeInsets.symmetric(
+          horizontal: SizeConfig.blockSizeHorizontal! * 10,
+          vertical: SizeConfig.blockSizeVertical! * 2,
         ),
         child: InkWell(
-          onTap: (){
-            Navigator.push(context, MaterialPageRoute(builder: (context) => SearchPageView()));
-            print("hello");
+          onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const SearchPageView()));
           },
           child: Container(
-            height: SizeConfig.screenHeight!/13.66,          /// 50.0
-            width: SizeConfig.screenWidth!/1.068,            /// 385.0
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.all(Radius.circular(20.0)),
-              boxShadow: [
-                BoxShadow(
-                  offset: Offset(0, 4),
-                  blurRadius: 6,
-                  color: Colors.black.withOpacity(0.3),
-                )
-              ]
-            ),
-            child:Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: Icon(Icons.search, color: Colors.black26,),
-                ),
-                Text("Search", style: TextStyle(color: Colors.black26, fontSize: SizeConfig.screenHeight!/42.69))     /// 16
-              ],
-            )
-          ),
+              height: SizeConfig.blockSizeVertical! * 6,
+              width: SizeConfig.blockSizeHorizontal! * 80,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(
+                      Radius.circular(SizeConfig.blockSizeHorizontal! * 5.5)),
+                  boxShadow: [
+                    BoxShadow(
+                      offset: const Offset(0, 4),
+                      blurRadius: 6,
+                      color: Colors.black.withOpacity(0.3),
+                    )
+                  ]),
+              child: Row(
+                children: [
+                  Padding(
+                    padding:
+                        EdgeInsets.all(SizeConfig.blockSizeHorizontal! * 3),
+                    child: const Icon(
+                      Icons.search,
+                      color: Colors.black26,
+                    ),
+                  ),
+                  Text("Buscar",
+                      style: TextStyle(
+                          color: Colors.black26,
+                          fontSize: SizeConfig.blockSizeHorizontal! * 5))
+
+                  /// 16
+                ],
+              )),
         ),
       ),
     );

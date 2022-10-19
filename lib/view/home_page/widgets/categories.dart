@@ -3,62 +3,65 @@ import 'package:food_order_ui/configuration/category.dart';
 import 'package:food_order_ui/configuration/food_list.dart';
 import 'package:food_order_ui/view/home_page/components/size_config.dart';
 
-class CategoriesFood extends StatefulWidget {
+class CategoriesFood extends StatelessWidget {
   const CategoriesFood({Key? key}) : super(key: key);
 
-  @override
-  _CategoriesFoodState createState() => _CategoriesFoodState();
-}
-
-class _CategoriesFoodState extends State<CategoriesFood> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<Category>>(
       future: bringTheCategory(),
-      builder: (context, snapshot){
-        if(snapshot.hasData){
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
           var categoryList = snapshot.data;
           return SizedBox(
-            height: SizeConfig.screenHeight!/8.04,                     /// 85.0
+            height: SizeConfig.blockSizeVertical! * 12,
             child: ListView.builder(
+              //  physics: const BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
               itemCount: categoryList!.length,
-              itemBuilder: (context, indeks){
+              itemBuilder: (context, indeks) {
                 var category = categoryList[indeks];
-                return Column(
-                  children: [
-                    GestureDetector(
-                      onTap: (){},
-                      child: Container(
-                        margin: EdgeInsets.fromLTRB(
-                            SizeConfig.screenWidth!/34.25,             /// 12.0
-                            SizeConfig.screenHeight!/170.75,           /// 4.0
-                            SizeConfig.screenWidth!/20.55,             /// 20.0
-                            SizeConfig.screenHeight!/170.75,           /// 4.0
-                        ),
-                        height: SizeConfig.screenHeight!/15.18,           /// 45.0
-                        width: SizeConfig.screenWidth!/9.14,              /// 45.0
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage("${category.categoryImage}"),
-                            fit: BoxFit.fill,
+                return Padding(
+                  padding: EdgeInsets.only(
+                      top: SizeConfig.blockSizeVertical! * 1,
+                      bottom: SizeConfig.blockSizeVertical! * 1,
+                      left: SizeConfig.blockSizeHorizontal! * 4),
+                  child: GestureDetector(
+                    onTap: () =>
+                        print('tocaste la categoria ${category.categoryName}'),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Container(
+                          height: SizeConfig.blockSizeVertical! * 7,
+
+                          /// 45.0
+                          width: SizeConfig.blockSizeHorizontal! * 13,
+
+                          /// 45.0
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage(category.categoryImage),
+                              fit: BoxFit.fill,
+                            ),
                           ),
                         ),
-                      ),
+                        Text(
+                          category.categoryName,
+                          style: TextStyle(
+                              fontSize: SizeConfig.blockSizeHorizontal! * 4,
+                              color: Colors.black45),
+                        ),
+                      ],
                     ),
-                    Row(
-                        children:[
-                          Text(category.categoryName, style: TextStyle(fontSize: SizeConfig.screenHeight!/52.54, color: Colors.black45),)  /// 13
-                        ]
-                    ),
-                  ],
+                  ),
                 );
               },
             ),
           );
-        }
-        else{
-          return Center();
+        } else {
+          return const Center();
         }
       },
     );

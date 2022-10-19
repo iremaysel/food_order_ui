@@ -22,7 +22,7 @@ class LoginButton extends StatelessWidget {
         SizeConfig.blockSizeHorizontal! * 2,
         0,
         SizeConfig.blockSizeHorizontal! * 2,
-        SizeConfig.blocksizeVertical! * 2,
+        SizeConfig.blockSizeVertical! * 2,
       ),
       child: Container(
         decoration: BoxDecoration(
@@ -41,7 +41,7 @@ class LoginButton extends StatelessWidget {
             ),
             minimumSize: MaterialStateProperty.all(Size(
                 SizeConfig.blockSizeHorizontal! * 75,
-                SizeConfig.blocksizeVertical! * 7)),
+                SizeConfig.blockSizeVertical! * 7)),
             backgroundColor: MaterialStateProperty.all(colorButton),
             // shadowColor: MaterialStateProperty.all(Colors.transparent),
           ),

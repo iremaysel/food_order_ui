@@ -54,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
             color: Colors.black45,
             backgroundColor: Colors.transparent,
             buttonBackgroundColor: buttonColor,
-            height: SizeConfig.blocksizeVertical! * 8,
+            height: SizeConfig.blockSizeVertical! * 8,
 
             /// 60.0
             animationCurve: Curves.easeInOut,

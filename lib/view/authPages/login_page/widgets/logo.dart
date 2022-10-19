@@ -8,11 +8,11 @@ class LogoImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(bottom: SizeConfig.blocksizeVertical! * 6),
+      padding: EdgeInsets.only(bottom: SizeConfig.blockSizeVertical! * 6),
       child: Column(
         children: <Widget>[
           Container(
-            height: SizeConfig.blocksizeVertical! * 40,
+            height: SizeConfig.blockSizeVertical! * 40,
             decoration: const BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage('assets/main/background_image.png'),
@@ -26,7 +26,7 @@ class LogoImage extends StatelessWidget {
                     width: SizeConfig.blockSizeHorizontal! * 40,
 
                     /// 150.0
-                    height: SizeConfig.blocksizeVertical! * 10,
+                    height: SizeConfig.blockSizeVertical! * 10,
 
                     /// 88.0
                     child: Container(
@@ -39,7 +39,7 @@ class LogoImage extends StatelessWidget {
                 Center(
                   child: Padding(
                     padding:
-                        EdgeInsets.only(top: SizeConfig.blocksizeVertical! * 2),
+                        EdgeInsets.only(top: SizeConfig.blockSizeVertical! * 2),
 
                     /// 10.0
                     child: const TextTitle(title: "Bienvenidos"),
