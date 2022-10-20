@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_order_ui/view/home_page/components/size_config.dart';
+import 'package:food_order_ui/features/products/presentation/pages/home_page/components/size_config.dart';
 
 class MySeparator extends StatelessWidget {
   final double height;
@@ -11,7 +11,7 @@ class MySeparator extends StatelessWidget {
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
         final boxWidth = constraints.constrainWidth();
-        final dashWidth = SizeConfig.screenWidth!/57.71;
+        final dashWidth = SizeConfig.screenWidth! / 57.71;
         final dashHeight = height;
         final dashCount = (boxWidth / (2 * dashWidth)).floor();
         return Flex(

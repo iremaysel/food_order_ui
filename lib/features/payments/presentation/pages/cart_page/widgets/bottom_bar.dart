@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:food_order_ui/features/payments/presentation/pages/cart_page/widgets/bottom_bar_widget/3d_secure.dart';
 import 'package:food_order_ui/features/payments/presentation/pages/cart_page/widgets/bottom_bar_widget/bottombar_text.dart';
 import 'package:food_order_ui/features/payments/presentation/pages/cart_page/widgets/bottom_bar_widget/checkout_button.dart';
-import 'package:food_order_ui/view/food_detail_page/components/separator.dart';
-import 'package:food_order_ui/view/home_page/components/size_config.dart';
+import 'package:food_order_ui/features/products/presentation/pages/food_detail_page/components/separator.dart';
+import 'package:food_order_ui/features/products/presentation/pages/home_page/components/size_config.dart';
 
 class BottomBar extends StatefulWidget {
   const BottomBar({Key? key}) : super(key: key);
@@ -21,7 +21,7 @@ class _BottomBarState extends State<BottomBar> {
         horizontal: SizeConfig.screenHeight! / 30.0,
       ),
       // height: 174,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(30),
@@ -38,11 +38,11 @@ class _BottomBarState extends State<BottomBar> {
                   EdgeInsets.only(bottom: SizeConfig.screenHeight! / 85.37),
 
               /// 8.0
-              child: MySeparator(
+              child: const MySeparator(
                 color: Colors.grey,
               ),
             ),
-            ThreeDSecure(),
+            const ThreeDSecure(),
             SizedBox(
               height: SizeConfig.screenHeight! / 45.54,
             ),
@@ -81,7 +81,7 @@ class _BottomBarState extends State<BottomBar> {
             SizedBox(height: SizeConfig.screenHeight! / 34.15),
 
             /// 20.0
-            CheckoutButton(),
+            const CheckoutButton(),
           ],
         ),
       ),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:food_order_ui/view/home_page/components/size_config.dart';
+import 'package:food_order_ui/features/products/presentation/pages/home_page/components/size_config.dart';
 import 'package:food_order_ui/features/auth/presentation/pages/login_page/widgets/text_title.dart';
 
-import 'widgets/start_page_body_login_button.dart';
-import 'widgets/start_page_sing_up_button.dart';
+import '../widgets/start_page_body_login_button.dart';
+import '../widgets/start_page_sing_up_button.dart';
 
 class StartPageView extends StatelessWidget {
   const StartPageView({Key? key}) : super(key: key);

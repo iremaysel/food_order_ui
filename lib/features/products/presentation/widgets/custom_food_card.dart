@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../configuration/food.dart';
-import '../food_detail_page/food_detail_view.dart';
-import '../home_page/components/colors.dart';
-import '../home_page/components/size_config.dart';
+import '../../../../configuration/food.dart';
+import '../pages/food_detail_page/food_detail_view.dart';
+import '../pages/home_page/components/colors.dart';
+import '../pages/home_page/components/size_config.dart';
 
 class CustomFoodCard extends StatelessWidget {
   const CustomFoodCard({

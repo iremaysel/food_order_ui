@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:food_order_ui/view/home_page/components/colors.dart';
-import 'package:food_order_ui/view/home_page/components/size_config.dart';
+import 'package:food_order_ui/features/products/presentation/pages/home_page/components/colors.dart';
+import 'package:food_order_ui/features/products/presentation/pages/home_page/components/size_config.dart';
 
 class CheckoutTextField extends StatefulWidget {
   String enter_text;
@@ -17,16 +17,22 @@ class _CheckoutTextFieldState extends State<CheckoutTextField> {
     SizeConfig().init(context);
     return Padding(
       padding: EdgeInsets.fromLTRB(
-          SizeConfig.screenWidth!/41.1,                  /// 10.0
+          SizeConfig.screenWidth! / 41.1,
+
+          /// 10.0
           0,
-          SizeConfig.screenWidth!/82.2,                  /// 5.0
-          SizeConfig.screenHeight!/85.37                 /// 8.0
-      ),
+          SizeConfig.screenWidth! / 82.2,
+
+          /// 5.0
+          SizeConfig.screenHeight! / 85.37
+
+          /// 8.0
+          ),
       child: Container(
-        width: SizeConfig.screenWidth!/widget.size_width,
+        width: SizeConfig.screenWidth! / widget.size_width,
         decoration: BoxDecoration(
-            color: Colors.grey.shade100,
-            borderRadius: BorderRadius.all(Radius.circular(20.0)),
+          color: Colors.grey.shade100,
+          borderRadius: BorderRadius.all(Radius.circular(20.0)),
         ),
         child: TextField(
           style: TextStyle(color: textColor),
@@ -34,8 +40,8 @@ class _CheckoutTextFieldState extends State<CheckoutTextField> {
           decoration: InputDecoration(
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(20.0)),
-              borderSide: BorderSide(width: 1,color: Colors.transparent),
-            ) ,
+              borderSide: BorderSide(width: 1, color: Colors.transparent),
+            ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(20.0),
             ),

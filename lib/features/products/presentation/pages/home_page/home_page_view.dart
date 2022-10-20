@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:food_order_ui/view/home_page/components/food_part.dart';
-import 'package:food_order_ui/view/home_page/widgets/categories.dart';
-import 'package:food_order_ui/view/home_page/widgets/discount_cart.dart';
-import 'package:food_order_ui/view/home_page/widgets/popular.dart';
-import 'package:food_order_ui/view/home_page/widgets/recommed.dart';
-import 'package:food_order_ui/view/home_page/widgets/search_food.dart';
-import 'package:food_order_ui/view/home_page/widgets/username_text.dart';
+import 'package:food_order_ui/features/products/presentation/widgets/food_part.dart';
+import 'package:food_order_ui/features/products/presentation/pages/home_page/widgets/categories.dart';
+import 'package:food_order_ui/features/products/presentation/pages/home_page/widgets/discount_cart.dart';
+import 'package:food_order_ui/features/products/presentation/pages/home_page/widgets/popular.dart';
+import 'package:food_order_ui/features/products/presentation/pages/home_page/widgets/recommed.dart';
+import 'package:food_order_ui/features/products/presentation/pages/home_page/widgets/search_food.dart';
+import 'package:food_order_ui/features/products/presentation/pages/home_page/widgets/username_text.dart';
 import 'components/size_config.dart';
 
 class HomePageView extends StatefulWidget {

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:food_order_ui/features/payments/presentation/pages/checkout_page/widgets/address.dart';
 import 'package:food_order_ui/features/payments/presentation/pages/checkout_page/widgets/payment.dart';
-import 'package:food_order_ui/view/home_page/components/colors.dart';
-import 'package:food_order_ui/view/home_page/components/size_config.dart';
+import 'package:food_order_ui/features/products/presentation/pages/home_page/components/colors.dart';
+import 'package:food_order_ui/features/products/presentation/pages/home_page/components/size_config.dart';
 import 'package:food_order_ui/features/payments/presentation/pages/success_page/success_page_view.dart';
 
 class CheckoutPageView extends StatefulWidget {

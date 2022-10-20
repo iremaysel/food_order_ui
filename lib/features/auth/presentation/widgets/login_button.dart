@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:food_order_ui/view/home_page/components/size_config.dart';
+import 'package:food_order_ui/features/products/presentation/pages/home_page/components/size_config.dart';
 
-import '../../../../view/home_page/components/colors.dart';
+import '../../../products/presentation/pages/home_page/components/colors.dart';
 
 class AuthButonColor extends StatelessWidget {
   final String buttonText;

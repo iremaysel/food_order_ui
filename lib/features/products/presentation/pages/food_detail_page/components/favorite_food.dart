@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_order_ui/view/home_page/components/size_config.dart';
+import 'package:food_order_ui/features/products/presentation/pages/home_page/components/size_config.dart';
 
 class FavoriteFood extends StatefulWidget {
   const FavoriteFood({Key? key}) : super(key: key);
@@ -13,10 +13,10 @@ class _FavoriteFoodState extends State<FavoriteFood> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return IconButton(
-      onPressed: (){} ,
+      onPressed: () {},
       icon: Icon(Icons.favorite),
       color: Colors.white,
-      iconSize: SizeConfig.screenHeight!/22.77,
+      iconSize: SizeConfig.screenHeight! / 22.77,
     );
   }
 }

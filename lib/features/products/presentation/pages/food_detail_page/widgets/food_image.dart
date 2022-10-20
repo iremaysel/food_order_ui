@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:food_order_ui/configuration/food.dart';
-import 'package:food_order_ui/view/food_detail_page/components/arrow_back.dart';
-import 'package:food_order_ui/view/food_detail_page/components/favorite_food.dart';
-import 'package:food_order_ui/view/home_page/components/size_config.dart';
+import 'package:food_order_ui/features/products/presentation/pages/food_detail_page/components/arrow_back.dart';
+import 'package:food_order_ui/features/products/presentation/pages/food_detail_page/components/favorite_food.dart';
+import 'package:food_order_ui/features/products/presentation/pages/home_page/components/size_config.dart';
 
 class FoodImage extends StatefulWidget {
   Food food;
@@ -22,12 +22,15 @@ class _FoodImageState extends State<FoodImage> {
         color: Colors.orangeAccent,
         image: DecorationImage(
             image: AssetImage("${widget.food.foodImageName}"),
-            fit: BoxFit.fitWidth
-        ),
+            fit: BoxFit.fitWidth),
       ),
       child: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: SizeConfig.screenWidth!/13.7, vertical: SizeConfig.screenHeight!/34.15),     /// 30.0 - 20.0
+          padding: EdgeInsets.symmetric(
+              horizontal: SizeConfig.screenWidth! / 13.7,
+              vertical: SizeConfig.screenHeight! / 34.15),
+
+          /// 30.0 - 20.0
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

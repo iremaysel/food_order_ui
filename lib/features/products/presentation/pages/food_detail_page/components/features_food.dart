@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_order_ui/view/home_page/components/size_config.dart';
+import 'package:food_order_ui/features/products/presentation/pages/home_page/components/size_config.dart';
 
 class FeaturesFood extends StatefulWidget {
   const FeaturesFood({Key? key}) : super(key: key);
@@ -30,24 +30,31 @@ class ContainerFeatures extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: SizeConfig.screenHeight!/13.66,                         /// 50.0
-        width: SizeConfig.screenWidth!/4.11,                            /// 100.0
-        margin: EdgeInsets.only(top: SizeConfig.screenHeight!/34.15),   /// 20.0
+        height: SizeConfig.screenHeight! / 13.66,
+
+        /// 50.0
+        width: SizeConfig.screenWidth! / 4.11,
+
+        /// 100.0
+        margin: EdgeInsets.only(top: SizeConfig.screenHeight! / 34.15),
+
+        /// 20.0
         decoration: BoxDecoration(
             border: Border.all(
-                color: Colors.black12,
-                width: SizeConfig.screenWidth!/205.5          /// 2.0
-            ),
-            borderRadius: BorderRadius.circular(10)
-        ),
+                color: Colors.black12, width: SizeConfig.screenWidth! / 205.5
+
+                /// 2.0
+                ),
+            borderRadius: BorderRadius.circular(10)),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(percent_text, style: TextStyle(color: Colors.black38),),
-            Text(features_text,style: TextStyle(color: Colors.black38))
+            Text(
+              percent_text,
+              style: TextStyle(color: Colors.black38),
+            ),
+            Text(features_text, style: TextStyle(color: Colors.black38))
           ],
-        )
-    );
+        ));
   }
 }
-

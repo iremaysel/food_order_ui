@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:food_order_ui/view/start_page/start_page_view.dart';
+import 'package:food_order_ui/features/main_components/pages/start_page_view.dart';
 
 void main() {
   runApp(const MyApp());

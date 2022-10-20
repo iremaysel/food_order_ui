@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_order_ui/view/home_page/components/size_config.dart';
+import 'package:food_order_ui/features/products/presentation/pages/home_page/components/size_config.dart';
 import 'package:food_order_ui/features/payments/presentation/pages/success_page/widgets/lottie_widget.dart';
 import 'package:food_order_ui/features/payments/presentation/pages/success_page/widgets/ok_button.dart';
 import 'package:food_order_ui/features/payments/presentation/pages/success_page/widgets/router_text.dart';

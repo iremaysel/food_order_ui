@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_order_ui/view/home_page/components/colors.dart';
+import 'package:food_order_ui/features/products/presentation/pages/home_page/components/colors.dart';
 
 class CheckBoxSave extends StatefulWidget {
   String save_text;
@@ -38,7 +38,10 @@ class _CheckBoxSaveState extends State<CheckBoxSave> {
             });
           },
         ),
-        Text(widget.save_text, style: TextStyle(color: Colors.black54, fontWeight: FontWeight.w500),)
+        Text(
+          widget.save_text,
+          style: TextStyle(color: Colors.black54, fontWeight: FontWeight.w500),
+        )
       ],
     );
   }

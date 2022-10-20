@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_order_ui/features/auth/presentation/pages/login_page/widgets/text_field.dart';
 import 'package:food_order_ui/features/auth/presentation/pages/register_page/register_page_view.dart';
-import '../../../../../view/bottom_navigator.dart';
+import '../../../../main_components/pages/bottom_navigator.dart';
 import 'widgets/forgot_password.dart';
 import '../../widgets/login_button.dart';
 import 'widgets/logo.dart';

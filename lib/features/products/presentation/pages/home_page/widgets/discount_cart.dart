@@ -2,7 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:food_order_ui/configuration/food.dart';
 import 'package:food_order_ui/configuration/food_list.dart';
-import 'package:food_order_ui/view/home_page/components/size_config.dart';
+import 'package:food_order_ui/features/products/presentation/pages/home_page/components/size_config.dart';
 
 class DiscountCard extends StatelessWidget {
   const DiscountCard({Key? key}) : super(key: key);

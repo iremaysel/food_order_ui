@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:food_order_ui/configuration/food.dart';
 import 'package:food_order_ui/configuration/food_list.dart';
-import 'package:food_order_ui/view/home_page/components/size_config.dart';
+import 'package:food_order_ui/features/products/presentation/pages/home_page/components/size_config.dart';
 
-import '../../common_widgets/custom_food_card.dart';
+import '../../../widgets/custom_food_card.dart';
 
 class PopularFoods extends StatelessWidget {
   const PopularFoods({Key? key}) : super(key: key);

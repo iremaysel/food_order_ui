@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:food_order_ui/view/home_page/components/colors.dart';
-import 'package:food_order_ui/view/home_page/components/size_config.dart';
+import 'package:food_order_ui/features/products/presentation/pages/home_page/components/colors.dart';
+import 'package:food_order_ui/features/products/presentation/pages/home_page/components/size_config.dart';
 
 class FoodText extends StatefulWidget {
   String foodName;
@@ -19,20 +19,28 @@ class _FoodTextState extends State<FoodText> {
       children: [
         Text(
           "${widget.foodName}",
-          style: TextStyle(color: Colors.black, fontSize: SizeConfig.screenHeight!/42.69),                 /// 16
+          style: TextStyle(
+              color: Colors.black, fontSize: SizeConfig.screenHeight! / 42.69),
+
+          /// 16
           maxLines: 2,
         ),
-        SizedBox(height: SizeConfig.screenHeight!/341.5),        /// 2.0
+        SizedBox(height: SizeConfig.screenHeight! / 341.5),
+
+        /// 2.0
         Text.rich(
           TextSpan(
             text: "\$${widget.foodPrice}",
             style: TextStyle(
-                fontWeight: FontWeight.w600, color: buttonColor, fontSize: SizeConfig.screenHeight!/37.95   /// 18
-            ),
+                fontWeight: FontWeight.w600,
+                color: buttonColor,
+                fontSize: SizeConfig.screenHeight! / 37.95
+
+                /// 18
+                ),
             children: [
               TextSpan(
-                  text: " x 1",
-                  style: Theme.of(context).textTheme.bodyText1),
+                  text: " x 1", style: Theme.of(context).textTheme.bodyText1),
             ],
           ),
         ),

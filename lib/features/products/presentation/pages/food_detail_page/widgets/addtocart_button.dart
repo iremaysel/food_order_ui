@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:food_order_ui/view/home_page/components/colors.dart';
-import 'package:food_order_ui/view/home_page/components/size_config.dart';
+import 'package:food_order_ui/features/products/presentation/pages/home_page/components/colors.dart';
+import 'package:food_order_ui/features/products/presentation/pages/home_page/components/size_config.dart';
 
 class AddToCartButton extends StatelessWidget {
   const AddToCartButton({Key? key}) : super(key: key);
@@ -10,10 +10,10 @@ class AddToCartButton extends StatelessWidget {
     SizeConfig().init(context);
     return Padding(
       padding: EdgeInsets.fromLTRB(
-          SizeConfig.screenWidth!/20.55,
-          SizeConfig.screenHeight!/34.15,
-          SizeConfig.screenWidth!/20.55,
-          0,
+        SizeConfig.screenWidth! / 20.55,
+        SizeConfig.screenHeight! / 34.15,
+        SizeConfig.screenWidth! / 20.55,
+        0,
       ),
       child: Container(
         decoration: BoxDecoration(
@@ -27,20 +27,32 @@ class AddToCartButton extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20.0),
               ),
             ),
-            minimumSize: MaterialStateProperty.all(Size(SizeConfig.screenWidth!/1.37, SizeConfig.screenHeight!/11.66)),
+            minimumSize: MaterialStateProperty.all(Size(
+                SizeConfig.screenWidth! / 1.37,
+                SizeConfig.screenHeight! / 11.66)),
             backgroundColor: MaterialStateProperty.all(Colors.transparent),
             shadowColor: MaterialStateProperty.all(Colors.transparent),
           ),
-          onPressed: () { },
+          onPressed: () {},
           child: Wrap(
             children: [
               Padding(
-                padding: EdgeInsets.only(right: SizeConfig.screenWidth!/51.38),       /// 8.0
-                child: Icon(Icons.shopping_cart_rounded , color: Colors.white,),
+                padding:
+                    EdgeInsets.only(right: SizeConfig.screenWidth! / 51.38),
+
+                /// 8.0
+                child: Icon(
+                  Icons.shopping_cart_rounded,
+                  color: Colors.white,
+                ),
               ),
               Text(
                 "Add to Cart",
-                style: TextStyle(fontSize: SizeConfig.screenHeight!/34.15,  fontWeight: FontWeight.w700, color: Colors.white,),
+                style: TextStyle(
+                  fontSize: SizeConfig.screenHeight! / 34.15,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white,
+                ),
               ),
             ],
           ),
