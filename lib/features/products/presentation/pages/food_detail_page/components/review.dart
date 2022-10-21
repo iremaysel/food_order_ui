@@ -2,22 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:food_order_ui/features/products/presentation/pages/home_page/components/colors.dart';
 import 'package:food_order_ui/features/products/presentation/pages/home_page/components/size_config.dart';
 
-class ReviewStars extends StatefulWidget {
-  const ReviewStars({Key? key}) : super(key: key);
+import '../../../../../../configuration/food.dart';
 
-  @override
-  _ReviewStarsState createState() => _ReviewStarsState();
-}
+class ReviewStars extends StatelessWidget {
+  final Food food;
+  const ReviewStars({Key? key, required this.food}) : super(key: key);
 
-class _ReviewStarsState extends State<ReviewStars> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: SizeConfig.screenHeight! / 45.54),
+      padding: EdgeInsets.only(top: SizeConfig.blockSizeVertical! * 1),
 
       /// 15.0
-      child: Container(
-          child: Row(
+      child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -29,54 +26,51 @@ class _ReviewStarsState extends State<ReviewStars> {
                 color: textColor,
               ),
               Text(
+                //TODO: ADD Rating to a Food Entity.
                 "4.6",
                 style: TextStyle(
                     color: textColor,
                     fontWeight: FontWeight.bold,
-                    fontSize: SizeConfig.screenHeight! / 45.54),
+                    fontSize: SizeConfig.blockSizeHorizontal! * 4.5),
               ),
 
               /// 15.0
               Padding(
-                padding: EdgeInsets.only(left: SizeConfig.screenWidth! / 51.38),
+                padding:
+                    EdgeInsets.only(left: SizeConfig.blockSizeHorizontal! * 2),
 
                 /// 8.0
-                child: Text("(52+ Reviews)",
+                child: const Text("(52+ Reviews)",
                     style: TextStyle(color: Colors.black26)),
               )
             ],
           ),
           Container(
-            height: SizeConfig.screenHeight! / 34.15,
-            width: SizeConfig.screenWidth! / 137,
+            height: SizeConfig.blockSizeVertical! * 3,
+            width: SizeConfig.blockSizeHorizontal! * .5,
             decoration: BoxDecoration(
-                color: Colors.black12, borderRadius: BorderRadius.circular(10)),
+                color: Colors.black12,
+                borderRadius:
+                    BorderRadius.circular(SizeConfig.blockSizeHorizontal! * 5)),
           ),
           Row(
             children: [
-              Padding(
-                padding: EdgeInsets.only(left: SizeConfig.screenWidth! / 51.38),
-
-                /// 8.0
-                child: Icon(
-                  Icons.delivery_dining_sharp,
-                  color: freeDelivery,
-                  size: SizeConfig.screenHeight! / 22.77,
-                ),
+              Icon(
+                Icons.delivery_dining_sharp,
+                color: freeDelivery,
+                size: SizeConfig.blockSizeVertical! * 4,
               ),
               Text(
-                "FREE DELIVERY",
+                "ENTREGA GRATIS.",
                 style: TextStyle(
                     color: freeDelivery,
                     fontWeight: FontWeight.bold,
-                    fontSize: SizeConfig.screenHeight! / 42.69),
+                    fontSize: SizeConfig.blockSizeVertical! * 2),
               )
-
-              /// 16
             ],
           )
         ],
-      )),
+      ),
     );
   }
 }

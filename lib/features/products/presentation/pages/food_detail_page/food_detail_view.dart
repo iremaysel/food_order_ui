@@ -4,28 +4,25 @@ import 'package:food_order_ui/features/products/presentation/pages/food_detail_p
 import 'package:food_order_ui/features/products/presentation/pages/food_detail_page/widgets/food_image.dart';
 import 'package:food_order_ui/features/products/presentation/pages/home_page/components/size_config.dart';
 
-class FoodDetailView extends StatefulWidget {
-  Food food;
-  FoodDetailView({required this.food});
+class FoodDetailView extends StatelessWidget {
+  final Food food;
+  const FoodDetailView({Key? key, required this.food}) : super(key: key);
 
-  @override
-  _FoodDetailViewState createState() => _FoodDetailViewState();
-}
-
-class _FoodDetailViewState extends State<FoodDetailView> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: SingleChildScrollView(
-        child: Stack(
-          children: [
-            FoodImage(food: widget.food),
-            DetailWidget(
-              food: widget.food,
-            ),
-          ],
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: SingleChildScrollView(
+          child: Stack(
+            children: [
+              FoodImage(food: food),
+              DetailWidget(
+                food: food,
+              ),
+            ],
+          ),
         ),
       ),
     );

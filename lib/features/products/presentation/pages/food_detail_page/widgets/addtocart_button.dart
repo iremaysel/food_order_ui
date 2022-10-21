@@ -10,46 +10,48 @@ class AddToCartButton extends StatelessWidget {
     SizeConfig().init(context);
     return Padding(
       padding: EdgeInsets.fromLTRB(
-        SizeConfig.screenWidth! / 20.55,
-        SizeConfig.screenHeight! / 34.15,
-        SizeConfig.screenWidth! / 20.55,
+        SizeConfig.blockSizeHorizontal! * 10,
+        SizeConfig.blockSizeVertical! * 2,
+        SizeConfig.blockSizeHorizontal! * 10,
         0,
       ),
       child: Container(
         decoration: BoxDecoration(
           color: buttonColor,
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(
+            SizeConfig.blockSizeHorizontal! * 5,
+          ),
         ),
         child: ElevatedButton(
           style: ButtonStyle(
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
               RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20.0),
+                borderRadius: BorderRadius.circular(
+                  SizeConfig.blockSizeHorizontal! * 5,
+                ),
               ),
             ),
             minimumSize: MaterialStateProperty.all(Size(
-                SizeConfig.screenWidth! / 1.37,
-                SizeConfig.screenHeight! / 11.66)),
-            backgroundColor: MaterialStateProperty.all(Colors.transparent),
-            shadowColor: MaterialStateProperty.all(Colors.transparent),
+              SizeConfig.blockSizeHorizontal! * 75,
+              SizeConfig.blockSizeVertical! * 8,
+            )),
           ),
           onPressed: () {},
           child: Wrap(
             children: [
               Padding(
-                padding:
-                    EdgeInsets.only(right: SizeConfig.screenWidth! / 51.38),
-
-                /// 8.0
-                child: Icon(
+                padding: EdgeInsets.only(
+                  right: SizeConfig.blockSizeHorizontal! * 2,
+                ),
+                child: const Icon(
                   Icons.shopping_cart_rounded,
                   color: Colors.white,
                 ),
               ),
               Text(
-                "Add to Cart",
+                "Añadir al carrito",
                 style: TextStyle(
-                  fontSize: SizeConfig.screenHeight! / 34.15,
+                  fontSize: SizeConfig.blockSizeVertical! * 2.8,
                   fontWeight: FontWeight.w700,
                   color: Colors.white,
                 ),

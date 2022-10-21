@@ -4,41 +4,32 @@ import 'package:food_order_ui/features/products/presentation/pages/food_detail_p
 import 'package:food_order_ui/features/products/presentation/pages/food_detail_page/components/favorite_food.dart';
 import 'package:food_order_ui/features/products/presentation/pages/home_page/components/size_config.dart';
 
-class FoodImage extends StatefulWidget {
-  Food food;
-  FoodImage({required this.food});
+class FoodImage extends StatelessWidget {
+  final Food food;
+  const FoodImage({Key? key, required this.food}) : super(key: key);
 
-  @override
-  _FoodImageState createState() => _FoodImageState();
-}
-
-class _FoodImageState extends State<FoodImage> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Container(
-      height: SizeConfig.screenHeight! * 0.45,
+      height: SizeConfig.blockSizeVertical! * 38,
       decoration: BoxDecoration(
-        color: Colors.orangeAccent,
         image: DecorationImage(
-            image: AssetImage("${widget.food.foodImageName}"),
-            fit: BoxFit.fitWidth),
+            image: AssetImage(food.foodImageName), fit: BoxFit.cover),
       ),
-      child: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-              horizontal: SizeConfig.screenWidth! / 13.7,
-              vertical: SizeConfig.screenHeight! / 34.15),
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+            horizontal: SizeConfig.blockSizeHorizontal! * 5,
+            vertical: SizeConfig.blockSizeVertical! * 3),
 
-          /// 30.0 - 20.0
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              ArrowBack(),
-              FavoriteFood(),
-            ],
-          ),
+        /// 30.0 - 20.0
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: const [
+            ArrowBack(),
+            FavoriteFood(),
+          ],
         ),
       ),
     );

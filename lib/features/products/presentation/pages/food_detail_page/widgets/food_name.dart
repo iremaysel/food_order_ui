@@ -2,37 +2,48 @@ import 'package:flutter/material.dart';
 import 'package:food_order_ui/configuration/food.dart';
 import 'package:food_order_ui/features/products/presentation/pages/home_page/components/size_config.dart';
 
-class FoodName extends StatefulWidget {
-  Food food;
-  FoodName({required this.food});
+class FoodName extends StatelessWidget {
+  final Food food;
+  const FoodName({Key? key, required this.food}) : super(key: key);
 
-  @override
-  _FoodNameState createState() => _FoodNameState();
-}
-
-class _FoodNameState extends State<FoodName> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return Row(children: [
-      Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Text("${widget.food.foodName}",
-            style: TextStyle(
-                color: Colors.black,
-                fontSize: SizeConfig.screenHeight! / 22.77,
-                fontFamily: "Roboto")),
+    return Row(
+      children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              width: SizeConfig.blockSizeHorizontal! * 72,
+              child: Text(
+                food.foodName,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: SizeConfig.blockSizeHorizontal! * 8,
+                    fontFamily: "Roboto"),
+              ),
+            ),
+            Text(food.foodCategory,
+                style: TextStyle(
+                  color: Colors.black45,
+                  fontSize: SizeConfig.blockSizeHorizontal! * 5,
+                )),
+          ],
+        ),
+        const Spacer(),
+        Text(
+          "\$${food.foodPrice}",
+          style: TextStyle(
+            color: Colors.black87,
+            fontSize: SizeConfig.blockSizeHorizontal! * 7,
+          ),
+        ),
 
         /// 30
-        Text("Category", style: TextStyle(color: Colors.black45, fontSize: 18)),
-      ]),
-      Spacer(),
-      Text(
-        "\$${widget.food.foodPrice}",
-        style: TextStyle(
-            color: Colors.black87, fontSize: SizeConfig.screenHeight! / 22.77),
-      ),
-
-      /// 30
-    ]);
+      ],
+    );
   }
 }

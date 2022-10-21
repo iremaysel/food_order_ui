@@ -3,14 +3,9 @@ import 'package:food_order_ui/features/payments/presentation/pages/checkout_page
 import 'package:food_order_ui/features/products/presentation/pages/home_page/components/colors.dart';
 import 'package:food_order_ui/features/products/presentation/pages/home_page/components/size_config.dart';
 
-class CheckoutButton extends StatefulWidget {
+class CheckoutButton extends StatelessWidget {
   const CheckoutButton({Key? key}) : super(key: key);
 
-  @override
-  _CheckoutButtonState createState() => _CheckoutButtonState();
-}
-
-class _CheckoutButtonState extends State<CheckoutButton> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -19,20 +14,15 @@ class _CheckoutButtonState extends State<CheckoutButton> {
             MaterialPageRoute(builder: (context) => const CheckoutPageView()));
       },
       child: Container(
-          width: SizeConfig.screenWidth! / 1.02,
-
-          /// 400.0
-          height: SizeConfig.screenHeight! / 12.42,
-
-          /// 55.0
+          height: SizeConfig.blockSizeVertical! * 7.5,
           decoration: BoxDecoration(
               color: buttonColor, borderRadius: BorderRadius.circular(30)),
           child: Center(
               child: Text(
-            "Checkout",
+            "Pagar Ahora",
             style: TextStyle(
                 color: Colors.white,
-                fontSize: SizeConfig.screenHeight! / 34.15,
+                fontSize: SizeConfig.blockSizeHorizontal! * 6,
                 fontWeight: FontWeight.bold),
 
             /// 20.0

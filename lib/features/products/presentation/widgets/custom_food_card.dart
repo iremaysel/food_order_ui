@@ -23,6 +23,7 @@ class CustomFoodCard extends StatelessWidget {
                 builder: (context) => FoodDetailView(food: food)));
       },
       child: Stack(
+        fit: StackFit.loose,
         children: [
           Container(
             margin: EdgeInsets.symmetric(

@@ -1,31 +1,36 @@
 import 'package:flutter/material.dart';
 
-class BottomBarText extends StatefulWidget {
-  String title_text;
-  String price_text;
-  double font_size;
-  FontWeight fontWeight;
-  Color text_color;
+class BottomBarText extends StatelessWidget {
+  final String titletext;
+  final String pricetext;
+  final double fontsize;
+  final FontWeight fontWeight;
+  final Color textcolor;
 
-  BottomBarText({
-    required this.title_text,
-    required this.price_text,
-    required this.font_size,
-    required this.fontWeight,
-    required this.text_color});
+  const BottomBarText(
+      {Key? key,
+      required this.titletext,
+      required this.pricetext,
+      required this.fontsize,
+      required this.fontWeight,
+      required this.textcolor})
+      : super(key: key);
 
-  @override
-  _BottomBarTextState createState() => _BottomBarTextState();
-}
-
-class _BottomBarTextState extends State<BottomBarText> {
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Text(widget.title_text, style: TextStyle(fontWeight: widget.fontWeight, fontSize: widget.font_size, color: widget.text_color),),
-        Spacer(),
-        Text(widget.price_text, style: TextStyle(fontWeight: widget.fontWeight, fontSize: widget.font_size, color: widget.text_color),),
+        Text(
+          titletext,
+          style: TextStyle(
+              fontWeight: fontWeight, fontSize: fontsize, color: textcolor),
+        ),
+        const Spacer(),
+        Text(
+          pricetext,
+          style: TextStyle(
+              fontWeight: fontWeight, fontSize: fontsize, color: textcolor),
+        ),
       ],
     );
   }

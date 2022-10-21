@@ -1,30 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:food_order_ui/features/products/presentation/pages/home_page/components/size_config.dart';
 
-class FoodImage extends StatefulWidget {
-  String foodImage;
-  FoodImage({required this.foodImage});
+class FoodImage extends StatelessWidget {
+  final String foodPathImage;
+  const FoodImage({Key? key, required this.foodPathImage}) : super(key: key);
 
-  @override
-  _FoodImageState createState() => _FoodImageState();
-}
-
-class _FoodImageState extends State<FoodImage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: SizeConfig.screenHeight! / 8.54,
+      height: SizeConfig.blockSizeVertical! * 10,
 
       /// 80.0
-      width: SizeConfig.screenWidth! / 4.57,
+      width: SizeConfig.blockSizeHorizontal! * 25,
 
       /// 90.0
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("${widget.foodImage}"),
+          image: AssetImage(foodPathImage),
           fit: BoxFit.cover,
         ),
-        borderRadius: BorderRadius.circular(20.0),
+        borderRadius: BorderRadius.circular(SizeConfig.blockSizeVertical! * 2),
       ),
     );
   }

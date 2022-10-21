@@ -13,27 +13,17 @@ class _RecentSearchState extends State<RecentSearch> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.fromLTRB(
-          SizeConfig.screenWidth! / 18.68,
-
-          /// 22.0
-          SizeConfig.screenHeight! / 68.3,
-
-          /// 10.0
-          SizeConfig.screenWidth! / 18.68,
-
-          /// 22.0
-          SizeConfig.screenHeight! / 85.38
-
-          /// 8.0
-          ),
+      padding: EdgeInsets.symmetric(
+        horizontal: SizeConfig.blockSizeHorizontal! * 5,
+        vertical: SizeConfig.blockSizeVertical! * 1,
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
             "Recent Search",
             style: TextStyle(
-                fontSize: SizeConfig.screenHeight! / 37.95,
+                fontSize: SizeConfig.blockSizeHorizontal! * 5,
                 fontWeight: FontWeight.w400),
           ),
 
@@ -41,7 +31,8 @@ class _RecentSearchState extends State<RecentSearch> {
           Text(
             "Clear All",
             style: TextStyle(
-                color: lightColor, fontSize: SizeConfig.screenHeight! / 45.54),
+                color: lightColor,
+                fontSize: SizeConfig.blockSizeHorizontal! * 4.5),
           )
 
           /// 15

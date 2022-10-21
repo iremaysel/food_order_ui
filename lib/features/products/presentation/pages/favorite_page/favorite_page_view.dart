@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_order_ui/configuration/food.dart';
 import 'package:food_order_ui/configuration/food_list.dart';
 import 'package:food_order_ui/features/products/presentation/pages/home_page/components/size_config.dart';
-import 'package:food_order_ui/features/products/presentation/pages/home_page/widgets/popular.dart';
+import 'package:food_order_ui/features/products/presentation/widgets/custom_food_card.dart';
 
 class FavoritePageView extends StatefulWidget {
   const FavoritePageView({Key? key}) : super(key: key);
@@ -19,7 +19,7 @@ class _FavoritePageViewState extends State<FavoritePageView> {
       appBar: AppBar(
         centerTitle: true,
         title: const Text(
-          "My Favorite",
+          "Favoritos",
           style: TextStyle(color: Colors.black),
         ),
         elevation: 0,
@@ -28,8 +28,8 @@ class _FavoritePageViewState extends State<FavoritePageView> {
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(
-            horizontal: SizeConfig.screenWidth! / 20.0,
-            vertical: SizeConfig.screenHeight! / 136.6),
+            horizontal: SizeConfig.blockSizeHorizontal! * 1,
+            vertical: SizeConfig.blockSizeVertical! * 1),
 
         /// 20.0 - 5.0
         child: FutureBuilder<List<Food>>(
@@ -38,65 +38,50 @@ class _FavoritePageViewState extends State<FavoritePageView> {
               if (snapshot.hasData) {
                 var foodList = snapshot.data;
                 return GridView.builder(
-                    itemCount: 3,
+                    itemCount: foodList!.length,
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
-                      crossAxisSpacing: 20,
-                      //  childAspectRatio: 3.2 / 4,
+                      childAspectRatio: 3 / 4,
                     ),
                     itemBuilder: (context, index) {
-                      var food = foodList![index];
-                      return Container(
-
-                          /// 220.0
-
-                          /// 200.0
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(30.0),
-                              boxShadow: [
-                                BoxShadow(
-                                  offset: const Offset(0, 3),
-                                  blurRadius: 6,
-                                  color: Colors.black.withOpacity(0.1),
-                                )
-                              ]),
-                          child: const PopularFoods());
+                      var food = foodList[index];
+                      return CustomFoodCard(food: food);
                     });
               } else {
-                return Padding(
-                  padding:
-                      EdgeInsets.only(top: SizeConfig.screenHeight! / 3.10),
+                return Container();
+                // return Padding(
+                //   padding:
+                //       EdgeInsets.only(top: SizeConfig.screenHeight! / 3.10),
 
-                  /// 200.0
-                  child: Column(
-                    children: [
-                      Center(
-                          child: Icon(
-                        Icons.favorite,
-                        color: Colors.black12,
-                        size: SizeConfig.screenHeight! / 11.39,
-                      )),
+                //   /// 200.0
+                //   child: Column(
+                //     children: [
+                //       Center(
+                //           child: Icon(
+                //         Icons.favorite,
+                //         color: Colors.black12,
+                //         size: SizeConfig.screenHeight! / 11.39,
+                //       )),
 
-                      /// 60.0
-                      SizedBox(
-                        height: SizeConfig.screenHeight! / 34.15,
-                      ),
+                //       /// 60.0
+                //       SizedBox(
+                //         height: SizeConfig.screenHeight! / 34.15,
+                //       ),
 
-                      /// 20.0
-                      Center(
-                          child: Text(
-                        "Your Favorite Foods",
-                        style: TextStyle(
-                            color: Colors.black12,
-                            fontSize: SizeConfig.screenHeight! / 34.15),
-                      ))
+                //       /// 20.0
+                //       Center(
+                //           child: Text(
+                //         "Your Favorite Foods",
+                //         style: TextStyle(
+                //             color: Colors.black12,
+                //             fontSize: SizeConfig.screenHeight! / 34.15),
+                //       ))
 
-                      /// 20.0
-                    ],
-                  ),
-                );
+                //       /// 20.0
+                //     ],
+                //   ),
+                // );
               }
             }),
       ),

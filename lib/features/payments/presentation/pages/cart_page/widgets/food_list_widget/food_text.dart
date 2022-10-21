@@ -2,45 +2,53 @@ import 'package:flutter/material.dart';
 import 'package:food_order_ui/features/products/presentation/pages/home_page/components/colors.dart';
 import 'package:food_order_ui/features/products/presentation/pages/home_page/components/size_config.dart';
 
-class FoodText extends StatefulWidget {
-  String foodName;
-  String foodPrice;
-  FoodText({required this.foodName, required this.foodPrice});
+class FoodTextBody extends StatelessWidget {
+  final String foodName;
+  final String foodPrice;
+  final String cantity;
+  const FoodTextBody(
+      {Key? key,
+      required this.foodName,
+      required this.foodPrice,
+      required this.cantity})
+      : super(key: key);
 
-  @override
-  _FoodTextState createState() => _FoodTextState();
-}
-
-class _FoodTextState extends State<FoodText> {
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          "${widget.foodName}",
-          style: TextStyle(
-              color: Colors.black, fontSize: SizeConfig.screenHeight! / 42.69),
+        Container(
+          width: SizeConfig.blockSizeHorizontal! * 48,
+          color: Colors.white,
+          child: Text(
+            foodName,
+            style: TextStyle(
+                color: Colors.black,
+                fontSize: SizeConfig.blockSizeVertical! * 2.2),
 
-          /// 16
-          maxLines: 2,
+            /// 16
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
         ),
-        SizedBox(height: SizeConfig.screenHeight! / 341.5),
+        SizedBox(height: SizeConfig.blockSizeVertical! * 0.6),
 
         /// 2.0
         Text.rich(
           TextSpan(
-            text: "\$${widget.foodPrice}",
+            text: "\$$foodPrice",
             style: TextStyle(
                 fontWeight: FontWeight.w600,
                 color: buttonColor,
-                fontSize: SizeConfig.screenHeight! / 37.95
+                fontSize: SizeConfig.blockSizeVertical! * 2.3
 
                 /// 18
                 ),
             children: [
               TextSpan(
-                  text: " x 1", style: Theme.of(context).textTheme.bodyText1),
+                  text: " x $cantity",
+                  style: Theme.of(context).textTheme.bodyText1),
             ],
           ),
         ),

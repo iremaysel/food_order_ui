@@ -8,18 +8,19 @@ class ArrowBack extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Container(
-        height: SizeConfig.screenHeight! / 19.51,
-        width: SizeConfig.screenWidth! / 10.28,
+        height: SizeConfig.blockSizeVertical! * 5,
+        width: SizeConfig.blockSizeHorizontal! * 10.28,
         decoration: BoxDecoration(
-          color: Colors.black.withOpacity(0.25),
-          borderRadius: BorderRadius.circular(10),
+          color: Colors.black.withOpacity(0.55),
+          borderRadius:
+              BorderRadius.circular(SizeConfig.blockSizeHorizontal! * 2.2),
         ),
         alignment: Alignment.center,
         child: IconButton(
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           color: Colors.white,
         ));
   }

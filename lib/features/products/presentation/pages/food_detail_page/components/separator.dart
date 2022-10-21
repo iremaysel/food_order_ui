@@ -4,14 +4,18 @@ import 'package:food_order_ui/features/products/presentation/pages/home_page/com
 class MySeparator extends StatelessWidget {
   final double height;
   final Color color;
-  const MySeparator({this.height = 1, this.color = Colors.black38});
+  const MySeparator({
+    Key? key,
+    this.height = 1,
+    this.color = Colors.black38,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
         final boxWidth = constraints.constrainWidth();
-        final dashWidth = SizeConfig.screenWidth! / 57.71;
+        final dashWidth = SizeConfig.blockSizeHorizontal! * 2;
         final dashHeight = height;
         final dashCount = (boxWidth / (2 * dashWidth)).floor();
         return Flex(

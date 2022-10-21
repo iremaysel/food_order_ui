@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:food_order_ui/features/auth/presentation/pages/login_page/login_page_view.dart';
 
+import '../../products/presentation/pages/home_page/components/size_config.dart';
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
@@ -21,6 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(

@@ -5,28 +5,19 @@ import 'package:food_order_ui/features/payments/presentation/pages/cart_page/wid
 import 'package:food_order_ui/features/products/presentation/pages/food_detail_page/components/separator.dart';
 import 'package:food_order_ui/features/products/presentation/pages/home_page/components/size_config.dart';
 
-class BottomBar extends StatefulWidget {
+class BottomBar extends StatelessWidget {
   const BottomBar({Key? key}) : super(key: key);
 
-  @override
-  _BottomBarState createState() => _BottomBarState();
-}
-
-class _BottomBarState extends State<BottomBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(
-        vertical: SizeConfig.screenHeight! / 15.0,
-        horizontal: SizeConfig.screenHeight! / 30.0,
+        vertical: SizeConfig.blockSizeVertical! * 5,
+        horizontal: SizeConfig.blockSizeHorizontal! * 6,
       ),
       // height: 174,
       decoration: const BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(30),
-          topRight: Radius.circular(30),
-        ),
       ),
       child: SafeArea(
         child: Column(
@@ -35,7 +26,7 @@ class _BottomBarState extends State<BottomBar> {
           children: [
             Padding(
               padding:
-                  EdgeInsets.only(bottom: SizeConfig.screenHeight! / 85.37),
+                  EdgeInsets.only(bottom: SizeConfig.blockSizeVertical! * 5),
 
               /// 8.0
               child: const MySeparator(
@@ -44,41 +35,43 @@ class _BottomBarState extends State<BottomBar> {
             ),
             const ThreeDSecure(),
             SizedBox(
-              height: SizeConfig.screenHeight! / 45.54,
+              height: SizeConfig.blockSizeVertical! * 2,
             ),
 
             /// 15.0
             BottomBarText(
-                title_text: "Subtotal",
-                price_text: "\$37.0",
-                font_size: SizeConfig.screenHeight! / 45.54,
+                titletext: "Subtotal",
+                pricetext: "\$37.0",
+                fontsize: SizeConfig.blockSizeHorizontal! * 4.5,
                 fontWeight: FontWeight.w400,
-                text_color: Colors.black54),
+                textcolor: Colors.black54),
 
             /// 15
             SizedBox(
-              height: SizeConfig.screenHeight! / 45.54,
+              height: SizeConfig.blockSizeVertical! * 2,
             ),
             BottomBarText(
-              title_text: "Discount",
-              price_text: "\$2.0",
-              font_size: SizeConfig.screenHeight! / 45.54,
+              titletext: "Discount",
+              pricetext: "\$2.0",
+              fontsize: SizeConfig.blockSizeHorizontal! * 4.5,
               fontWeight: FontWeight.w400,
-              text_color: Colors.black54,
+              textcolor: Colors.black54,
             ),
             SizedBox(
-              height: SizeConfig.screenHeight! / 45.54,
+              height: SizeConfig.blockSizeVertical! * 2,
             ),
             BottomBarText(
-              title_text: "Total",
-              price_text: "\$35.0",
-              font_size: SizeConfig.screenHeight! / 37.95,
+              titletext: "Total",
+              pricetext: "\$35.0",
+              fontsize: SizeConfig.blockSizeHorizontal! * 6,
               fontWeight: FontWeight.bold,
-              text_color: Colors.black,
+              textcolor: Colors.black,
             ),
 
             /// 18
-            SizedBox(height: SizeConfig.screenHeight! / 34.15),
+            SizedBox(
+              height: SizeConfig.blockSizeVertical! * 3,
+            ),
 
             /// 20.0
             const CheckoutButton(),
