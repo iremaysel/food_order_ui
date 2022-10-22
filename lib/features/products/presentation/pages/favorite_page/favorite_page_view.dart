@@ -42,46 +42,41 @@ class _FavoritePageViewState extends State<FavoritePageView> {
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
-                      childAspectRatio: 3 / 4,
+                      childAspectRatio: 2 / 3,
                     ),
                     itemBuilder: (context, index) {
                       var food = foodList[index];
                       return CustomFoodCard(food: food);
                     });
               } else {
-                return Container();
-                // return Padding(
-                //   padding:
-                //       EdgeInsets.only(top: SizeConfig.screenHeight! / 3.10),
+                return Padding(
+                  padding:
+                      EdgeInsets.only(top: SizeConfig.screenHeight! / 3.10),
+                  child: Column(
+                    children: [
+                      Center(
+                          child: Icon(
+                        Icons.favorite,
+                        color: Colors.black12,
+                        size: SizeConfig.screenHeight! / 11.39,
+                      )),
 
-                //   /// 200.0
-                //   child: Column(
-                //     children: [
-                //       Center(
-                //           child: Icon(
-                //         Icons.favorite,
-                //         color: Colors.black12,
-                //         size: SizeConfig.screenHeight! / 11.39,
-                //       )),
+                      /// 60.0
+                      SizedBox(
+                        height: SizeConfig.screenHeight! / 34.15,
+                      ),
 
-                //       /// 60.0
-                //       SizedBox(
-                //         height: SizeConfig.screenHeight! / 34.15,
-                //       ),
-
-                //       /// 20.0
-                //       Center(
-                //           child: Text(
-                //         "Your Favorite Foods",
-                //         style: TextStyle(
-                //             color: Colors.black12,
-                //             fontSize: SizeConfig.screenHeight! / 34.15),
-                //       ))
-
-                //       /// 20.0
-                //     ],
-                //   ),
-                // );
+                      /// 20.0
+                      Center(
+                          child: Text(
+                        "Your Favorite Foods",
+                        style: TextStyle(
+                            color: Colors.black12,
+                            fontSize: SizeConfig.screenHeight! / 34.15),
+                      ))
+                    ],
+                  ),
+                );
               }
             }),
       ),

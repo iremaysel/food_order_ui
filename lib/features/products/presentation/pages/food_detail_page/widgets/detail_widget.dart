@@ -16,6 +16,7 @@ class DetailWidget extends StatelessWidget {
     SizeConfig().init(context);
     return Container(
       margin: EdgeInsets.only(top: SizeConfig.blockSizeVertical! * 35),
+      height: SizeConfig.blockSizeVertical! * 65,
       width: double.infinity,
       decoration: BoxDecoration(
           color: Colors.white,

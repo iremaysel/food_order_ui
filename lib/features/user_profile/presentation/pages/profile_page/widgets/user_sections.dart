@@ -2,47 +2,50 @@ import 'package:flutter/material.dart';
 import 'package:food_order_ui/features/products/presentation/pages/home_page/components/size_config.dart';
 
 class UserSection extends StatelessWidget {
-  IconData icon_name;
-  String section_text;
-  UserSection({required this.icon_name, required this.section_text});
+  final IconData iconName;
+  final String sectionText;
+  const UserSection(
+      {Key? key, required this.iconName, required this.sectionText})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.fromLTRB(
-          SizeConfig.screenWidth! / 13.7,
+        SizeConfig.blockSizeHorizontal! * 8,
 
-          /// 30.0
-          0,
-          SizeConfig.screenWidth! / 27.4,
+        /// 30.0
+        0,
+        SizeConfig.blockSizeHorizontal! * 6,
 
-          /// 15.0
-          SizeConfig.screenHeight! / 34.15
+        /// 15.0
+        SizeConfig.blockSizeVertical! * 3,
 
-          /// 20.0
-          ),
+        /// 20.0
+      ),
       child: Row(
         children: [
           Icon(
-            icon_name,
+            iconName,
             color: Colors.black54,
           ),
           SizedBox(
-            width: SizeConfig.screenWidth! / 41.1,
+            width: SizeConfig.blockSizeHorizontal! * 6,
           ),
           Text(
-            section_text,
+            sectionText,
             style: TextStyle(
-                color: Colors.black54,
-                fontSize: SizeConfig.screenHeight! / 42.68),
+              color: Colors.black54,
+              fontSize: SizeConfig.blockSizeHorizontal! * 5,
+            ),
           ),
 
           /// 16
-          Spacer(),
+          const Spacer(),
           Icon(
             Icons.keyboard_arrow_right,
             color: Colors.black45,
-            size: SizeConfig.screenHeight! / 21.34,
+            size: SizeConfig.blockSizeHorizontal! * 10,
           )
 
           /// 32

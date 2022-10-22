@@ -3,26 +3,19 @@ import 'package:food_order_ui/features/products/presentation/pages/home_page/com
 import 'package:food_order_ui/features/products/presentation/pages/home_page/components/size_config.dart';
 import 'package:food_order_ui/features/user_profile/presentation/pages/profile_page/components/CustomShape.dart';
 
-class TopCustomShape extends StatefulWidget {
+class TopCustomShape extends StatelessWidget {
   const TopCustomShape({Key? key}) : super(key: key);
 
   @override
-  _TopCustomShapeState createState() => _TopCustomShapeState();
-}
-
-class _TopCustomShapeState extends State<TopCustomShape> {
-  @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: SizeConfig.screenHeight! / 2.84,
-
-      /// 240.0
+      height: SizeConfig.blockSizeVertical! * 32,
       child: Stack(
         children: [
           ClipPath(
             clipper: CustomShape(),
             child: Container(
-              height: SizeConfig.screenHeight! / 4.56,
+              height: SizeConfig.blockSizeVertical! * 22,
 
               /// 150.0
               color: buttonColor,
@@ -33,24 +26,24 @@ class _TopCustomShapeState extends State<TopCustomShape> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Container(
-                  margin: EdgeInsets.only(bottom: 10),
-                  height: SizeConfig.screenHeight! / 4.88,
+                  height: SizeConfig.blockSizeVertical! * 22,
 
                   /// 140.0
-                  width: SizeConfig.screenWidth! / 2.93,
+                  width: SizeConfig.blockSizeHorizontal! * 35,
 
                   /// 140.0
                   decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       border: Border.all(
-                          color: Colors.white,
-                          width: SizeConfig.screenWidth! / 51.37),
+                        color: Colors.white,
+                        width: SizeConfig.blockSizeHorizontal! * 1,
+                      ),
                       color: Colors.white,
-                      image: DecorationImage(
+                      image: const DecorationImage(
                           image: AssetImage("assets/main/avatar.png"))),
                 ),
-                Text(
-                  "Name Surname",
+                const Text(
+                  "Roger Luis",
                   style: TextStyle(fontSize: 22),
                 ),
                 SizedBox(
@@ -58,8 +51,8 @@ class _TopCustomShapeState extends State<TopCustomShape> {
                 ),
 
                 /// 5.0
-                Text(
-                  "test@gmail.com",
+                const Text(
+                  "rogerordaz98@gmail.com",
                   style: TextStyle(
                       fontWeight: FontWeight.w400, color: Colors.black45),
                 )
