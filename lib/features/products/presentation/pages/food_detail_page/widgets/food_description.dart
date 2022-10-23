@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_order_ui/features/products/presentation/pages/home_page/components/size_config.dart';
 
-import '../../../../../../configuration/food.dart';
+import '../../../../../../core/configuration/food.dart';
 
 class FoodDescription extends StatelessWidget {
   final Food food;

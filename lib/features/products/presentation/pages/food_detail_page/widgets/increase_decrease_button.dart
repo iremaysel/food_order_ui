@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_order_ui/configuration/food.dart';
+import 'package:food_order_ui/core/configuration/food.dart';
 import 'package:food_order_ui/features/products/presentation/pages/food_detail_page/components/separator.dart';
 import 'package:food_order_ui/features/products/presentation/pages/home_page/components/colors.dart';
 import 'package:food_order_ui/features/products/presentation/pages/home_page/components/size_config.dart';

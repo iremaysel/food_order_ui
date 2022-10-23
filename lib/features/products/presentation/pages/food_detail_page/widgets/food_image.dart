@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_order_ui/configuration/food.dart';
+import 'package:food_order_ui/core/configuration/food.dart';
 import 'package:food_order_ui/features/products/presentation/pages/food_detail_page/components/arrow_back.dart';
 import 'package:food_order_ui/features/products/presentation/pages/food_detail_page/components/favorite_food.dart';
 import 'package:food_order_ui/features/products/presentation/pages/home_page/components/size_config.dart';
