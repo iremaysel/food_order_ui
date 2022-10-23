@@ -13,7 +13,7 @@ class ProductModel extends Product {
     required int price,
     required String img,
     required String uid,
-    required String calories,
+    String? calories,
   }) : super(
           name: name,
           categories: categories,
