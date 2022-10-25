@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:food_order_ui/core/configuration/category.dart';
-import 'package:food_order_ui/core/configuration/food_list.dart';
+import 'package:food_order_ui/core/util/category.dart';
+import 'package:food_order_ui/core/util/food_list.dart';
 import 'package:food_order_ui/features/products/presentation/pages/home_page/components/size_config.dart';
 
 class CategoriesFood extends StatelessWidget {

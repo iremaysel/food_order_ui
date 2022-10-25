@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:food_order_ui/core/configuration/food.dart';
-import 'package:food_order_ui/core/configuration/food_list.dart';
+import 'package:food_order_ui/core/util/food.dart';
+import 'package:food_order_ui/core/util/food_list.dart';
 import 'package:food_order_ui/features/payments/presentation/pages/cart_page/widgets/food_list_widget/delete_icon_button.dart';
 import 'package:food_order_ui/features/payments/presentation/pages/cart_page/widgets/food_list_widget/food_text.dart';
 import 'package:food_order_ui/features/payments/presentation/pages/cart_page/widgets/food_list_widget/food_image.dart';

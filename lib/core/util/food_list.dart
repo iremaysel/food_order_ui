@@ -1,5 +1,5 @@
-import 'package:food_order_ui/core/configuration/category.dart';
-import 'package:food_order_ui/core/configuration/food.dart';
+import 'package:food_order_ui/core/util/category.dart';
+import 'package:food_order_ui/core/util/food.dart';
 
 Future<List<Food>> bringTheFoods() async {
   var foodList = <Food>[];

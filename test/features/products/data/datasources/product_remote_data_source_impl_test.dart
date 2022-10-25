@@ -8,7 +8,7 @@ import 'package:mockito/mockito.dart';
 import 'package:http/http.dart' as http;
 
 import '../../../../fixtures/fixture_reader.dart';
-import 'product_remote_data_source_test.mocks.dart';
+import 'product_remote_data_source_impl_test.mocks.dart';
 
 class FakeHttpClient extends Mock implements http.Client {}
 

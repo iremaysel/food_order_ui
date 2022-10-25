@@ -44,4 +44,10 @@ class ProductRepositoryImpl extends ProductRepository {
       throw NoInternetExeption();
     }
   }
+
+  @override
+  Future<Either<Failure, Product>> createProduct() {
+    // TODO: implement createProduct
+    throw UnimplementedError();
+  }
 }

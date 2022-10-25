@@ -9,7 +9,7 @@ class ProductModel extends Product {
     required bool available,
     required int rating,
     required String description,
-    required int quantity,
+    int? quantity,
     required int price,
     required String img,
     required String uid,

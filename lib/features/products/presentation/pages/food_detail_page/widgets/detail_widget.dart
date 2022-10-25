@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_order_ui/core/configuration/food.dart';
+import 'package:food_order_ui/core/util/food.dart';
 import 'package:food_order_ui/features/products/presentation/pages/food_detail_page/widgets/addtocart_button.dart';
 import 'package:food_order_ui/features/products/presentation/pages/food_detail_page/components/review.dart';
 import 'package:food_order_ui/features/products/presentation/pages/food_detail_page/widgets/food_description.dart';
