@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter_test/flutter_test.dart';
+
 import 'package:food_order_ui/core/error/exeptions.dart';
 import 'package:food_order_ui/core/error/failure.dart';
 import 'package:food_order_ui/core/platform/network/network_info.dart';
@@ -9,6 +9,7 @@ import 'package:food_order_ui/features/products/data/repositories/product_reposi
 import 'package:food_order_ui/features/products/domain/entities/product.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:test/test.dart';
 
 import 'product_repository_impl_test.mocks.dart';
 
@@ -69,9 +70,6 @@ void main() {
       //assert
       when(mockFakeNetworkInfo.isConnected).thenAnswer((_) async => false);
 
-      when(mockFakeProductRemoteDataSource.getAllProducts())
-          .thenAnswer((_) async => []);
-
       //act
       productRepositoryImpl.getAllProducts();
       //verify
@@ -85,7 +83,7 @@ void main() {
       });
 
       test(
-          'should Remote Data when the call to remote data source is successfull',
+          'should Return Data when the call to remote data source is successfull',
           () async {
         when(mockFakeProductRemoteDataSource.getAllProducts())
             .thenAnswer((_) async => tProductList);
@@ -98,7 +96,7 @@ void main() {
       });
 
       test(
-          'should return Server Error when the call to remote data source is successfull',
+          'should return Server Error when the call to remote data source is unsuccessfull',
           () async {
         when(mockFakeProductRemoteDataSource.getAllProducts())
             .thenThrow(ServerExeption());
@@ -117,9 +115,6 @@ void main() {
       });
 
       test('should return No Internet Error when device is offline', () async {
-        when(mockFakeProductRemoteDataSource.getAllProducts())
-            .thenThrow(NoInternetExeption());
-
         final result = await productRepositoryImpl.getAllProducts();
 
         expect(result, const Left(NoInternetFailure(properties: [])));
@@ -161,14 +156,11 @@ void main() {
       //assert
       when(mockFakeNetworkInfo.isConnected).thenAnswer((_) async => false);
 
-      when(mockFakeProductRemoteDataSource.getProductById(any))
-          .thenAnswer((_) async => tProduct);
-
       //act
-      final call = productRepositoryImpl.getProductById;
+      final result = await productRepositoryImpl.getProductById(uid);
       //verify
 
-      expect(() => call(uid), throwsA(const TypeMatcher<NoInternetExeption>()));
+      expect(result, const Left(NoInternetFailure(properties: [])));
     });
 
     group('device has internet', () {
@@ -212,10 +204,87 @@ void main() {
         when(mockFakeProductRemoteDataSource.getProductById(any))
             .thenThrow(NoInternetExeption());
 
-        final call = productRepositoryImpl.getProductById;
+        final resutl = await productRepositoryImpl.getProductById(uid);
 
-        expect(
-            () => call(uid), throwsA(const TypeMatcher<NoInternetExeption>()));
+        expect(resutl, const Left(NoInternetFailure(properties: [])));
+      });
+    });
+  });
+
+  group('CreateProduct', () {
+    const tProductModel = ProductModel(
+      name: 'Producto 2',
+      categories: 'Bebidas',
+      available: true,
+      rating: 2,
+      description: 'Este producto no tiene descripción',
+      quantity: 2,
+      price: 100,
+      img: "bc507322-47e5-4c50-b4ec-762c5f84d21e.png",
+      calories: "",
+      uid: '62d6f062a6a2d738a753302c',
+    );
+
+    test('should check if the device has internet connection', () async {
+      //assert
+      when(mockFakeNetworkInfo.isConnected).thenAnswer((_) async => true);
+      when(mockFakeProductRemoteDataSource.createProduct())
+          .thenAnswer((_) async => tProductModel);
+
+      //act
+      productRepositoryImpl.createProduct();
+      //aserts
+      verify(mockFakeNetworkInfo.isConnected);
+    });
+    test('should check if the device has no internet connection', () async {
+      //assert
+      when(mockFakeNetworkInfo.isConnected).thenAnswer((_) async => false);
+
+      //act
+      productRepositoryImpl.createProduct();
+      //aserts
+      verify(mockFakeNetworkInfo.isConnected);
+    });
+
+    group('has internet connection', () {
+      setUp(() {
+        when(mockFakeNetworkInfo.isConnected).thenAnswer((_) async => true);
+      });
+
+      test(
+          'Sshould Return Data when the call to remote data source is successfull',
+          () async {
+        when(mockFakeProductRemoteDataSource.createProduct())
+            .thenAnswer((_) async => tProductModel);
+
+        final result = await productRepositoryImpl.createProduct();
+        verify(mockFakeProductRemoteDataSource.createProduct());
+
+        expect(result, const Right(tProductModel));
+      });
+      test(
+          'Sshould Return Failure when the call to remote data source is unsuccessfull',
+          () async {
+        when(mockFakeProductRemoteDataSource.createProduct())
+            .thenThrow(ServerExeption());
+
+        final result = await productRepositoryImpl.createProduct();
+        verify(mockFakeProductRemoteDataSource.createProduct());
+
+        expect(result, const Left(ServerFailure(properties: [])));
+      });
+    });
+
+    group('has no internet connection', () {
+      setUp(() {
+        when(mockFakeNetworkInfo.isConnected).thenAnswer((_) async => false);
+      });
+
+      test('Should Return Failure when there is no internet connection',
+          () async {
+        final result = await productRepositoryImpl.createProduct();
+
+        expect(result, const Left(NoInternetFailure(properties: [])));
       });
     });
   });

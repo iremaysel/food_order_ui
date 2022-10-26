@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:flutter_test/flutter_test.dart';
 import 'package:food_order_ui/features/products/data/models/product_model.dart';
 import 'package:food_order_ui/features/products/domain/entities/product.dart';
+import 'package:test/test.dart';
 
 import '../../../../fixtures/fixture_reader.dart';
 
@@ -49,5 +49,22 @@ void main() {
     };
 
     expect(resutl, fxpectedJsonMap);
+  });
+  test('should return a Json When the method to json is called', () async {
+    final fxpectedJson = jsonEncode({
+      "name": "Producto 2",
+      "categories": "Bebidas",
+      "available": true,
+      "rating": 2,
+      "description": "Este producto no tiene descripción",
+      "quantity": 2,
+      "price": 100,
+      "img": "bc507322-47e5-4c50-b4ec-762c5f84d21e.png",
+      "calories": "",
+      "uid": "62d6f062a6a2d738a753302c"
+    });
+
+    final resutl = tProductModel.toJson();
+    expect(resutl, fxpectedJson);
   });
 }

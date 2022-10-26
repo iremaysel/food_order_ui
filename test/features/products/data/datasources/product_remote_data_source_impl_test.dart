@@ -1,4 +1,3 @@
-import 'package:flutter_test/flutter_test.dart';
 import 'package:food_order_ui/core/error/exeptions.dart';
 import 'package:food_order_ui/features/products/data/datasources/product_remote_datasource.dart';
 import 'package:food_order_ui/features/products/data/models/product_model.dart';
@@ -6,6 +5,7 @@ import 'package:food_order_ui/features/products/domain/entities/product.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:http/http.dart' as http;
+import 'package:test/test.dart';
 
 import '../../../../fixtures/fixture_reader.dart';
 import 'product_remote_data_source_impl_test.mocks.dart';

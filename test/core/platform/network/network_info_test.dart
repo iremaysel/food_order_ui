@@ -1,8 +1,9 @@
 import 'package:data_connection_checker_tv/data_connection_checker.dart';
-import 'package:flutter_test/flutter_test.dart';
+
 import 'package:food_order_ui/core/platform/network/network_info.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:test/test.dart';
 
 import 'network_info_test.mocks.dart';
 

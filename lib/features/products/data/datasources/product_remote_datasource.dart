@@ -8,6 +8,7 @@ import 'package:http/http.dart' as http;
 
 abstract class ProductRemoteDataSource {
   Future<List<Product>> getAllProducts();
+  Future<Product> createProduct();
 
   Future<Product> getProductById(String id);
 }
@@ -45,5 +46,11 @@ class ProductRemoteDataSourceImpl implements ProductRemoteDataSource {
     } else {
       throw ServerExeption();
     }
+  }
+
+  @override
+  Future<Product> createProduct() {
+    // TODO: implement createProduct
+    throw UnimplementedError();
   }
 }

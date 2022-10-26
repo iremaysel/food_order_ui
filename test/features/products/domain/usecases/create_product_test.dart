@@ -1,9 +1,9 @@
-import 'package:flutter_test/flutter_test.dart';
 import 'package:food_order_ui/features/products/domain/entities/product.dart';
 import 'package:food_order_ui/features/products/domain/repositories/product_repository.dart';
 import 'package:food_order_ui/features/products/domain/usecases/create_product_usecase.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:test/test.dart';
 
 import 'get_product_by_id_test.mocks.dart';
 

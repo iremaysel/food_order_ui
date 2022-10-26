@@ -50,6 +50,20 @@ class MockFakeProductRemoteDataSource extends _i1.Mock
         returnValue: _i4.Future<List<_i2.Product>>.value(<_i2.Product>[]),
       ) as _i4.Future<List<_i2.Product>>);
   @override
+  _i4.Future<_i2.Product> createProduct() => (super.noSuchMethod(
+        Invocation.method(
+          #createProduct,
+          [],
+        ),
+        returnValue: _i4.Future<_i2.Product>.value(_FakeProduct_0(
+          this,
+          Invocation.method(
+            #createProduct,
+            [],
+          ),
+        )),
+      ) as _i4.Future<_i2.Product>);
+  @override
   _i4.Future<_i2.Product> getProductById(String? id) => (super.noSuchMethod(
         Invocation.method(
           #getProductById,

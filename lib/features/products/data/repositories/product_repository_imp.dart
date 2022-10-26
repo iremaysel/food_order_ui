@@ -24,11 +24,7 @@ class ProductRepositoryImpl extends ProductRepository {
         return const Left(ServerFailure(properties: []));
       }
     } else {
-      try {
-        throw NoInternetExeption();
-      } on NoInternetExeption {
-        return const Left(NoInternetFailure(properties: []));
-      }
+      return const Left(NoInternetFailure(properties: []));
     }
   }
 
@@ -41,13 +37,20 @@ class ProductRepositoryImpl extends ProductRepository {
         return const Left(ServerFailure(properties: []));
       }
     } else {
-      throw NoInternetExeption();
+      return const Left(NoInternetFailure(properties: []));
     }
   }
 
   @override
-  Future<Either<Failure, Product>> createProduct() {
-    // TODO: implement createProduct
-    throw UnimplementedError();
+  Future<Either<Failure, Product>> createProduct() async {
+    if (await networkInfo.isConnected) {
+      try {
+        return Right(await remoteDataSource.createProduct());
+      } on ServerExeption {
+        return const Left(ServerFailure(properties: []));
+      }
+    } else {
+      return const Left(NoInternetFailure(properties: []));
+    }
   }
 }
