@@ -149,4 +149,65 @@ void main() {
       expect(() => call(), throwsA(const TypeMatcher<ServerExeption>()));
     });
   });
+
+  group('CreateProduct', () {
+    const tProductModel = ProductModel(
+      name: 'Producto 2',
+      categories: 'Bebidas',
+      available: true,
+      rating: 2,
+      description: 'Este producto no tiene descripción',
+      quantity: 2,
+      price: 100,
+      img: "bc507322-47e5-4c50-b4ec-762c5f84d21e.png",
+      calories: "",
+      uid: '62d6f062a6a2d738a753302c',
+    );
+    test(
+        'should perform a Post request on a URL and with application/json Header and body',
+        () async {
+      when(mockFakeHttpClient.post(any,
+              body: anyNamed('body'), headers: anyNamed('headers')))
+          .thenAnswer((_) async => http.Response(fixture('product.json'), 201));
+
+      dataSourceImpl.createProduct(tProductModel);
+
+      Uri uri = Uri.parse('http://5.181.217.104:10000/products/');
+
+      verify(mockFakeHttpClient.post(uri,
+          body: tProductModel.toJson(),
+          headers: {'Content-Type': 'application/json'}));
+    });
+
+    test('should return a Product when the response is 201', () async {
+      when(mockFakeHttpClient.post(any,
+              body: anyNamed('body'), headers: anyNamed('headers')))
+          .thenAnswer((_) async => http.Response(fixture('product.json'), 201));
+
+      final result = await dataSourceImpl.createProduct(tProductModel);
+
+      Uri uri = Uri.parse('http://5.181.217.104:10000/products/');
+      verify(mockFakeHttpClient.post(uri,
+          body: tProductModel.toJson(),
+          headers: {'Content-Type': 'application/json'}));
+
+      expect(result, tProductModel);
+    });
+    test('should return a Product when the response is 404 or other', () async {
+      when(mockFakeHttpClient.post(any,
+              body: anyNamed('body'), headers: anyNamed('headers')))
+          .thenAnswer((_) async => http.Response(fixture('product.json'), 404));
+
+      final call = dataSourceImpl.createProduct;
+
+      expect(() => call(tProductModel),
+          throwsA(const TypeMatcher<ServerExeption>()));
+
+      Uri uri = Uri.parse('http://5.181.217.104:10000/products/');
+      verify(mockFakeHttpClient.post(uri,
+          body: tProductModel.toJson(),
+          headers: {'Content-Type': 'application/json'}));
+      verifyNoMoreInteractions(mockFakeHttpClient);
+    });
+  });
 }

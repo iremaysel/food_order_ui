@@ -228,11 +228,11 @@ void main() {
     test('should check if the device has internet connection', () async {
       //assert
       when(mockFakeNetworkInfo.isConnected).thenAnswer((_) async => true);
-      when(mockFakeProductRemoteDataSource.createProduct())
+      when(mockFakeProductRemoteDataSource.createProduct(tProductModel))
           .thenAnswer((_) async => tProductModel);
 
       //act
-      productRepositoryImpl.createProduct();
+      productRepositoryImpl.createProduct(tProductModel);
       //aserts
       verify(mockFakeNetworkInfo.isConnected);
     });
@@ -241,7 +241,7 @@ void main() {
       when(mockFakeNetworkInfo.isConnected).thenAnswer((_) async => false);
 
       //act
-      productRepositoryImpl.createProduct();
+      productRepositoryImpl.createProduct(tProductModel);
       //aserts
       verify(mockFakeNetworkInfo.isConnected);
     });
@@ -254,22 +254,22 @@ void main() {
       test(
           'Sshould Return Data when the call to remote data source is successfull',
           () async {
-        when(mockFakeProductRemoteDataSource.createProduct())
+        when(mockFakeProductRemoteDataSource.createProduct(tProductModel))
             .thenAnswer((_) async => tProductModel);
 
-        final result = await productRepositoryImpl.createProduct();
-        verify(mockFakeProductRemoteDataSource.createProduct());
+        final result = await productRepositoryImpl.createProduct(tProductModel);
+        verify(mockFakeProductRemoteDataSource.createProduct(tProductModel));
 
         expect(result, const Right(tProductModel));
       });
       test(
           'Sshould Return Failure when the call to remote data source is unsuccessfull',
           () async {
-        when(mockFakeProductRemoteDataSource.createProduct())
+        when(mockFakeProductRemoteDataSource.createProduct(tProductModel))
             .thenThrow(ServerExeption());
 
-        final result = await productRepositoryImpl.createProduct();
-        verify(mockFakeProductRemoteDataSource.createProduct());
+        final result = await productRepositoryImpl.createProduct(tProductModel);
+        verify(mockFakeProductRemoteDataSource.createProduct(tProductModel));
 
         expect(result, const Left(ServerFailure(properties: [])));
       });
@@ -282,7 +282,7 @@ void main() {
 
       test('Should Return Failure when there is no internet connection',
           () async {
-        final result = await productRepositoryImpl.createProduct();
+        final result = await productRepositoryImpl.createProduct(tProductModel);
 
         expect(result, const Left(NoInternetFailure(properties: [])));
       });

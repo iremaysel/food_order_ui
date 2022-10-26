@@ -42,10 +42,10 @@ class ProductRepositoryImpl extends ProductRepository {
   }
 
   @override
-  Future<Either<Failure, Product>> createProduct() async {
+  Future<Either<Failure, Product>> createProduct(Product product) async {
     if (await networkInfo.isConnected) {
       try {
-        return Right(await remoteDataSource.createProduct());
+        return Right(await remoteDataSource.createProduct(product));
       } on ServerExeption {
         return const Left(ServerFailure(properties: []));
       }
