@@ -9,7 +9,7 @@ import 'package:http/http.dart' as http;
 abstract class ProductRemoteDataSource {
   Future<List<Product>> getAllProducts();
   Future<Product> createProduct(
-    Product product,
+    ProductModel product,
   );
 
   Future<Product> getProductById(String id);
@@ -51,22 +51,10 @@ class ProductRemoteDataSourceImpl implements ProductRemoteDataSource {
   }
 
   @override
-  Future<Product> createProduct(Product product) async {
+  Future<Product> createProduct(ProductModel product) async {
     Uri uri = Uri.parse('http://5.181.217.104:10000/products/');
     final response = await client.post(uri,
-        body: json.encode({
-          "name": product.name,
-          "categories": product.categories,
-          "available": product.available,
-          "rating": product.rating,
-          "description": product.description,
-          "quantity": product.quantity,
-          "price": product.price,
-          "img": product.img,
-          "calories": product.calories,
-          "uid": product.uid
-        }),
-        headers: {'Content-Type': 'application/json'});
+        body: product.toJson(), headers: {'Content-Type': 'application/json'});
 
     if (response.statusCode == 201) {
       return ProductModel.fromJson(response.body);

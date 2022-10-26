@@ -39,9 +39,9 @@ DA:67,1
 DA:69,1
 DA:71,2
 DA:72,2
-DA:74,0
+DA:74,1
 LF:34
-LH:33
+LH:34
 end_of_record
 SF:lib\features\products\data\models\product_model.dart
 DA:6,5
