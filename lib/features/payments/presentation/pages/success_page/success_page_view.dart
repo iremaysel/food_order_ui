@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:food_order_ui/features/products/presentation/pages/home_page/components/size_config.dart';
-import 'package:food_order_ui/features/payments/presentation/pages/success_page/widgets/lottie_widget.dart';
-import 'package:food_order_ui/features/payments/presentation/pages/success_page/widgets/ok_button.dart';
-import 'package:food_order_ui/features/payments/presentation/pages/success_page/widgets/router_text.dart';
+import '../../../../products/presentation/pages/home_page/components/size_config.dart';
+import 'widgets/lottie_widget.dart';
+import 'widgets/ok_button.dart';
+import 'widgets/router_text.dart';
 
 class CheckCart extends StatelessWidget {
   const CheckCart({Key? key}) : super(key: key);

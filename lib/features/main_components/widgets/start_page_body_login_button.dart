@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../products/presentation/pages/home_page/components/colors.dart';
 import '../../auth/presentation/pages/login_page/login_page_view.dart';
+import '../../products/presentation/pages/home_page/components/colors.dart';
 import 'login_button_widget.dart';
 
 class StartPageBodyLoginButton extends StatelessWidget {

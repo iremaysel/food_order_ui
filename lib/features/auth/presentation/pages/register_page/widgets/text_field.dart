@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:food_order_ui/features/auth/presentation/pages/login_page/widgets/text_field_widget/text_email_field_input.dart';
-import 'package:food_order_ui/features/auth/presentation/pages/login_page/widgets/text_field_widget/text_field_password.dart';
+import '../../login_page/widgets/text_field_widget/text_email_field_input.dart';
+import '../../login_page/widgets/text_field_widget/text_field_password.dart';
 
 class RegisterTextField extends StatefulWidget {
   const RegisterTextField({Key? key}) : super(key: key);

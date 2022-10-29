@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:food_order_ui/core/util/food.dart';
-import 'package:food_order_ui/features/products/presentation/pages/food_detail_page/widgets/detail_widget.dart';
-import 'package:food_order_ui/features/products/presentation/pages/food_detail_page/widgets/food_image.dart';
-import 'package:food_order_ui/features/products/presentation/pages/home_page/components/size_config.dart';
+import '../../../domain/entities/product.dart';
+import 'widgets/detail_widget.dart';
+import 'widgets/food_image.dart';
+import '../home_page/components/size_config.dart';
 
 class FoodDetailView extends StatelessWidget {
-  final Food food;
+  final Product food;
   const FoodDetailView({Key? key, required this.food}) : super(key: key);
 
   @override

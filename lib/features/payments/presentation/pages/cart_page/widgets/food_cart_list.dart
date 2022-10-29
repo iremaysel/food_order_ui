@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:food_order_ui/core/util/food.dart';
-import 'package:food_order_ui/core/util/food_list.dart';
-import 'package:food_order_ui/features/payments/presentation/pages/cart_page/widgets/food_list_widget/delete_icon_button.dart';
-import 'package:food_order_ui/features/payments/presentation/pages/cart_page/widgets/food_list_widget/food_text.dart';
-import 'package:food_order_ui/features/payments/presentation/pages/cart_page/widgets/food_list_widget/food_image.dart';
-import 'package:food_order_ui/features/products/presentation/pages/home_page/components/size_config.dart';
+import '../../../../../../core/util/food.dart';
+import '../../../../../../core/util/food_list.dart';
+import 'food_list_widget/delete_icon_button.dart';
+import 'food_list_widget/food_text.dart';
+import 'food_list_widget/food_image.dart';
+import '../../../../../products/presentation/pages/home_page/components/size_config.dart';
 import 'package:lottie/lottie.dart';
 
 class FoodCartListWidget extends StatelessWidget {

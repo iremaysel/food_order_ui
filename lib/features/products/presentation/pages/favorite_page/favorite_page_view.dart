@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:food_order_ui/core/util/food.dart';
-import 'package:food_order_ui/core/util/food_list.dart';
-import 'package:food_order_ui/features/products/presentation/pages/home_page/components/size_config.dart';
-import 'package:food_order_ui/features/products/presentation/widgets/custom_food_card.dart';
+import '../../../../../core/util/food.dart';
+import '../../../../../core/util/food_list.dart';
+import '../home_page/components/size_config.dart';
 
 class FavoritePageView extends StatefulWidget {
   const FavoritePageView({Key? key}) : super(key: key);
@@ -46,7 +45,8 @@ class _FavoritePageViewState extends State<FavoritePageView> {
                     ),
                     itemBuilder: (context, index) {
                       var food = foodList[index];
-                      return CustomFoodCard(food: food);
+                      //  return CustomFoodCard(food: food);
+                      return Container();
                     });
               } else {
                 return Padding(

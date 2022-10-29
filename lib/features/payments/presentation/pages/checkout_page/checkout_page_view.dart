@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:food_order_ui/features/payments/presentation/pages/checkout_page/widgets/address.dart';
-import 'package:food_order_ui/features/payments/presentation/pages/checkout_page/widgets/payment.dart';
-import 'package:food_order_ui/features/products/presentation/pages/home_page/components/colors.dart';
-import 'package:food_order_ui/features/products/presentation/pages/home_page/components/size_config.dart';
-import 'package:food_order_ui/features/payments/presentation/pages/success_page/success_page_view.dart';
+import 'widgets/address.dart';
+import 'widgets/payment.dart';
+import '../../../../products/presentation/pages/home_page/components/colors.dart';
+import '../../../../products/presentation/pages/home_page/components/size_config.dart';
+import '../success_page/success_page_view.dart';
 
 class CheckoutPageView extends StatefulWidget {
   const CheckoutPageView({Key? key}) : super(key: key);

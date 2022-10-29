@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:food_order_ui/core/util/category.dart';
-import 'package:food_order_ui/core/util/food_list.dart';
-import 'package:food_order_ui/features/products/presentation/pages/home_page/components/size_config.dart';
+import '../../../../../../core/util/category.dart';
+import '../../../../../../core/util/food_list.dart';
+import '../components/size_config.dart';
 
 class CategoriesFood extends StatelessWidget {
   const CategoriesFood({Key? key}) : super(key: key);

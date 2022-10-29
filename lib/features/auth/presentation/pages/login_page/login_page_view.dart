@@ -1,50 +1,55 @@
 import 'package:flutter/material.dart';
-import 'package:food_order_ui/features/auth/presentation/pages/login_page/widgets/text_field.dart';
-import 'package:food_order_ui/features/auth/presentation/pages/register_page/register_page_view.dart';
+import 'widgets/text_field.dart';
+import '../register_page/register_page_view.dart';
 import '../../../../main_components/pages/bottom_navigator.dart';
 import 'widgets/forgot_password.dart';
 import '../../widgets/login_button.dart';
 import 'widgets/logo.dart';
 import '../../widgets/text_signup_or_singin.dart';
 
-class LoginPageView extends StatefulWidget {
+class LoginPageView extends StatelessWidget {
   const LoginPageView({Key? key}) : super(key: key);
 
   @override
-  _LoginPageViewState createState() => _LoginPageViewState();
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      backgroundColor: Colors.white,
+      body: LoginPageBody(),
+    );
+  }
 }
 
-class _LoginPageViewState extends State<LoginPageView> {
+class LoginPageBody extends StatelessWidget {
+  const LoginPageBody({
+    Key? key,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Colors.white,
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              const LogoImage(),
-              const LoginTextField(),
-              const ForgotPassword(),
-              AuthButonColor(
-                buttonText: 'Iniciar Sessión',
-                onPressed: () {
-                  Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const MyHomePage()));
-                },
-              ),
-              TextSignUpOrSingIn(
-                  phrase: "¿No tienes una cuenta? ",
-                  singInOrSingUpText: 'Registrar',
-                  onPressed: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const RegisterPageView(),
-                        ),
-                      ))
-            ],
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          const LogoImage(),
+          const LoginTextField(),
+          const ForgotPassword(),
+          AuthButonColor(
+            buttonText: 'Iniciar Sessión',
+            onPressed: () {
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => MyHomePage()));
+            },
           ),
-        ));
+          TextSignUpOrSingIn(
+              phrase: "¿No tienes una cuenta? ",
+              singInOrSingUpText: 'Registrar',
+              onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const RegisterPageView(),
+                    ),
+                  ))
+        ],
+      ),
+    );
   }
 }

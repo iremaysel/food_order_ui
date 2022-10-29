@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:food_order_ui/features/auth/presentation/widgets/login_button.dart';
-import 'package:food_order_ui/features/auth/presentation/pages/register_page/widgets/background_image.dart';
+import '../../widgets/login_button.dart';
+import 'widgets/background_image.dart';
 import '../../widgets/text_signup_or_singin.dart';
 import '../login_page/login_page_view.dart';
 import 'widgets/text_field.dart';

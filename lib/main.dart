@@ -1,8 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:food_order_ui/features/main_components/pages/splash_screen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'dependency_Injection.dart' as sl;
+import 'features/main_components/pages/splash_screen.dart';
+
+import 'dependency_Injection.dart';
+import 'features/products/domain/usecases/get_all_products_usecase.dart';
+import 'features/products/domain/usecases/get_product_by_id_usecase.dart';
+import 'features/products/presentation/bloc/bloc/product_bloc.dart';
 
 void main() {
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  sl.init();
+  runApp(
+    BlocProvider(
+      create: (_) => ProductBloc(
+        getAllProductsUseCase: getIt<GetAllProductsUseCase>(),
+        getProductByIdUseCase: getIt<GetProductByIdUseCase>(),
+      )..add(OnGetProductsEvent()),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

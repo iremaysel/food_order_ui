@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:food_order_ui/features/products/presentation/pages/home_page/components/size_config.dart';
-import 'package:food_order_ui/features/auth/presentation/pages/login_page/widgets/text_title.dart';
+import '../../../../../products/presentation/pages/home_page/components/size_config.dart';
+import '../../login_page/widgets/text_title.dart';
 
 class BackgroundImage extends StatelessWidget {
   const BackgroundImage({Key? key}) : super(key: key);

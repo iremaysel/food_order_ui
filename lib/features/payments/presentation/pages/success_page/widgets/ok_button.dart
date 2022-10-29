@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:food_order_ui/features/main_components/pages/bottom_navigator.dart';
-import 'package:food_order_ui/features/products/presentation/pages/home_page/components/colors.dart';
-import 'package:food_order_ui/features/products/presentation/pages/home_page/components/size_config.dart';
+import '../../../../../main_components/pages/bottom_navigator.dart';
+import '../../../../../products/presentation/pages/home_page/components/colors.dart';
+import '../../../../../products/presentation/pages/home_page/components/size_config.dart';
 
 class OkButton extends StatefulWidget {
   const OkButton({Key? key}) : super(key: key);

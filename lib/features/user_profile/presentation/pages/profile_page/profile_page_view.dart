@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:food_order_ui/features/user_profile/presentation/pages/profile_page/widgets/top_custom_shape.dart';
-import 'package:food_order_ui/features/user_profile/presentation/pages/profile_page/widgets/user_sections.dart';
+
+import 'widgets/top_custom_shape.dart';
+import 'widgets/user_sections.dart';
 
 class ProfilePageView extends StatelessWidget {
   const ProfilePageView({Key? key}) : super(key: key);

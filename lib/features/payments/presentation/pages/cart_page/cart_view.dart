@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:food_order_ui/features/payments/presentation/pages/cart_page/widgets/bottom_bar.dart';
-import 'package:food_order_ui/features/payments/presentation/pages/cart_page/widgets/food_cart_list.dart';
+
+import 'widgets/bottom_bar.dart';
+import 'widgets/food_cart_list.dart';
 
 class CartView extends StatelessWidget {
   const CartView({Key? key}) : super(key: key);

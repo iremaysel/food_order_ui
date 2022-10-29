@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:food_order_ui/core/util/food.dart';
-import 'package:food_order_ui/features/products/presentation/pages/food_detail_page/widgets/addtocart_button.dart';
-import 'package:food_order_ui/features/products/presentation/pages/food_detail_page/components/review.dart';
-import 'package:food_order_ui/features/products/presentation/pages/food_detail_page/widgets/food_description.dart';
-import 'package:food_order_ui/features/products/presentation/pages/food_detail_page/widgets/increase_decrease_button.dart';
-import 'package:food_order_ui/features/products/presentation/pages/home_page/components/size_config.dart';
+import '../../../../domain/entities/product.dart';
+import 'addtocart_button.dart';
+import '../components/review.dart';
+import 'food_description.dart';
+import 'increase_decrease_button.dart';
+import '../../home_page/components/size_config.dart';
 import 'food_name.dart';
 
 class DetailWidget extends StatelessWidget {
-  final Food food;
+  final Product food;
   const DetailWidget({Key? key, required this.food}) : super(key: key);
 
   @override
@@ -32,9 +32,9 @@ class DetailWidget extends StatelessWidget {
         child: Column(
           children: [
             FoodName(food: food),
-            ReviewStars(food: food),
-            FoodDescription(food: food),
-            IncreaseDecrease(food: food),
+            ReviewStars(product: food),
+            FoodDescription(product: food),
+            IncreaseDecrease(product: food),
             const AddToCartButton(),
           ],
         ),

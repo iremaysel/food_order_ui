@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:food_order_ui/features/payments/presentation/pages/cart_page/widgets/bottom_bar_widget/3d_secure.dart';
-import 'package:food_order_ui/features/payments/presentation/pages/cart_page/widgets/bottom_bar_widget/bottombar_text.dart';
-import 'package:food_order_ui/features/payments/presentation/pages/cart_page/widgets/bottom_bar_widget/checkout_button.dart';
-import 'package:food_order_ui/features/products/presentation/pages/food_detail_page/components/separator.dart';
-import 'package:food_order_ui/features/products/presentation/pages/home_page/components/size_config.dart';
+import 'bottom_bar_widget/3d_secure.dart';
+import 'bottom_bar_widget/bottombar_text.dart';
+import 'bottom_bar_widget/checkout_button.dart';
+import '../../../../../products/presentation/pages/food_detail_page/components/separator.dart';
+import '../../../../../products/presentation/pages/home_page/components/size_config.dart';
 
 class BottomBar extends StatelessWidget {
   const BottomBar({Key? key}) : super(key: key);

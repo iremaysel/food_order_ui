@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:food_order_ui/core/util/food.dart';
-import 'package:food_order_ui/core/util/food_list.dart';
-import 'package:food_order_ui/features/products/presentation/pages/home_page/components/colors.dart';
-import 'package:food_order_ui/features/products/presentation/pages/home_page/components/size_config.dart';
+import '../../../../../../core/util/food.dart';
+import '../../../../../../core/util/food_list.dart';
+import '../components/colors.dart';
+import '../components/size_config.dart';
 
 class RecommedFoods extends StatefulWidget {
   const RecommedFoods({Key? key}) : super(key: key);

@@ -1,11 +1,11 @@
-import 'package:food_order_ui/core/error/exeptions.dart';
-import 'package:food_order_ui/core/platform/network/network_info.dart';
-import 'package:food_order_ui/features/products/data/datasources/product_remote_datasource.dart';
-import 'package:food_order_ui/features/products/data/models/product_model.dart';
-import 'package:food_order_ui/features/products/domain/entities/product.dart';
-import 'package:food_order_ui/core/error/failure.dart';
+import '../../../../core/error/exeptions.dart';
+import '../../../../core/platform/network/network_info.dart';
+import '../datasources/product_remote_datasource.dart';
+import '../models/product_model.dart';
+import '../../domain/entities/product.dart';
+import '../../../../core/error/failure.dart';
 import 'package:dartz/dartz.dart';
-import 'package:food_order_ui/features/products/domain/repositories/product_repository.dart';
+import '../../domain/repositories/product_repository.dart';
 
 class ProductRepositoryImpl extends ProductRepository {
   final ProductRemoteDataSource remoteDataSource;

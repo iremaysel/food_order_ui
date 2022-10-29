@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:food_order_ui/features/products/presentation/pages/home_page/components/size_config.dart';
+
+import '../../../../../../products/presentation/pages/home_page/components/size_config.dart';
 
 class FoodImage extends StatelessWidget {
   final String foodPathImage;

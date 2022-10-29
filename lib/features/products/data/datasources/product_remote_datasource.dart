@@ -1,16 +1,14 @@
 import 'dart:convert';
 
-import 'package:food_order_ui/core/error/exeptions.dart';
-import 'package:food_order_ui/features/products/data/models/product_model.dart';
+import '../../../../core/error/exeptions.dart';
+import '../models/product_model.dart';
 
 import '../../domain/entities/product.dart';
 import 'package:http/http.dart' as http;
 
 abstract class ProductRemoteDataSource {
   Future<List<Product>> getAllProducts();
-  Future<Product> createProduct(
-    ProductModel product,
-  );
+  Future<Product> createProduct(ProductModel product);
 
   Future<Product> getProductById(String id);
 }

@@ -1,27 +1,22 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_order_ui/features/payments/presentation/pages/cart_page/cart_view.dart';
-import 'package:food_order_ui/features/products/presentation/pages/favorite_page/favorite_page_view.dart';
-import 'package:food_order_ui/features/products/presentation/pages/home_page/components/colors.dart';
-import 'package:food_order_ui/features/products/presentation/pages/home_page/components/size_config.dart';
-import 'package:food_order_ui/features/products/presentation/pages/home_page/home_page_view.dart';
-import 'package:food_order_ui/features/user_profile/presentation/pages/profile_page/profile_page_view.dart';
-import 'package:food_order_ui/features/search_products/presentation/pages/search_page/search_page_view.dart';
+import '../../payments/presentation/pages/cart_page/cart_view.dart';
+import '../../products/presentation/pages/favorite_page/favorite_page_view.dart';
+import '../../products/presentation/pages/home_page/components/colors.dart';
+import '../../products/presentation/pages/home_page/components/size_config.dart';
+import '../../products/presentation/pages/home_page/home_page_view.dart';
+import '../../user_profile/presentation/pages/profile_page/profile_page_view.dart';
+import '../../search_products/presentation/pages/search_page/search_page_view.dart';
 
 import '../bloc/cubit/nav_bar_cubit_cubit.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+class MyHomePage extends StatelessWidget {
+  MyHomePage({Key? key}) : super(key: key);
 
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
   final navigationKey = GlobalKey<CurvedNavigationBarState>();
-  // int index = 0;
 
+  // int index = 0;
   final screen = [
     const HomePageView(),
     const SearchPageView(),
@@ -29,6 +24,7 @@ class _MyHomePageState extends State<MyHomePage> {
     const FavoritePageView(),
     const ProfilePageView(),
   ];
+
   @override
   Widget build(BuildContext context) {
     // SystemChrome.setSystemUIOverlayStyle(
@@ -44,8 +40,12 @@ class _MyHomePageState extends State<MyHomePage> {
       Icon(Icons.person, size: SizeConfig.blockSizeHorizontal! * 8.5),
     ];
 
-    return BlocProvider(
-      create: (_) => NavBarCubitCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (_) => NavBarCubitCubit(),
+        ),
+      ],
       child: SafeArea(
         child: Scaffold(
           extendBody: true,

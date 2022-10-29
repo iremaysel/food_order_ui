@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:food_order_ui/features/payments/presentation/pages/checkout_page/components/checkbox_save.dart';
-import 'package:food_order_ui/features/payments/presentation/pages/checkout_page/components/checkout_textfield.dart';
-import 'package:food_order_ui/features/payments/presentation/pages/checkout_page/components/page_name.dart';
+
+import '../components/checkbox_save.dart';
+import '../components/checkout_textfield.dart';
+import '../components/page_name.dart';
 
 class Payment extends StatefulWidget {
   const Payment({Key? key}) : super(key: key);

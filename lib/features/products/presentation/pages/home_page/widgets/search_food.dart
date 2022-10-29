@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:food_order_ui/features/products/presentation/pages/home_page/components/size_config.dart';
-import 'package:food_order_ui/features/search_products/presentation/pages/search_page/search_page_view.dart';
+import '../components/size_config.dart';
+import '../../../../../search_products/presentation/pages/search_page/search_page_view.dart';
 
 class SearchFood extends StatelessWidget {
   const SearchFood({Key? key}) : super(key: key);

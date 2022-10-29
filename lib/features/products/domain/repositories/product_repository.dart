@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:food_order_ui/core/error/failure.dart';
-import 'package:food_order_ui/features/products/domain/entities/product.dart';
+import '../../../../core/error/failure.dart';
+import '../entities/product.dart';
 
 abstract class ProductRepository {
   Future<Either<Failure, List<Product>>> getAllProducts();

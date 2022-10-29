@@ -1,38 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_order_ui/core/util/food.dart';
-import 'package:food_order_ui/features/products/presentation/pages/food_detail_page/components/separator.dart';
-import 'package:food_order_ui/features/products/presentation/pages/home_page/components/colors.dart';
-import 'package:food_order_ui/features/products/presentation/pages/home_page/components/size_config.dart';
+import '../components/separator.dart';
+import '../../home_page/components/colors.dart';
+import '../../home_page/components/size_config.dart';
 
+import '../../../../domain/entities/product.dart';
 import '../../../bloc/cubit/increase_decrease_buttons_cubit.dart';
 
-class IncreaseDecrease extends StatefulWidget {
-  final Food food;
-  const IncreaseDecrease({Key? key, required this.food}) : super(key: key);
-
-  @override
-  _IncreaseDecreaseState createState() => _IncreaseDecreaseState();
-}
-
-class _IncreaseDecreaseState extends State<IncreaseDecrease> {
-  int _counter = 1;
-
-  void _increaseCart() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  void _decreaseCart() {
-    setState(() {
-      if (_counter > 1) {
-        _counter--;
-      } else {
-        _counter = 1;
-      }
-    });
-  }
+class IncreaseDecrease extends StatelessWidget {
+  final Product product;
+  const IncreaseDecrease({Key? key, required this.product}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +49,7 @@ class _IncreaseDecreaseState extends State<IncreaseDecrease> {
                         IncreaseDecreaseButtonsState>(
                       builder: (context, state) {
                         return Text(
-                          "\$${int.parse(widget.food.foodPrice) * state.cant}",
+                          "\$${product.price * state.cant}",
                           style: TextStyle(
                               color: Colors.black,
                               fontSize: SizeConfig.blockSizeVertical! * 4),

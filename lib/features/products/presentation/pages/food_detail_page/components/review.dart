@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:food_order_ui/features/products/presentation/pages/home_page/components/colors.dart';
-import 'package:food_order_ui/features/products/presentation/pages/home_page/components/size_config.dart';
+import '../../home_page/components/colors.dart';
+import '../../home_page/components/size_config.dart';
 
-import '../../../../../../core/util/food.dart';
+import '../../../../domain/entities/product.dart';
 
 class ReviewStars extends StatelessWidget {
-  final Food food;
-  const ReviewStars({Key? key, required this.food}) : super(key: key);
+  final Product product;
+  const ReviewStars({Key? key, required this.product}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

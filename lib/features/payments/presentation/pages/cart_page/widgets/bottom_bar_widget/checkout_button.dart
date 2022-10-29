@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:food_order_ui/features/payments/presentation/pages/checkout_page/checkout_page_view.dart';
-import 'package:food_order_ui/features/products/presentation/pages/home_page/components/colors.dart';
-import 'package:food_order_ui/features/products/presentation/pages/home_page/components/size_config.dart';
+import '../../../checkout_page/checkout_page_view.dart';
+import '../../../../../../products/presentation/pages/home_page/components/colors.dart';
+import '../../../../../../products/presentation/pages/home_page/components/size_config.dart';
 
 class CheckoutButton extends StatelessWidget {
   const CheckoutButton({Key? key}) : super(key: key);

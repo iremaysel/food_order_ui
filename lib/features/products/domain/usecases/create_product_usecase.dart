@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:food_order_ui/core/error/failure.dart';
-import 'package:food_order_ui/features/products/domain/entities/product.dart';
-import 'package:food_order_ui/features/products/domain/repositories/product_repository.dart';
+import '../../../../core/error/failure.dart';
+import '../entities/product.dart';
+import '../repositories/product_repository.dart';
 
 class CreateProductUseCase {
   final ProductRepository repository;

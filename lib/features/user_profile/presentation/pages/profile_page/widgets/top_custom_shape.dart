@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:food_order_ui/features/products/presentation/pages/home_page/components/colors.dart';
-import 'package:food_order_ui/features/products/presentation/pages/home_page/components/size_config.dart';
-import 'package:food_order_ui/features/user_profile/presentation/pages/profile_page/components/CustomShape.dart';
+import '../../../../../products/presentation/pages/home_page/components/colors.dart';
+import '../../../../../products/presentation/pages/home_page/components/size_config.dart';
+import '../components/CustomShape.dart';
 
 class TopCustomShape extends StatelessWidget {
   const TopCustomShape({Key? key}) : super(key: key);
