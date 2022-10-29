@@ -2,10 +2,10 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import '../../../domain/usecases/get_all_products_usecase.dart';
-import '../../../domain/usecases/get_product_by_id_usecase.dart';
+import '../../../../domain/usecases/get_all_products_usecase.dart';
+import '../../../../domain/usecases/get_product_by_id_usecase.dart';
 
-import '../../../domain/entities/product.dart';
+import '../../../../domain/entities/product.dart';
 
 part 'product_event.dart';
 part 'product_state.dart';

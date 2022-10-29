@@ -5,6 +5,8 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i4;
 
+import 'package:food_order_ui/features/products/data/models/product_model.dart'
+    as _i5;
 import 'package:food_order_ui/features/products/domain/entities/product.dart'
     as _i2;
 import 'package:mockito/mockito.dart' as _i1;
@@ -50,7 +52,7 @@ class MockFakeProductRemoteDataSource extends _i1.Mock
         returnValue: _i4.Future<List<_i2.Product>>.value(<_i2.Product>[]),
       ) as _i4.Future<List<_i2.Product>>);
   @override
-  _i4.Future<_i2.Product> createProduct(_i2.Product? product) =>
+  _i4.Future<_i2.Product> createProduct(_i5.ProductModel? product) =>
       (super.noSuchMethod(
         Invocation.method(
           #createProduct,
@@ -75,6 +77,33 @@ class MockFakeProductRemoteDataSource extends _i1.Mock
           Invocation.method(
             #getProductById,
             [id],
+          ),
+        )),
+      ) as _i4.Future<_i2.Product>);
+}
+
+/// A class which mocks [FakeProductLocalDataSource].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockFakeProductLocalDataSource extends _i1.Mock
+    implements _i3.FakeProductLocalDataSource {
+  MockFakeProductLocalDataSource() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i4.Future<_i2.Product> saveProductFavoriteIntoDB(
+          _i5.ProductModel? product) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #saveProductFavoriteIntoDB,
+          [product],
+        ),
+        returnValue: _i4.Future<_i2.Product>.value(_FakeProduct_0(
+          this,
+          Invocation.method(
+            #saveProductFavoriteIntoDB,
+            [product],
           ),
         )),
       ) as _i4.Future<_i2.Product>);

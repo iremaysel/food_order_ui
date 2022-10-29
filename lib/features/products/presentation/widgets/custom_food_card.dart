@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/constantes/constantes.dart';
 import '../../domain/entities/product.dart';
+import '../bloc/bloc/favorites_bloc/favorites_bloc.dart';
 import '../pages/food_detail_page/food_detail_view.dart';
 import '../pages/home_page/components/colors.dart';
 import '../pages/home_page/components/size_config.dart';
@@ -9,9 +12,11 @@ class CustomFoodCard extends StatelessWidget {
   const CustomFoodCard({
     Key? key,
     required this.product,
+    this.isWishList = false,
   }) : super(key: key);
 
   final Product product;
+  final bool isWishList;
 
   @override
   Widget build(BuildContext context) {
@@ -49,25 +54,42 @@ class CustomFoodCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Container(
-                      height: SizeConfig.blockSizeVertical! * 13,
-
-                      /// 100.0
-                      width: SizeConfig.blockSizeHorizontal! * 38,
-
-                      /// 150.0
-                      decoration: BoxDecoration(
-                        image: const DecorationImage(
-                          image:
-                              NetworkImage('assets/food/ChickenCurryPasta.jpg'),
-                          fit: BoxFit.cover,
+                        height: SizeConfig.blockSizeVertical! * 13,
+                        width: SizeConfig.blockSizeHorizontal! * 38,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(
+                                  SizeConfig.blockSizeHorizontal! * 4),
+                              topRight: Radius.circular(
+                                  SizeConfig.blockSizeHorizontal! * 4)),
                         ),
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(
-                                SizeConfig.blockSizeHorizontal! * 4),
-                            topRight: Radius.circular(
-                                SizeConfig.blockSizeHorizontal! * 4)),
-                      ),
-                    ),
+                        child: product.img == 'no-image.png'
+                            ? ClipRRect(
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(
+                                        SizeConfig.blockSizeHorizontal! * 4),
+                                    topRight: Radius.circular(
+                                        SizeConfig.blockSizeHorizontal! * 4)),
+                                child: Image.asset(
+                                  'assets/main/no_image.jpeg',
+                                  fit: BoxFit.cover,
+                                ),
+                              )
+                            : ClipRRect(
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(
+                                        SizeConfig.blockSizeHorizontal! * 4),
+                                    topRight: Radius.circular(
+                                        SizeConfig.blockSizeHorizontal! * 4)),
+                                child: FadeInImage(
+                                  fit: BoxFit.fill,
+                                  placeholder: const AssetImage(
+                                      'assets/main/loading.gif'),
+                                  image: NetworkImage(
+                                    '$apiUrl/uploads/products/${product.uid}',
+                                  ),
+                                ),
+                              )),
                     Padding(
                       padding:
                           EdgeInsets.all(SizeConfig.blockSizeHorizontal! * 2),
@@ -100,6 +122,19 @@ class CustomFoodCard extends StatelessWidget {
                     ),
                   ],
                 ),
+                isWishList == true
+                    ? Positioned(
+                        right: SizeConfig.blockSizeHorizontal! * 1,
+                        top: SizeConfig.blockSizeVertical! * 0.5,
+                        child: GestureDetector(
+                          onTap: () => BlocProvider.of<FavoritesBloc>(context)
+                              .add(RemovedProductToFavoritesEvent(product)),
+                          child: Icon(
+                            Icons.delete_forever_sharp,
+                            color: buttonColor,
+                          ),
+                        ))
+                    : Container(),
                 Positioned(
                   bottom: SizeConfig.blockSizeVertical! * 1,
                   left: SizeConfig.blockSizeHorizontal! * 2.5,

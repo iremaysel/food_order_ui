@@ -3,6 +3,7 @@ import 'package:dartz/dartz.dart';
 import 'package:food_order_ui/core/error/exeptions.dart';
 import 'package:food_order_ui/core/error/failure.dart';
 import 'package:food_order_ui/core/platform/network/network_info.dart';
+import 'package:food_order_ui/features/products/data/datasources/product_local_data_source.dart';
 import 'package:food_order_ui/features/products/data/datasources/product_remote_datasource.dart';
 import 'package:food_order_ui/features/products/data/models/product_model.dart';
 import 'package:food_order_ui/features/products/data/repositories/product_repository_imp.dart';
@@ -16,22 +17,29 @@ import 'product_repository_impl_test.mocks.dart';
 class FakeProductRemoteDataSource extends Mock
     implements ProductRemoteDataSource {}
 
+class FakeProductLocalDataSource extends Mock
+    implements ProductLocalDataSource {}
+
 class FakeNetworkInfo extends Mock implements NetworkInfo {}
 
 @GenerateMocks([FakeProductRemoteDataSource])
+@GenerateMocks([FakeProductLocalDataSource])
 @GenerateMocks([FakeNetworkInfo])
 void main() {
   late ProductRepositoryImpl productRepositoryImpl;
   late MockFakeProductRemoteDataSource mockFakeProductRemoteDataSource;
+  late MockFakeProductLocalDataSource mockFakeProductLocalDataSource;
   late MockFakeNetworkInfo mockFakeNetworkInfo;
 
   setUpAll(() {
     mockFakeProductRemoteDataSource = MockFakeProductRemoteDataSource();
     mockFakeNetworkInfo = MockFakeNetworkInfo();
+    mockFakeProductLocalDataSource = MockFakeProductLocalDataSource();
 
     productRepositoryImpl = ProductRepositoryImpl(
       remoteDataSource: mockFakeProductRemoteDataSource,
       networkInfo: mockFakeNetworkInfo,
+      localDataSource: mockFakeProductLocalDataSource,
     );
   });
 

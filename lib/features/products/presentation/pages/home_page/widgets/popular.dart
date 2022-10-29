@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../components/size_config.dart';
 
-import '../../../bloc/bloc/product_bloc.dart';
+import '../../../bloc/bloc/product_bloc/product_bloc.dart';
 import '../../../widgets/custom_food_card.dart';
 
 class PopularFoods extends StatelessWidget {
@@ -27,6 +27,7 @@ class _PopularFoodBody extends StatelessWidget {
           return SizedBox(
             height: SizeConfig.blockSizeVertical! * 45,
             child: const Center(
+              //TODO: hacer las cartas del cargando
               child: CircularProgressIndicator(),
             ),
           );

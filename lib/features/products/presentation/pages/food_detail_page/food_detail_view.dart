@@ -17,7 +17,7 @@ class FoodDetailView extends StatelessWidget {
         body: SingleChildScrollView(
           child: Stack(
             children: [
-              FoodImage(food: food),
+              FoodImage(product: food),
               DetailWidget(
                 food: food,
               ),

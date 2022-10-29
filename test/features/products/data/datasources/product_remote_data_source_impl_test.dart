@@ -1,3 +1,4 @@
+import 'package:food_order_ui/core/constantes/constantes.dart';
 import 'package:food_order_ui/core/error/exeptions.dart';
 import 'package:food_order_ui/features/products/data/datasources/product_remote_datasource.dart';
 import 'package:food_order_ui/features/products/data/models/product_model.dart';
@@ -53,7 +54,7 @@ void main() {
       setUpMockHttpClientSuccess200();
 
       dataSourceImpl.getProductById(id);
-      Uri uri = Uri.parse('http://142.93.203.173:3000/products/$id');
+      Uri uri = Uri.parse('$apiUrl/products/$id');
 
       verify(mockFakeHttpClient
           .get(uri, headers: {'Content-Type': 'application/json'}));
@@ -64,7 +65,7 @@ void main() {
 
       final result = await dataSourceImpl.getProductById(id);
 
-      Uri uri = Uri.parse('http://142.93.203.173:3000/products/$id');
+      Uri uri = Uri.parse('$apiUrl/products/$id');
       verify(mockFakeHttpClient
           .get(uri, headers: {'Content-Type': 'application/json'}));
 
@@ -119,7 +120,7 @@ void main() {
 
       dataSourceImpl.getAllProducts();
 
-      Uri uri = Uri.parse('http://5.181.217.104:10000/products/');
+      Uri uri = Uri.parse('$apiUrl/products/');
 
       verify(mockFakeHttpClient
           .get(uri, headers: {'Content-Type': 'application/json'}));
@@ -132,7 +133,7 @@ void main() {
 
       final result = await dataSourceImpl.getAllProducts();
 
-      Uri uri = Uri.parse('http://5.181.217.104:10000/products/');
+      Uri uri = Uri.parse('$apiUrl/products/');
       verify(mockFakeHttpClient
           .get(uri, headers: {'Content-Type': 'application/json'}));
 
@@ -172,7 +173,7 @@ void main() {
 
       dataSourceImpl.createProduct(tProductModel);
 
-      Uri uri = Uri.parse('http://5.181.217.104:10000/products/');
+      Uri uri = Uri.parse('$apiUrl/products/');
 
       verify(mockFakeHttpClient.post(uri,
           body: tProductModel.toJson(),
@@ -186,7 +187,7 @@ void main() {
 
       final result = await dataSourceImpl.createProduct(tProductModel);
 
-      Uri uri = Uri.parse('http://5.181.217.104:10000/products/');
+      Uri uri = Uri.parse('$apiUrl/products/');
       verify(mockFakeHttpClient.post(uri,
           body: tProductModel.toJson(),
           headers: {'Content-Type': 'application/json'}));
@@ -203,7 +204,7 @@ void main() {
       expect(() => call(tProductModel),
           throwsA(const TypeMatcher<ServerExeption>()));
 
-      Uri uri = Uri.parse('http://5.181.217.104:10000/products/');
+      Uri uri = Uri.parse('$apiUrl/products/');
       verify(mockFakeHttpClient.post(uri,
           body: tProductModel.toJson(),
           headers: {'Content-Type': 'application/json'}));

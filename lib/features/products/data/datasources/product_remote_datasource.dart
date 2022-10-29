@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:food_order_ui/core/constantes/constantes.dart';
+
 import '../../../../core/error/exeptions.dart';
 import '../models/product_model.dart';
 
@@ -20,7 +22,7 @@ class ProductRemoteDataSourceImpl implements ProductRemoteDataSource {
 
   @override
   Future<List<Product>> getAllProducts() async {
-    Uri uri = Uri.parse('http://5.181.217.104:10000/products/');
+    Uri uri = Uri.parse('$apiUrl/products/');
     final response =
         await client.get(uri, headers: {'Content-Type': 'application/json'});
 
@@ -37,7 +39,7 @@ class ProductRemoteDataSourceImpl implements ProductRemoteDataSource {
 
   @override
   Future<Product> getProductById(String id) async {
-    Uri uri = Uri.parse('http://142.93.203.173:3000/products/$id');
+    Uri uri = Uri.parse('$apiUrl/products/$id');
     final response =
         await client.get(uri, headers: {'Content-Type': 'application/json'});
 
@@ -50,7 +52,7 @@ class ProductRemoteDataSourceImpl implements ProductRemoteDataSource {
 
   @override
   Future<Product> createProduct(ProductModel product) async {
-    Uri uri = Uri.parse('http://5.181.217.104:10000/products/');
+    Uri uri = Uri.parse('$apiUrl/products/');
     final response = await client.post(uri,
         body: product.toJson(), headers: {'Content-Type': 'application/json'});
 

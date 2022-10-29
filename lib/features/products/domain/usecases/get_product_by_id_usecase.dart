@@ -9,6 +9,6 @@ class GetProductByIdUseCase {
   GetProductByIdUseCase(this.repository);
 
   Future<Either<Failure, Product>> call(id) async {
-    return repository.getProductById(id);
+    return await repository.getProductById(id);
   }
 }
