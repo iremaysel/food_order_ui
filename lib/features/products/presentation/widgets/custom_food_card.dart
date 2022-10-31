@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../payments/presentation/bloc/cart_bloc.dart';
 
 import '../../../../core/constantes/constantes.dart';
-import '../../domain/entities/product.dart';
+import '../../../../core/shared/entities/product.dart';
 import '../bloc/bloc/favorites_bloc/favorites_bloc.dart';
 import '../pages/food_detail_page/food_detail_view.dart';
 import '../pages/home_page/components/colors.dart';
@@ -162,9 +163,15 @@ class CustomFoodCard extends StatelessWidget {
                           topLeft: Radius.circular(
                               SizeConfig.blockSizeHorizontal! * 6),
                         )),
-                    child: const Icon(
-                      Icons.shopping_cart_rounded,
-                      color: Colors.white,
+                    child: GestureDetector(
+                      onTap: () {
+                        BlocProvider.of<CartBloc>(context)
+                            .add(AddedProductToCartEvent(product));
+                      },
+                      child: const Icon(
+                        Icons.shopping_cart_rounded,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ),

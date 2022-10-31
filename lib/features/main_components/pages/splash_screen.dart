@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_order_ui/features/main_components/pages/bottom_navigator.dart';
+import 'package:food_order_ui/features/products/presentation/bloc/bloc/five_starts_products_bloc/bloc/five_start_products_bloc_bloc.dart';
 import 'package:food_order_ui/features/products/presentation/bloc/bloc/product_bloc/product_bloc.dart';
 
-import '../../auth/presentation/pages/login_page/login_page_view.dart';
+import '../../products/presentation/bloc/bloc/favorites_bloc/favorites_bloc.dart';
 import '../../products/presentation/pages/home_page/components/size_config.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -13,25 +15,30 @@ class SplashScreen extends StatelessWidget {
     SizeConfig().init(context);
 
     var productBloc = BlocProvider.of<ProductBloc>(context);
+    var favoriteBloc = BlocProvider.of<FavoritesBloc>(context);
+    var fiveStartProductsBloc = BlocProvider.of<FiveStartProductsBloc>(context);
 
     productBloc.add(OnGetProductsEvent());
+    fiveStartProductsBloc.add(StartedFiveStartProductsEvent());
 
     return BlocListener<ProductBloc, ProductState>(
-      listener: (context, ProductState state) {
-        if (state is ProductsLoadedSussesState) {
-          Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (context) => const LoginPageView()));
-        } else if (state is ProductErrorState) {
-          SnackBar snackBar = const SnackBar(
-              content: Text('Ha ocurrido algun error en el server'));
-          ScaffoldMessenger.of(context).showSnackBar(snackBar);
-        }
-      },
-      child: BlocBuilder<ProductBloc, ProductState>(
-        builder: (context, state) {
-          if (productBloc.state is ProductsLoadedSussesState) {}
-
-          return Scaffold(
+        listener: (context, ProductState state) {
+          if (state is ProductsLoadedSussesState) {
+            favoriteBloc.add(StartProductToFavoritesEvent(state.productList));
+          } else if (state is ProductErrorState) {
+            SnackBar snackBar = const SnackBar(
+                content: Text('Ha ocurrido algun error en el server'));
+            ScaffoldMessenger.of(context).showSnackBar(snackBar);
+          }
+        },
+        child: BlocListener<FiveStartProductsBloc, FiveStartProductsBlocState>(
+          listener: (context, state) {
+            if (state is FiveStartProductsBlocLoadedSuccessState) {
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => MyHomePage()));
+            }
+          },
+          child: Scaffold(
             body: Container(
               decoration: const BoxDecoration(
                 image: DecorationImage(
@@ -39,9 +46,7 @@ class SplashScreen extends StatelessWidget {
                     fit: BoxFit.cover),
               ),
             ),
-          );
-        },
-      ),
-    );
+          ),
+        ));
   }
 }

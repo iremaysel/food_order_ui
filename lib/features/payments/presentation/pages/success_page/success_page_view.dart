@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../../products/presentation/pages/home_page/components/size_config.dart';
 import 'widgets/lottie_widget.dart';
 import 'widgets/ok_button.dart';

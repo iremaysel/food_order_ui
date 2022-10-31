@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../products/presentation/pages/home_page/components/size_config.dart';
-import '../../auth/presentation/pages/login_page/widgets/text_title.dart';
 
+import '../../auth/presentation/pages/login_page/widgets/text_title.dart';
+import '../../products/presentation/pages/home_page/components/size_config.dart';
 import '../widgets/start_page_body_login_button.dart';
 import '../widgets/start_page_sing_up_button.dart';
 

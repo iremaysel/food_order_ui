@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../components/size_config.dart';
+
 import '../../../../../search_products/presentation/pages/search_page/search_page_view.dart';
+import '../components/size_config.dart';
 
 class SearchFood extends StatelessWidget {
   const SearchFood({Key? key}) : super(key: key);

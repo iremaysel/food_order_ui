@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../../checkout_page/checkout_page_view.dart';
+
 import '../../../../../../products/presentation/pages/home_page/components/colors.dart';
 import '../../../../../../products/presentation/pages/home_page/components/size_config.dart';
+import '../../../checkout_page/checkout_page_view.dart';
 
 class CheckoutButton extends StatelessWidget {
   const CheckoutButton({Key? key}) : super(key: key);

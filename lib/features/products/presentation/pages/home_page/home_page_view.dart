@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+
 import '../../widgets/food_part.dart';
+import 'components/size_config.dart';
 import 'widgets/categories.dart';
 import 'widgets/discount_cart.dart';
 import 'widgets/popular.dart';
 import 'widgets/recommed.dart';
 import 'widgets/search_food.dart';
 import 'widgets/username_text.dart';
-import 'components/size_config.dart';
 
 class HomePageView extends StatefulWidget {
   const HomePageView({Key? key}) : super(key: key);
@@ -31,7 +32,7 @@ class _HomePageViewState extends State<HomePageView> {
             CategoriesFood(),
             FoodPart(partName: "Recomendados"),
             RecommedFoods(),
-            FoodPart(partName: "Popular"),
+            FoodPart(partName: "Nuestros Productos"),
             PopularFoods(),
             //Done..
           ],

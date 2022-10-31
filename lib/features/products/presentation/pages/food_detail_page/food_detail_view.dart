@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import '../../../domain/entities/product.dart';
+
+import '../../../../../core/shared/entities/product.dart';
+import '../home_page/components/size_config.dart';
 import 'widgets/detail_widget.dart';
 import 'widgets/food_image.dart';
-import '../home_page/components/size_config.dart';
 
 class FoodDetailView extends StatelessWidget {
   final Product food;
@@ -19,7 +20,7 @@ class FoodDetailView extends StatelessWidget {
             children: [
               FoodImage(product: food),
               DetailWidget(
-                food: food,
+                product: food,
               ),
             ],
           ),

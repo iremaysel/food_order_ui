@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+
 import '../../../../../../core/constantes/constantes.dart';
-import '../../../../domain/entities/product.dart';
+import '../../../../../../core/shared/entities/product.dart';
+import '../../home_page/components/size_config.dart';
 import '../components/arrow_back.dart';
 import '../components/favorite_food.dart';
-import '../../home_page/components/size_config.dart';
 
 class FoodImage extends StatelessWidget {
   final Product product;

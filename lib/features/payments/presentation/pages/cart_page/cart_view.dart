@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'widgets/bottom_bar.dart';
 import 'widgets/food_cart_list.dart';
+import 'widgets/payments_details.dart';
 
 class CartView extends StatelessWidget {
   const CartView({Key? key}) : super(key: key);
@@ -21,7 +21,7 @@ class CartView extends StatelessWidget {
         iconTheme: const IconThemeData(color: Colors.black),
       ),
       body: const FoodCartListWidget(),
-      bottomNavigationBar: const BottomBar(),
+      bottomNavigationBar: const PaymentDetails(),
     );
   }
 }

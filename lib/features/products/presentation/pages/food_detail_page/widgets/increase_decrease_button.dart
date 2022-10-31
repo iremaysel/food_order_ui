@@ -4,7 +4,7 @@ import '../components/separator.dart';
 import '../../home_page/components/colors.dart';
 import '../../home_page/components/size_config.dart';
 
-import '../../../../domain/entities/product.dart';
+import '../../../../../../core/shared/entities/product.dart';
 import '../../../bloc/cubit/increase_decrease_buttons_cubit.dart';
 
 class IncreaseDecrease extends StatelessWidget {

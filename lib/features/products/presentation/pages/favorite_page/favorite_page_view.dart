@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../bloc/bloc/favorites_bloc/favorites_bloc.dart';
 import '../../widgets/custom_food_card.dart';
 import '../home_page/components/size_config.dart';

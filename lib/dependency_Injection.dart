@@ -1,9 +1,14 @@
 import 'package:data_connection_checker_tv/data_connection_checker.dart';
-import 'package:food_order_ui/features/products/data/datasources/product_local_data_source.dart';
-import 'package:food_order_ui/features/products/domain/usecases/get_all_favorite_products_form_DB.dart';
+import 'features/products/data/datasources/product_local_data_source.dart';
+import 'features/products/domain/usecases/create_product_usecase.dart';
+import 'features/products/domain/usecases/get_all_favorite_products_form_DB.dart';
+import 'features/products/presentation/bloc/bloc/favorites_bloc/cubit/fav_icon_cubit.dart';
+import 'features/products/presentation/bloc/bloc/five_starts_products_bloc/bloc/five_start_products_bloc_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'core/platform/network/network_info.dart';
+import 'features/payments/presentation/bloc/cart_bloc.dart';
 import 'features/products/data/repositories/product_repository_imp.dart';
+import 'features/products/domain/usecases/get_all_five_start_rating_product_use_case.dart';
 import 'features/products/domain/usecases/get_product_by_id_usecase.dart';
 import 'features/products/domain/usecases/remove_favorite_product_from_DB.dart';
 import 'features/products/domain/usecases/save_product_favorites_into_db.dart';
@@ -45,7 +50,10 @@ Future<void> init() async {
   //? UseCases
 
   getIt.registerSingleton(GetAllProductsUseCase(getIt<ProductRepository>()));
+  getIt.registerSingleton(CreateProductUseCase(getIt<ProductRepository>()));
   getIt.registerSingleton(GetProductByIdUseCase(getIt<ProductRepository>()));
+  getIt.registerSingleton(
+      GetAllFiveStartRatingProductsUseCase(getIt<ProductRepository>()));
   getIt.registerSingleton(
       GetAllFavoriteProductsFromDBUseCase(getIt<ProductRepository>()));
   getIt.registerSingleton(
@@ -61,6 +69,15 @@ Future<void> init() async {
       getAllProductsUseCase: getIt<GetAllProductsUseCase>(),
     ),
   );
+  getIt.registerFactory<FiveStartProductsBloc>(
+    () => FiveStartProductsBloc(
+        getAllFiveStartRatingProductsUseCase:
+            getIt<GetAllFiveStartRatingProductsUseCase>()),
+  );
+  getIt.registerFactory<CartBloc>(
+    () => CartBloc(),
+  );
+  getIt.registerFactory(() => FavIconCubit());
   getIt.registerFactory<FavoritesBloc>(
     () => FavoritesBloc(
       getAllFavoriteProductsFromDBUseCase:

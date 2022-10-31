@@ -1,27 +1,48 @@
 import 'package:flutter/material.dart';
+import '../../../../../../../core/constantes/constantes.dart';
 
+import '../../../../../../../core/shared/entities/product.dart';
 import '../../../../../../products/presentation/pages/home_page/components/size_config.dart';
 
 class FoodImage extends StatelessWidget {
-  final String foodPathImage;
-  const FoodImage({Key? key, required this.foodPathImage}) : super(key: key);
+  final Product product;
+  const FoodImage({Key? key, required this.product}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: SizeConfig.blockSizeVertical! * 10,
+    return SizedBox(
+        height: SizeConfig.blockSizeVertical! * 10,
 
-      /// 80.0
-      width: SizeConfig.blockSizeHorizontal! * 25,
+        /// 80.0
+        width: SizeConfig.blockSizeHorizontal! * 25,
 
-      /// 90.0
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(foodPathImage),
-          fit: BoxFit.cover,
-        ),
-        borderRadius: BorderRadius.circular(SizeConfig.blockSizeVertical! * 2),
-      ),
-    );
+        /// 90.0
+
+        child: product.img == 'no-image.png'
+            ? ClipRRect(
+                borderRadius: BorderRadius.only(
+                    topLeft:
+                        Radius.circular(SizeConfig.blockSizeHorizontal! * 4),
+                    topRight:
+                        Radius.circular(SizeConfig.blockSizeHorizontal! * 4)),
+                child: Image.asset(
+                  'assets/main/no_image.jpeg',
+                  fit: BoxFit.cover,
+                ),
+              )
+            : ClipRRect(
+                borderRadius: BorderRadius.only(
+                    topLeft:
+                        Radius.circular(SizeConfig.blockSizeHorizontal! * 4),
+                    topRight:
+                        Radius.circular(SizeConfig.blockSizeHorizontal! * 4)),
+                child: FadeInImage(
+                  fit: BoxFit.fill,
+                  placeholder: const AssetImage('assets/main/loading.gif'),
+                  image: NetworkImage(
+                    '$apiUrl/uploads/products/${product.uid}',
+                  ),
+                ),
+              ));
   }
 }

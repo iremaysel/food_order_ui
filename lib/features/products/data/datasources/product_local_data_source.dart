@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../domain/entities/product.dart';
+import '../../../../core/shared/entities/product.dart';
 import '../models/product_model.dart';
 
 abstract class ProductLocalDataSource {
@@ -16,7 +16,7 @@ class ProductLocalDataSourceImpl extends ProductLocalDataSource {
 
   ProductLocalDataSourceImpl({required this.sharedP});
 
-  List<Product> getListOfProductFromDb() {
+  List<Product> getListOfFavoritesProductFromDb() {
     String? productListJson = sharedP.getString('favorites');
 
     if (productListJson != null) {
@@ -35,16 +35,23 @@ class ProductLocalDataSourceImpl extends ProductLocalDataSource {
 
   @override
   Future<Product> saveProductFavoriteIntoDB(ProductModel product) {
-    List<Product> listProducts = getListOfProductFromDb();
+    List<Product> listProducts = getListOfFavoritesProductFromDb();
 
     if (listProducts.contains(product)) {
-      String newProductList = json.encode(listProducts);
-
-      sharedP.setString('favorites', newProductList);
-
       return Future.value(product);
     } else {
+      for (var i = 0; i < listProducts.length; i++) {
+        if (listProducts[i].uid == product.uid) {
+          listProducts.removeAt(i);
+        }
+      }
+
       listProducts.add(product);
+      listProducts.sort(
+        (a, b) => a.name.compareTo(b.name),
+      );
+
+      print(listProducts);
 
       String newProductList = json.encode(listProducts);
 
@@ -56,13 +63,13 @@ class ProductLocalDataSourceImpl extends ProductLocalDataSource {
 
   @override
   Future<List<Product>> getAllFavoriteProductsFromDB() async {
-    List<Product> listProducts = getListOfProductFromDb();
+    List<Product> listProducts = getListOfFavoritesProductFromDb();
     return Future.value(listProducts);
   }
 
   @override
   Future<Product> removeProductFavoriteIntoDB(ProductModel product) async {
-    List<Product> listProducts = getListOfProductFromDb();
+    List<Product> listProducts = getListOfFavoritesProductFromDb();
 
     listProducts.remove(product);
 

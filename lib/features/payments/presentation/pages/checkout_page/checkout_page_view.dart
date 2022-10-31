@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'widgets/address.dart';
-import 'widgets/payment.dart';
+
 import '../../../../products/presentation/pages/home_page/components/colors.dart';
 import '../../../../products/presentation/pages/home_page/components/size_config.dart';
 import '../success_page/success_page_view.dart';
+import 'widgets/address.dart';
+import 'widgets/payment.dart';
 
 class CheckoutPageView extends StatefulWidget {
   const CheckoutPageView({Key? key}) : super(key: key);

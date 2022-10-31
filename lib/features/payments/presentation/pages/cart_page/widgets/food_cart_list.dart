@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import '../../../../../../core/util/food.dart';
-import '../../../../../../core/util/food_list.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../../../core/shared/entities/product.dart';
+import 'package:lottie/lottie.dart';
+import '../../../bloc/cart_bloc.dart';
 import 'food_list_widget/delete_icon_button.dart';
 import 'food_list_widget/food_text.dart';
 import 'food_list_widget/food_image.dart';
 import '../../../../../products/presentation/pages/home_page/components/size_config.dart';
-import 'package:lottie/lottie.dart';
 
 class FoodCartListWidget extends StatelessWidget {
   const FoodCartListWidget({Key? key}) : super(key: key);
@@ -13,45 +14,67 @@ class FoodCartListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:
-          EdgeInsets.symmetric(horizontal: SizeConfig.blockSizeHorizontal! * 5),
-      child: FutureBuilder<List<Food>>(
-          future: bringTheFoods(),
-          builder: (context, AsyncSnapshot<List<Food>> snapshot) {
-            if (snapshot.hasData) {
-              var foodList = snapshot.data;
-              return ListView.builder(
-                  itemCount: 3,
-                  itemBuilder: (context, int index) {
-                    var food = foodList![index];
-                    return HorizontalCartCardFood(food: food);
-                  });
-            } else {
-              return SizedBox(
-                  child: Center(
-                child: Lottie.network(
-                    "https://assets10.lottiefiles.com/packages/lf20_peztuj79.json",
-                    height: SizeConfig.screenHeight! / 6.83,
-
-                    /// 100.0
-                    width: SizeConfig.screenWidth! / 4.11,
-
-                    /// 100.0
-                    repeat: false),
-              ));
+        padding: EdgeInsets.symmetric(
+            horizontal: SizeConfig.blockSizeHorizontal! * 5),
+        child: BlocBuilder<CartBloc, CartState>(
+          builder: (context, CartState state) {
+            if (state is CartInitial) {
+              return Center(
+                child: SizedBox(
+                    height: SizeConfig.blockSizeVertical! * 30,
+                    child: Center(
+                      child: Lottie.asset(
+                        'assets/discount/cart.json',
+                        fit: BoxFit.cover,
+                      ),
+                    )),
+              );
             }
-          }),
-    );
+
+            if (state is CartLoadingState) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+
+            if (state is CartLoadedState) {
+              var foodList = state.listProducts;
+              if (foodList.isEmpty) {
+                return Center(
+                  child: SizedBox(
+                      height: SizeConfig.blockSizeVertical! * 30,
+                      child: Center(
+                        child: Lottie.asset(
+                          'assets/discount/cart.json',
+                          fit: BoxFit.cover,
+                        ),
+                      )),
+                );
+              }
+
+              return ListView.builder(
+                  itemCount: state.listProducts.length,
+                  itemBuilder: (context, int index) {
+                    var food = foodList[index];
+                    return HorizontalCartCardFood(product: food);
+                  });
+            } else if (state is CartErrorState) {
+              return const Text("Ha ocurrido algun Error");
+            } else {
+              return Container();
+            }
+          },
+        ));
   }
 }
 
 class HorizontalCartCardFood extends StatelessWidget {
   const HorizontalCartCardFood({
     Key? key,
-    required this.food,
+    required this.product,
   }) : super(key: key);
 
-  final Food food;
+  final Product product;
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +86,10 @@ class HorizontalCartCardFood extends StatelessWidget {
       child: Dismissible(
         key: UniqueKey(),
         direction: DismissDirection.endToStart,
-        onDismissed: (direction) {},
+        onDismissed: (direction) {
+          BlocProvider.of<CartBloc>(context)
+              .add(RemovedProductToCartEvent(product));
+        },
         background: Container(
           padding: EdgeInsets.symmetric(
               horizontal: SizeConfig.blockSizeHorizontal! * 2),
@@ -92,15 +118,15 @@ class HorizontalCartCardFood extends StatelessWidget {
               ]),
           child: Row(
             children: [
-              FoodImage(foodPathImage: food.foodImageName),
+              FoodImage(product: product),
               SizedBox(width: SizeConfig.blockSizeHorizontal! * 3),
               FoodTextBody(
-                foodName: food.foodName,
-                foodPrice: food.foodPrice,
+                foodName: product.name,
+                foodPrice: product.price.toString(),
                 cantity: '1',
               ),
               const Spacer(),
-              DeleteIconButton(foodName: food.foodName),
+              DeleteIconButton(product: product),
             ],
           ),
         ),

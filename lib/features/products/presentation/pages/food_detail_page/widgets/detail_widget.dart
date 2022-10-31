@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import '../../../../domain/entities/product.dart';
-import 'addtocart_button.dart';
-import '../components/review.dart';
-import 'food_description.dart';
-import 'increase_decrease_button.dart';
+
+import '../../../../../../core/shared/entities/product.dart';
 import '../../home_page/components/size_config.dart';
+import '../components/review.dart';
+import 'addtocart_button.dart';
+import 'food_description.dart';
 import 'food_name.dart';
+import 'increase_decrease_button.dart';
 
 class DetailWidget extends StatelessWidget {
-  final Product food;
-  const DetailWidget({Key? key, required this.food}) : super(key: key);
+  final Product product;
+  const DetailWidget({Key? key, required this.product}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,11 +32,11 @@ class DetailWidget extends StatelessWidget {
         padding: EdgeInsets.all(SizeConfig.blockSizeHorizontal! * 6),
         child: Column(
           children: [
-            FoodName(food: food),
-            ReviewStars(product: food),
-            FoodDescription(product: food),
-            IncreaseDecrease(product: food),
-            const AddToCartButton(),
+            FoodName(food: product),
+            ReviewStars(product: product),
+            FoodDescription(product: product),
+            IncreaseDecrease(product: product),
+            AddToCartButton(product: product),
           ],
         ),
       ),

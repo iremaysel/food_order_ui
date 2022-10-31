@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:food_order_ui/features/products/domain/entities/product.dart';
-import 'package:food_order_ui/features/products/domain/usecases/get_all_favorite_products_form_DB.dart';
+import '../../../../../../core/shared/entities/product.dart';
+import '../../../../domain/usecases/get_all_favorite_products_form_DB.dart';
 
 import '../../../../domain/usecases/remove_favorite_product_from_DB.dart';
 import '../../../../domain/usecases/save_product_favorites_into_db.dart';
@@ -36,7 +36,15 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
       eitherProductList
           .fold((failure) => emit(const FavoritesErrorState('Server Error')),
               (producList) {
-        favoriteList = producList;
+        for (var i = 0; i < event.listProduct.length; i++) {
+          for (var j = 0; j < producList.length; j++) {
+            if (event.listProduct[i].uid == producList[j].uid) {
+              favoriteList.add(event.listProduct[i]);
+              saveProductFavoriteIntoDBUseCase(event.listProduct[i]);
+            }
+          }
+        }
+
         emit(FavoritesLoadedState(favoriteList));
       });
     } catch (_) {

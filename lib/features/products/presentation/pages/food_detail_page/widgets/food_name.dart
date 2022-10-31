@@ -1,5 +1,7 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import '../../../../domain/entities/product.dart';
+
+import '../../../../../../core/shared/entities/product.dart';
 import '../../home_page/components/size_config.dart';
 
 class FoodName extends StatelessWidget {
@@ -34,11 +36,15 @@ class FoodName extends StatelessWidget {
           ],
         ),
         const Spacer(),
-        Text(
-          "\$${food.price}",
-          style: TextStyle(
-            color: Colors.black87,
-            fontSize: SizeConfig.blockSizeHorizontal! * 7,
+        SizedBox(
+          width: SizeConfig.blockSizeHorizontal! * 16,
+          child: AutoSizeText(
+            maxLines: 1,
+            "\$${food.price}",
+            style: TextStyle(
+              color: Colors.black87,
+              fontSize: SizeConfig.blockSizeHorizontal! * 7,
+            ),
           ),
         ),
 

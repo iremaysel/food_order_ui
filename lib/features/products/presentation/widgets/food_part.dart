@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../pages/home_page/components/size_config.dart';
 
 class FoodPart extends StatelessWidget {

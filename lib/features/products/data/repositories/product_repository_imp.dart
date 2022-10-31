@@ -1,13 +1,13 @@
-import 'package:food_order_ui/features/products/data/datasources/product_local_data_source.dart';
+import 'package:dartz/dartz.dart';
 
 import '../../../../core/error/exeptions.dart';
+import '../../../../core/error/failure.dart';
 import '../../../../core/platform/network/network_info.dart';
+import '../../../../core/shared/entities/product.dart';
+import '../../domain/repositories/product_repository.dart';
+import '../datasources/product_local_data_source.dart';
 import '../datasources/product_remote_datasource.dart';
 import '../models/product_model.dart';
-import '../../domain/entities/product.dart';
-import '../../../../core/error/failure.dart';
-import 'package:dartz/dartz.dart';
-import '../../domain/repositories/product_repository.dart';
 
 class ProductRepositoryImpl extends ProductRepository {
   final ProductRemoteDataSource remoteDataSource;
@@ -86,6 +86,15 @@ class ProductRepositoryImpl extends ProductRepository {
     try {
       return Right(await localDataSource
           .removeProductFavoriteIntoDB(product as ProductModel));
+    } on ServerExeption {
+      return const Left(ServerFailure(properties: []));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<Product>>> getAllFiveStartRatingProducts() async {
+    try {
+      return Right(await remoteDataSource.getAllFiveStartRatingProducts());
     } on ServerExeption {
       return const Left(ServerFailure(properties: []));
     }

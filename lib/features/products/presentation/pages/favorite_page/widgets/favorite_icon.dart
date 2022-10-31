@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../home_page/components/size_config.dart';
 
 class FavoriteIcon extends StatefulWidget {

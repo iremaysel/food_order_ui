@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:food_order_ui/features/products/data/models/product_model.dart';
-import 'package:food_order_ui/features/products/domain/entities/product.dart';
+import 'package:food_order_ui/core/shared/entities/product.dart';
 import 'package:test/test.dart';
 
 import '../../../../fixtures/fixture_reader.dart';

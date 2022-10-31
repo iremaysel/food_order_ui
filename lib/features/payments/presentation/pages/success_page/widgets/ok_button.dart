@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../../../main_components/pages/bottom_navigator.dart';
 import '../../../../../products/presentation/pages/home_page/components/colors.dart';
 import '../../../../../products/presentation/pages/home_page/components/size_config.dart';

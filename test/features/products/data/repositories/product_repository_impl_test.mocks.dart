@@ -7,8 +7,7 @@ import 'dart:async' as _i4;
 
 import 'package:food_order_ui/features/products/data/models/product_model.dart'
     as _i5;
-import 'package:food_order_ui/features/products/domain/entities/product.dart'
-    as _i2;
+import 'package:food_order_ui/core/shared/entities/product.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 
 import 'product_repository_impl_test.dart' as _i3;

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+
+import '../../../../../../core/shared/entities/product.dart';
 import '../../home_page/components/colors.dart';
 import '../../home_page/components/size_config.dart';
-
-import '../../../../domain/entities/product.dart';
 
 class ReviewStars extends StatelessWidget {
   final Product product;

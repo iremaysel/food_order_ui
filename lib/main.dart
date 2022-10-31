@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_order_ui/features/products/presentation/bloc/bloc/favorites_bloc/favorites_bloc.dart';
+import 'features/products/presentation/bloc/bloc/favorites_bloc/favorites_bloc.dart';
+import 'features/products/presentation/bloc/bloc/five_starts_products_bloc/bloc/five_start_products_bloc_bloc.dart';
 import 'dependency_Injection.dart' as sl;
 import 'features/main_components/pages/splash_screen.dart';
 
 import 'dependency_Injection.dart';
+import 'features/payments/presentation/bloc/cart_bloc.dart';
 import 'features/products/domain/usecases/get_all_favorite_products_form_DB.dart';
+import 'features/products/domain/usecases/get_all_five_start_rating_product_use_case.dart';
 import 'features/products/domain/usecases/get_all_products_usecase.dart';
 import 'features/products/domain/usecases/get_product_by_id_usecase.dart';
 import 'features/products/domain/usecases/remove_favorite_product_from_DB.dart';
@@ -23,15 +26,22 @@ void main() async {
       ),
     ),
     BlocProvider(
-      create: (_) => FavoritesBloc(
-          getAllFavoriteProductsFromDBUseCase:
-              getIt<GetAllFavoriteProductsFromDBUseCase>(),
-          removeFavoriteProductFromDBUseCase:
-              getIt<RemoveFavoriteProductFromDBUseCase>(),
-          saveProductFavoriteIntoDBUseCase:
-              getIt<SaveProductFavoriteIntoDBUseCase>())
-        ..add(StartProductToFavoritesEvent()),
+      create: (_) => FiveStartProductsBloc(
+        getAllFiveStartRatingProductsUseCase:
+            getIt<GetAllFiveStartRatingProductsUseCase>(),
+      ),
     ),
+    BlocProvider(
+      create: (_) => CartBloc(),
+    ),
+    BlocProvider(
+        create: (_) => FavoritesBloc(
+            getAllFavoriteProductsFromDBUseCase:
+                getIt<GetAllFavoriteProductsFromDBUseCase>(),
+            removeFavoriteProductFromDBUseCase:
+                getIt<RemoveFavoriteProductFromDBUseCase>(),
+            saveProductFavoriteIntoDBUseCase:
+                getIt<SaveProductFavoriteIntoDBUseCase>())),
   ], child: const MyApp()));
 }
 

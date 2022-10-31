@@ -1,14 +1,14 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../payments/presentation/pages/cart_page/cart_view.dart';
 import '../../products/presentation/pages/favorite_page/favorite_page_view.dart';
 import '../../products/presentation/pages/home_page/components/colors.dart';
 import '../../products/presentation/pages/home_page/components/size_config.dart';
 import '../../products/presentation/pages/home_page/home_page_view.dart';
-import '../../user_profile/presentation/pages/profile_page/profile_page_view.dart';
 import '../../search_products/presentation/pages/search_page/search_page_view.dart';
-
+import '../../user_profile/presentation/pages/profile_page/profile_page_view.dart';
 import '../bloc/cubit/nav_bar_cubit_cubit.dart';
 
 class MyHomePage extends StatelessWidget {

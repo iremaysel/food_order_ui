@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 
-import 'package:food_order_ui/features/products/domain/entities/product.dart';
+import 'package:food_order_ui/core/shared/entities/product.dart';
 import 'package:food_order_ui/features/products/domain/repositories/product_repository.dart';
 import 'package:food_order_ui/features/products/domain/usecases/get_all_products_usecase.dart';
 

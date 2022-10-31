@@ -7,8 +7,7 @@ import 'dart:async' as _i4;
 
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:food_order_ui/core/error/failure.dart' as _i5;
-import 'package:food_order_ui/features/products/domain/entities/product.dart'
-    as _i6;
+import 'package:food_order_ui/core/shared/entities/product.dart' as _i6;
 import 'package:mockito/mockito.dart' as _i1;
 
 import 'create_product_test.dart' as _i3;

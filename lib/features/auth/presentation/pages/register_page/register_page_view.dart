@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+
 import '../../widgets/login_button.dart';
-import 'widgets/background_image.dart';
 import '../../widgets/text_signup_or_singin.dart';
 import '../login_page/login_page_view.dart';
+import 'widgets/background_image.dart';
 import 'widgets/text_field.dart';
 
 class RegisterPageView extends StatelessWidget {

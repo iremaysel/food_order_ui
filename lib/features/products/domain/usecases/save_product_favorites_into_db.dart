@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:food_order_ui/features/products/domain/repositories/product_repository.dart';
+import '../repositories/product_repository.dart';
 
 import '../../../../core/error/failure.dart';
-import '../entities/product.dart';
+import '../../../../core/shared/entities/product.dart';
 
 class SaveProductFavoriteIntoDBUseCase {
   final ProductRepository repository;
