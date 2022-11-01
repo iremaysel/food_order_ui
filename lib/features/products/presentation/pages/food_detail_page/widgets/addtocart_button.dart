@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_order_ui/features/products/presentation/bloc/cubit/increase_decrease_buttons_cubit.dart';
 
 import '../../../../../../core/shared/entities/product.dart';
 import '../../../../../payments/presentation/bloc/cart_bloc.dart';
@@ -12,14 +13,11 @@ class AddToCartButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var count = BlocProvider.of<IncreaseDecreaseButtonsCubit>(context);
     SizeConfig().init(context);
     return BlocListener<CartBloc, CartState>(
       listener: (context, state) {
-        if (state is CartLoadedState) {
-          var snackBar = const SnackBar(
-              content: Text('Se adiciono el producto al carrito'));
-          ScaffoldMessenger.of(context).showSnackBar(snackBar);
-        }
+        if (state is CartLoadedState) {}
       },
       child: Padding(
         padding: EdgeInsets.fromLTRB(
@@ -50,8 +48,16 @@ class AddToCartButton extends StatelessWidget {
               )),
             ),
             onPressed: () {
-              BlocProvider.of<CartBloc>(context)
-                  .add(AddedProductToCartEvent(product));
+              for (var i = 0; i < count.state.cant; i++) {
+                BlocProvider.of<CartBloc>(context)
+                    .add(AddedProductToCartEvent(product));
+              }
+
+              var snackBar = SnackBar(
+                  duration: const Duration(milliseconds: 1200),
+                  content: Text(
+                      'Se adiciono ${count.state.cant} productos al carrito'));
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
             },
             child: Wrap(
               children: [

@@ -13,6 +13,7 @@ class FoodCartListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var cartBloc = BlocProvider.of<CartBloc>(context);
     return Padding(
         padding: EdgeInsets.symmetric(
             horizontal: SizeConfig.blockSizeHorizontal! * 5),
@@ -39,6 +40,7 @@ class FoodCartListWidget extends StatelessWidget {
 
             if (state is CartLoadedState) {
               var foodList = state.listProducts;
+
               if (foodList.isEmpty) {
                 return Center(
                   child: SizedBox(
@@ -53,10 +55,19 @@ class FoodCartListWidget extends StatelessWidget {
               }
 
               return ListView.builder(
-                  itemCount: state.listProducts.length,
+                  itemCount:
+                      cartBloc.productQuantity(state.listProducts).keys.length,
                   itemBuilder: (context, int index) {
-                    var food = foodList[index];
-                    return HorizontalCartCardFood(product: food);
+                    return HorizontalCartCardFood(
+                      product: cartBloc
+                          .productQuantity(state.listProducts)
+                          .keys
+                          .elementAt(index),
+                      quantity: cartBloc
+                          .productQuantity(state.listProducts)
+                          .values
+                          .elementAt(index),
+                    );
                   });
             } else if (state is CartErrorState) {
               return const Text("Ha ocurrido algun Error");
@@ -72,9 +83,11 @@ class HorizontalCartCardFood extends StatelessWidget {
   const HorizontalCartCardFood({
     Key? key,
     required this.product,
+    required this.quantity,
   }) : super(key: key);
 
   final Product product;
+  final int quantity;
 
   @override
   Widget build(BuildContext context) {
@@ -123,7 +136,7 @@ class HorizontalCartCardFood extends StatelessWidget {
               FoodTextBody(
                 foodName: product.name,
                 foodPrice: product.price.toString(),
-                cantity: '1',
+                cantity: quantity,
               ),
               const Spacer(),
               DeleteIconButton(product: product),

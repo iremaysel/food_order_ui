@@ -6,7 +6,7 @@ import '../../../../../../products/presentation/pages/home_page/components/size_
 class FoodTextBody extends StatelessWidget {
   final String foodName;
   final String foodPrice;
-  final String cantity;
+  final int cantity;
   const FoodTextBody(
       {Key? key,
       required this.foodName,

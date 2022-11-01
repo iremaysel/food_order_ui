@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_order_ui/features/products/presentation/bloc/cubit/increase_decrease_buttons_cubit.dart';
 
 import '../../../../../core/shared/entities/product.dart';
 import '../home_page/components/size_config.dart';
@@ -16,13 +18,16 @@ class FoodDetailView extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.white,
         body: SingleChildScrollView(
-          child: Stack(
-            children: [
-              FoodImage(product: food),
-              DetailWidget(
-                product: food,
-              ),
-            ],
+          child: BlocProvider(
+            create: (context) => IncreaseDecreaseButtonsCubit(),
+            child: Stack(
+              children: [
+                FoodImage(product: food),
+                DetailWidget(
+                  product: food,
+                ),
+              ],
+            ),
           ),
         ),
       ),
