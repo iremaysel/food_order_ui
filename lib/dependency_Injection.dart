@@ -1,4 +1,12 @@
 import 'package:data_connection_checker_tv/data_connection_checker.dart';
+import 'package:food_order_ui/features/auth/data/repositories/auth_user_repository_impl.dart';
+import 'package:food_order_ui/features/auth/domain/repositories/auth_user_repository.dart';
+import 'package:food_order_ui/features/auth/domain/usecases/login_user_with_email_and_password_usecase.dart';
+import 'package:food_order_ui/features/auth/domain/usecases/register_user_with_email_and_password_usecase.dart';
+import 'package:food_order_ui/features/auth/presentation/pages/bloc/authetication/authentication_bloc.dart';
+import 'package:food_order_ui/features/auth/presentation/pages/bloc/login/login_bloc.dart';
+
+import 'features/auth/data/datasource/user_remote_data_source.dart';
 import 'features/products/data/datasources/product_local_data_source.dart';
 import 'features/products/domain/usecases/create_product_usecase.dart';
 import 'features/products/domain/usecases/get_all_favorite_products_form_DB.dart';
@@ -29,10 +37,15 @@ Future<void> init() async {
 
   getIt.registerSingleton<NetworkInfo>(
       NetworkInfoImpl(getIt<DataConnectionChecker>()));
+
   getIt.registerLazySingletonAsync<SharedPreferences>(
       () async => SharedPreferences.getInstance());
 
 //////////////////////////////////////////////////////////////
+  //? DataSources
+
+  getIt.registerSingleton<UserRemoteDataSource>(UserRemoteDataSourceImpl(
+      client: getIt<http.Client>(), sharedPreferences: await getIt.getAsync()));
 
   getIt.registerSingleton<ProductRemoteDataSource>(
       ProductRemoteDataSourceImpl(client: getIt()));
@@ -42,12 +55,17 @@ Future<void> init() async {
 
   //?Repositories
 
+  getIt.registerSingleton<AuthUserRepository>(AuthUserRepositoryImpl(
+      networkInfo: getIt<NetworkInfo>(),
+      userRemoteDataSource: getIt<UserRemoteDataSource>()));
+
   getIt.registerSingleton<ProductRepository>(ProductRepositoryImpl(
       localDataSource: getIt<ProductLocalDataSource>(),
       networkInfo: getIt<NetworkInfo>(),
       remoteDataSource: getIt<ProductRemoteDataSource>()));
 
   //? UseCases
+  //?Product UseCases...
 
   getIt.registerSingleton(GetAllProductsUseCase(getIt<ProductRepository>()));
   getIt.registerSingleton(CreateProductUseCase(getIt<ProductRepository>()));
@@ -60,6 +78,12 @@ Future<void> init() async {
       SaveProductFavoriteIntoDBUseCase(getIt<ProductRepository>()));
   getIt.registerSingleton(
       RemoveFavoriteProductFromDBUseCase(getIt<ProductRepository>()));
+
+  //? User UseCase...
+  getIt.registerLazySingleton(
+      () => LoginUserWithEmailAndPasswordUsecase(getIt<AuthUserRepository>()));
+  getIt.registerLazySingleton(() =>
+      RegisterUserWithEmailAndPasswordUsecase(getIt<AuthUserRepository>()));
 
   //? Blocs
   //Blocs
@@ -88,6 +112,14 @@ Future<void> init() async {
           getIt<SaveProductFavoriteIntoDBUseCase>(),
     ),
   );
+  final SharedPreferences sharedPreferencesInstance = await getIt.getAsync();
+  getIt.registerFactory<AuthenticationBloc>(
+      () => AuthenticationBloc(sharedPreferences: sharedPreferencesInstance));
+
+  getIt.registerFactoryAsync(() async => LoginBloc(
+      authenticationBloc: getIt<AuthenticationBloc>(),
+      sharedPreferences: sharedPreferencesInstance,
+      usecase: getIt<LoginUserWithEmailAndPasswordUsecase>()));
 
   //Core
 }

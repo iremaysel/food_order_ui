@@ -16,7 +16,7 @@ class PaymentDetails extends StatelessWidget {
     var cartBloc = BlocProvider.of<CartBloc>(context);
     return Container(
       padding: EdgeInsets.symmetric(
-        vertical: SizeConfig.blockSizeVertical! * 5,
+        vertical: SizeConfig.blockSizeVertical! * 3,
         horizontal: SizeConfig.blockSizeHorizontal! * 6,
       ),
       // height: 174,
@@ -27,13 +27,16 @@ class PaymentDetails extends StatelessWidget {
         child: BlocBuilder<CartBloc, CartState>(
           builder: (context, state) {
             if (state is CartLoadedState) {
+              if (state.listProducts.isEmpty) {
+                return const SizedBox();
+              }
               return Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
                     padding: EdgeInsets.only(
-                        bottom: SizeConfig.blockSizeVertical! * 5),
+                        bottom: SizeConfig.blockSizeVertical! * 1),
 
                     /// 8.0
                     child: const MySeparator(
@@ -47,19 +50,28 @@ class PaymentDetails extends StatelessWidget {
 
                   /// 15.0
                   BottomBarText(
-                      titletext: "Subtotal",
+                      titletext: "SubTotal",
                       pricetext: "\$${cartBloc.subTotalString}",
                       fontsize: SizeConfig.blockSizeHorizontal! * 4.5,
                       fontWeight: FontWeight.w400,
                       textcolor: Colors.black54),
 
-                  /// 15
                   SizedBox(
                     height: SizeConfig.blockSizeVertical! * 2,
                   ),
                   BottomBarText(
-                    titletext: "Fee",
-                    pricetext: "\$${cartBloc.deliveryFeeString}",
+                      titletext: "Domicio",
+                      pricetext: "\$${cartBloc.deliveryFeeString}",
+                      fontsize: SizeConfig.blockSizeHorizontal! * 4.5,
+                      fontWeight: FontWeight.w400,
+                      textcolor: Colors.black54),
+
+                  SizedBox(
+                    height: SizeConfig.blockSizeVertical! * 2,
+                  ),
+                  BottomBarText(
+                    titletext: "Entrega Gratis",
+                    pricetext: cartBloc.freeDeliveryString,
                     fontsize: SizeConfig.blockSizeHorizontal! * 4.5,
                     fontWeight: FontWeight.w400,
                     textcolor: Colors.black54,
@@ -90,7 +102,7 @@ class PaymentDetails extends StatelessWidget {
                 child: CircularProgressIndicator(),
               );
             } else {
-              return const Text('Error');
+              return const SizedBox();
             }
           },
         ),

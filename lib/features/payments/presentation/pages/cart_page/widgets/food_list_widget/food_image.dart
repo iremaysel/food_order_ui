@@ -12,30 +12,21 @@ class FoodImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
         height: SizeConfig.blockSizeVertical! * 10,
-
-        /// 80.0
         width: SizeConfig.blockSizeHorizontal! * 25,
-
-        /// 90.0
-
         child: product.img == 'no-image.png'
             ? ClipRRect(
-                borderRadius: BorderRadius.only(
-                    topLeft:
-                        Radius.circular(SizeConfig.blockSizeHorizontal! * 4),
-                    topRight:
-                        Radius.circular(SizeConfig.blockSizeHorizontal! * 4)),
+                borderRadius: BorderRadius.all(
+                  Radius.circular(SizeConfig.blockSizeHorizontal! * 4),
+                ),
                 child: Image.asset(
                   'assets/main/no_image.jpeg',
                   fit: BoxFit.cover,
                 ),
               )
             : ClipRRect(
-                borderRadius: BorderRadius.only(
-                    topLeft:
-                        Radius.circular(SizeConfig.blockSizeHorizontal! * 4),
-                    topRight:
-                        Radius.circular(SizeConfig.blockSizeHorizontal! * 4)),
+                borderRadius: BorderRadius.all(
+                  Radius.circular(SizeConfig.blockSizeHorizontal! * 4),
+                ),
                 child: FadeInImage(
                   fit: BoxFit.fill,
                   placeholder: const AssetImage('assets/main/loading.gif'),

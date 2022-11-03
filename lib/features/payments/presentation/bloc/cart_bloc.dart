@@ -19,19 +19,19 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       _cartListProducts.fold(0, (total, current) => total + current.price);
 
   double deliveryFee(double subtotal) {
-    if (subtotal >= 30.0) {
+    if (subtotal >= 500) {
       return 0.0;
     } else {
-      return 10;
+      return 50;
     }
   }
 
   String freeDelivery(double subtotal) {
-    if (subtotal >= 30.0) {
-      return 'You Have a free delivery';
+    if (subtotal >= 500) {
+      return 'Entrega Gratis';
     } else {
       double missing = 30.0 - subtotal;
-      return 'Add \$${missing.toString()} for free Delivery';
+      return '\$${missing.toString()} para entrega gratis';
     }
   }
 
@@ -49,18 +49,6 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     }
     return quantity;
   }
-
-  // List<Map> productQuantity(List<Product> products) {
-  //   List<Map> list = [];
-
-  //   for (var i = 0; i < products.length; i++) {
-  //     for (var j = 0; j < list.length; j++) {
-  //       if (products[i] == list[j]['product']) {}
-  //     }
-  //   }
-
-  //   return list;
-  // }
 
   double total(double subtotal, double deliveryFee) {
     return subtotal + deliveryFee;

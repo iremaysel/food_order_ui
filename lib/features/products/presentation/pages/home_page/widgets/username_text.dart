@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_order_ui/features/auth/presentation/pages/bloc/login/login_bloc.dart';
 
 import '../components/colors.dart';
 import '../components/size_config.dart';
@@ -33,12 +35,26 @@ class UserNameText extends StatelessWidget {
                         top: SizeConfig.blockSizeVertical! * 1,
                         bottom: SizeConfig.blockSizeVertical! * 1),
 
-                    child: Text(
-                      "Hola $username",
-                      style: TextStyle(
-                          fontSize: SizeConfig.blockSizeHorizontal! * 8,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black87),
+                    child: BlocBuilder<LoginBloc, LoginState>(
+                      builder: (context, state) {
+                        if (state is LoginSussess) {
+                          return Text(
+                            "Hola ${state.user.fullName}",
+                            style: TextStyle(
+                                fontSize: SizeConfig.blockSizeHorizontal! * 8,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black87),
+                          );
+                        } else {
+                          return Text(
+                            "Hola Usuario",
+                            style: TextStyle(
+                                fontSize: SizeConfig.blockSizeHorizontal! * 8,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black87),
+                          );
+                        }
+                      },
                     ),
 
                     /// 23
@@ -57,7 +73,7 @@ class UserNameText extends StatelessWidget {
                 ],
               ),
               Text(
-                "Are you hungry?",
+                "Tienes Hambre?",
                 style: TextStyle(
                     fontSize: SizeConfig.blockSizeHorizontal! * 5.5,
                     color: Colors.black54),

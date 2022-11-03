@@ -165,8 +165,18 @@ class CustomFoodCard extends StatelessWidget {
                         )),
                     child: GestureDetector(
                       onTap: () {
-                        BlocProvider.of<CartBloc>(context)
-                            .add(AddedProductToCartEvent(product));
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                                "Desea Adicionar ${product.name} al carrito?"),
+                            action: SnackBarAction(
+                                label: "Yes",
+                                onPressed: () {
+                                  BlocProvider.of<CartBloc>(context)
+                                      .add(AddedProductToCartEvent(product));
+                                }),
+                          ),
+                        );
                       },
                       child: const Icon(
                         Icons.shopping_cart_rounded,
