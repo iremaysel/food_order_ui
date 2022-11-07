@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_order_ui/features/auth/presentation/pages/bloc/login/login_bloc.dart';
+
+import '../../bloc/authetication/authentication_bloc.dart';
+import '../../bloc/cubit/login_text_fields_helper_cubit.dart';
+import '../../bloc/login/login_bloc.dart';
 import 'widgets/text_field.dart';
 import '../register_page/register_page_view.dart';
 import '../../../../main_components/pages/bottom_navigator.dart';
@@ -29,15 +32,21 @@ class _LoginPageBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final loginBloc = BlocProvider.of<LoginBloc>(context);
+    final _formKey = GlobalKey<FormState>();
     return SingleChildScrollView(
       child: Column(
         children: [
           const LogoImage(),
-          const LoginTextField(),
+          Form(
+              key: _formKey,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              child: const LoginTextField()),
           const ForgotPassword(),
           BlocListener<LoginBloc, LoginState>(
             listener: (context, state) {
               if (state is LoginSussess) {
+                BlocProvider.of<AuthenticationBloc>(context)
+                    .add(LoggedIn(user: state.user, token: state.token));
                 Navigator.pushReplacement(context,
                     MaterialPageRoute(builder: (context) => MyHomePage()));
               }
@@ -50,14 +59,25 @@ class _LoginPageBody extends StatelessWidget {
                       );
                     }));
               }
+              if (state is LoginError) {
+                Navigator.pop(context);
+                SnackBar snackBar = const SnackBar(
+                    content: Text('Ha ocurrido algun error en el server'));
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              }
             },
-            child: AuthButonColor(
-              buttonText: 'Iniciar Sessión',
-              onPressed: () {
-                loginBloc.add(const LoginButtonPressed(
-                    email: 'email@email.com', password: 'Mangus'));
-              },
-            ),
+            child: Builder(builder: (context) {
+              final state = context.watch<LoginTextFieldsHelperCubit>().state;
+
+              return AuthButonColor(
+                  buttonText: 'Iniciar Sessión',
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      loginBloc.add(LoginButtonPressed(
+                          email: state.email, password: state.password));
+                    }
+                  });
+            }),
           ),
           TextSignUpOrSingIn(
               phrase: "¿No tienes una cuenta? ",

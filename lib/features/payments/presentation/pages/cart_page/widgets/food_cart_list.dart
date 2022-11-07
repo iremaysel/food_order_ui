@@ -39,7 +39,7 @@ class FoodCartListWidget extends StatelessWidget {
             }
 
             if (state is CartLoadedState) {
-              var foodList = state.listProducts;
+              var foodList = state.cart.product;
 
               if (foodList.isEmpty) {
                 return Center(
@@ -55,16 +55,18 @@ class FoodCartListWidget extends StatelessWidget {
               }
 
               return ListView.builder(
-                  itemCount:
-                      cartBloc.productQuantity(state.listProducts).keys.length,
+                  itemCount: state.cart
+                      .productQuantity(state.cart.product)
+                      .keys
+                      .length,
                   itemBuilder: (context, int index) {
                     return HorizontalCartCardFood(
-                      product: cartBloc
-                          .productQuantity(state.listProducts)
+                      product: state.cart
+                          .productQuantity(state.cart.product)
                           .keys
                           .elementAt(index),
-                      quantity: cartBloc
-                          .productQuantity(state.listProducts)
+                      quantity: state.cart
+                          .productQuantity(state.cart.product)
                           .values
                           .elementAt(index),
                     );

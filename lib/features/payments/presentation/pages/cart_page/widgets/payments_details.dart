@@ -13,7 +13,6 @@ class PaymentDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var cartBloc = BlocProvider.of<CartBloc>(context);
     return Container(
       padding: EdgeInsets.symmetric(
         vertical: SizeConfig.blockSizeVertical! * 3,
@@ -27,7 +26,7 @@ class PaymentDetails extends StatelessWidget {
         child: BlocBuilder<CartBloc, CartState>(
           builder: (context, state) {
             if (state is CartLoadedState) {
-              if (state.listProducts.isEmpty) {
+              if (state.cart.product.isEmpty) {
                 return const SizedBox();
               }
               return Column(
@@ -51,7 +50,7 @@ class PaymentDetails extends StatelessWidget {
                   /// 15.0
                   BottomBarText(
                       titletext: "SubTotal",
-                      pricetext: "\$${cartBloc.subTotalString}",
+                      pricetext: "\$${state.cart.subTotalString}",
                       fontsize: SizeConfig.blockSizeHorizontal! * 4.5,
                       fontWeight: FontWeight.w400,
                       textcolor: Colors.black54),
@@ -61,7 +60,7 @@ class PaymentDetails extends StatelessWidget {
                   ),
                   BottomBarText(
                       titletext: "Domicio",
-                      pricetext: "\$${cartBloc.deliveryFeeString}",
+                      pricetext: "\$${state.cart.deliveryFeeString}",
                       fontsize: SizeConfig.blockSizeHorizontal! * 4.5,
                       fontWeight: FontWeight.w400,
                       textcolor: Colors.black54),
@@ -71,7 +70,7 @@ class PaymentDetails extends StatelessWidget {
                   ),
                   BottomBarText(
                     titletext: "Entrega Gratis",
-                    pricetext: cartBloc.freeDeliveryString,
+                    pricetext: state.cart.freeDeliveryString,
                     fontsize: SizeConfig.blockSizeHorizontal! * 4.5,
                     fontWeight: FontWeight.w400,
                     textcolor: Colors.black54,
@@ -81,7 +80,7 @@ class PaymentDetails extends StatelessWidget {
                   ),
                   BottomBarText(
                     titletext: "Total",
-                    pricetext: "\$${cartBloc.totalString}",
+                    pricetext: "\$${state.cart.totalString}",
                     fontsize: SizeConfig.blockSizeHorizontal! * 6,
                     fontWeight: FontWeight.bold,
                     textcolor: Colors.black,

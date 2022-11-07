@@ -11,11 +11,6 @@ class DiscountCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<String> imageList = [
-      "assets/discount/discount1.png",
-      "assets/discount/discount2.png",
-      "assets/discount/discount3.png",
-    ];
     return Padding(
       padding: EdgeInsets.only(
           top: SizeConfig.blockSizeVertical! * 3,
@@ -49,11 +44,18 @@ class DiscountCard extends StatelessWidget {
                                     fit: BoxFit.cover,
                                   )
                                 : FadeInImage(
+                                    //? Rivisar esto aqui...
+                                    imageErrorBuilder:
+                                        (context, error, stackTrace) {
+                                      return const Image(
+                                          image: AssetImage(
+                                              'assets/main/loading.gif'));
+                                    },
                                     fit: BoxFit.fill,
                                     placeholder: const AssetImage(
                                         'assets/main/loading.gif'),
                                     image: NetworkImage(
-                                      '$apiUrl/uploads/products/${product.uid}',
+                                      '$apiUrl/uploads/products/${product.id}',
                                     ),
                                   )
                           ],

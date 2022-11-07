@@ -41,7 +41,7 @@ class ProductLocalDataSourceImpl extends ProductLocalDataSource {
       return Future.value(product);
     } else {
       for (var i = 0; i < listProducts.length; i++) {
-        if (listProducts[i].uid == product.uid) {
+        if (listProducts[i].id == product.id) {
           listProducts.removeAt(i);
         }
       }

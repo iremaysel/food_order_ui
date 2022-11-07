@@ -12,7 +12,7 @@ class UserModel extends User {
     bool? google,
   }) : super(
           uid: uid,
-          fullName: fullName,
+          fullname: fullName,
           email: email,
           rol: rol,
           status: status,
@@ -22,7 +22,7 @@ class UserModel extends User {
   @override
   List<Object?> get props => [
         uid,
-        fullName,
+        fullname,
         email,
         rol,
         status,
@@ -32,7 +32,7 @@ class UserModel extends User {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'uid': uid,
-      'fullname': fullName,
+      'fullname': fullname,
       'email': email,
       'rol': rol,
       'status': status,

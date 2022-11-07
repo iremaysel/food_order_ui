@@ -30,8 +30,12 @@ class ProductRemoteDataSourceImpl implements ProductRemoteDataSource {
     if (response.statusCode == 200) {
       List<Product> list = [];
       Map<String, dynamic> responseProductlist = json.decode(response.body);
+
       List<dynamic> listProducts = responseProductlist['products'];
-      listProducts.map((item) => list.add(ProductModel.fromMap(item))).toList();
+
+      listProducts
+          .map((item) => list.add(ProductModel.fromJson(item)))
+          .toList();
       return list;
     } else {
       throw ServerExeption();
@@ -45,7 +49,7 @@ class ProductRemoteDataSourceImpl implements ProductRemoteDataSource {
         await client.get(uri, headers: {'Content-Type': 'application/json'});
 
     if (response.statusCode == 200) {
-      return ProductModel.fromJson(response.body);
+      return ProductModel.fromJson(json.decode(response.body));
     } else {
       throw ServerExeption();
     }
@@ -58,7 +62,7 @@ class ProductRemoteDataSourceImpl implements ProductRemoteDataSource {
         body: product.toJson(), headers: {'Content-Type': 'application/json'});
 
     if (response.statusCode == 201) {
-      return ProductModel.fromJson(response.body);
+      return ProductModel.fromJson(json.decode(response.body));
     } else {
       throw ServerExeption();
     }
@@ -74,7 +78,9 @@ class ProductRemoteDataSourceImpl implements ProductRemoteDataSource {
       List<Product> list = [];
       Map<String, dynamic> responseProductlist = json.decode(response.body);
       List<dynamic> listProducts = responseProductlist['products'];
-      listProducts.map((item) => list.add(ProductModel.fromMap(item))).toList();
+      listProducts
+          .map((item) => list.add(ProductModel.fromJson(item)))
+          .toList();
       return list;
     } else {
       throw ServerExeption();

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_order_ui/features/main_components/bloc/cubit/nav_bar_cubit_cubit.dart';
 
 import 'widgets/food_cart_list.dart';
 import 'widgets/payments_details.dart';
@@ -11,6 +13,9 @@ class CartView extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        leading: GestureDetector(
+            onTap: () => context.read<NavBarCubitCubit>().updateIndexNavBar(0),
+            child: const Icon(Icons.arrow_back)),
         centerTitle: true,
         title: const Text(
           "Carrito",

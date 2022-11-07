@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_order_ui/features/auth/presentation/pages/bloc/authetication/authentication_bloc.dart';
+import 'package:food_order_ui/core/platform/network/bloc/internet_bloc.dart';
+
 import 'features/auth/domain/usecases/login_user_with_email_and_password_usecase.dart';
-import 'features/auth/presentation/pages/bloc/login/login_bloc.dart';
+import 'features/auth/domain/usecases/register_user_with_email_and_password_usecase.dart';
+import 'features/auth/presentation/bloc/authetication/authentication_bloc.dart';
+import 'features/auth/presentation/bloc/cubit/login_text_fields_helper_cubit.dart';
+import 'features/auth/presentation/bloc/login/login_bloc.dart';
+import 'features/auth/presentation/bloc/register/register_bloc.dart';
 import 'features/products/presentation/bloc/bloc/favorites_bloc/favorites_bloc.dart';
 import 'features/products/presentation/bloc/bloc/five_starts_products_bloc/bloc/five_start_products_bloc_bloc.dart';
 import 'dependency_Injection.dart' as sl;
@@ -25,11 +30,23 @@ void main() async {
     MultiBlocProvider(
       providers: [
         BlocProvider(
+            create: (_) => InternetBloc(
+                  dataConnectionChecker: getIt(),
+                )),
+        BlocProvider(create: (_) => LoginTextFieldsHelperCubit()),
+        BlocProvider(
             create: (_) => AuthenticationBloc(sharedPreferences: getIt())
               ..add(AppStarted())),
         BlocProvider(
           create: (context) => LoginBloc(
             usecase: getIt<LoginUserWithEmailAndPasswordUsecase>(),
+            authenticationBloc: getIt<AuthenticationBloc>(),
+            sharedPreferences: getIt(),
+          ),
+        ),
+        BlocProvider(
+          create: (context) => RegisterBloc(
+            usecase: getIt<RegisterUserWithEmailAndPasswordUsecase>(),
             authenticationBloc: getIt<AuthenticationBloc>(),
             sharedPreferences: getIt(),
           ),

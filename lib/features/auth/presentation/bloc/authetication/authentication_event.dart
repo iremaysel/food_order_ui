@@ -13,6 +13,16 @@ class AppStarted extends AuthenticationEvent {
 }
 
 class LoggedIn extends AuthenticationEvent {
+  final User user;
+  final String token;
+
+  const LoggedIn({
+    required this.user,
+    required this.token,
+  });
+
+  @override
+  List<Object> get props => [user, token];
   @override
   String toString() => 'LoggedIn';
 }

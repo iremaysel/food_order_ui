@@ -6,10 +6,14 @@ import '../../../../../../products/presentation/pages/home_page/components/size_
 class TextFieldPassword extends StatefulWidget {
   final String hintText;
   final String labelText;
+  final Function(String value) onChange;
+  final String? Function(String? value)? onValidator;
   const TextFieldPassword({
     Key? key,
     required this.hintText,
     required this.labelText,
+    required this.onChange,
+    this.onValidator,
   }) : super(key: key);
 
   @override
@@ -29,7 +33,9 @@ class _TextFieldPasswordState extends State<TextFieldPassword> {
           SizeConfig.blockSizeHorizontal! * 5,
           SizeConfig.blockSizeVertical! * 2,
         ),
-        child: TextField(
+        child: TextFormField(
+          validator: widget.onValidator,
+          onChanged: widget.onChange,
           obscureText: passwordObscure,
           style: TextStyle(color: textColor),
           cursorColor: textColor,

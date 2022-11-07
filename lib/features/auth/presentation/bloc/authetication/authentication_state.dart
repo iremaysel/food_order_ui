@@ -11,6 +11,16 @@ class AuthenticationUninitialized extends AuthenticationState {}
 
 class AuthenticationLoading extends AuthenticationState {}
 
-class AuthenticationAuthenticated extends AuthenticationState {}
+class AuthenticationAuthenticated extends AuthenticationState {
+  final User user;
+  final String token;
+
+  const AuthenticationAuthenticated({
+    required this.user,
+    required this.token,
+  });
+  @override
+  List<Object> get props => [user, token];
+}
 
 class AuthenticationUnauthenticated extends AuthenticationState {}

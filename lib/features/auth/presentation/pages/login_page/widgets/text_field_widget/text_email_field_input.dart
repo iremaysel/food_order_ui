@@ -7,11 +7,15 @@ class TextFieldInput extends StatelessWidget {
   final String text;
   final IconData iconName;
   final String ltext;
+  final Function(String value) onChange;
+  final String? Function(String?)? onValidator;
   const TextFieldInput(
       {Key? key,
       required this.text,
       required this.iconName,
-      required this.ltext})
+      required this.ltext,
+      required this.onChange,
+      this.onValidator})
       : super(key: key);
 
   @override
@@ -24,7 +28,10 @@ class TextFieldInput extends StatelessWidget {
           SizeConfig.blockSizeHorizontal! * 5,
           SizeConfig.blockSizeVertical! * 2,
         ),
-        child: TextField(
+        child: TextFormField(
+          validator: onValidator,
+
+          onChanged: onChange,
           //TODO: Hacer para Procesar los datos...
 
           style: TextStyle(color: textColor),

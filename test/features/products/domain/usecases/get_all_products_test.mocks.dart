@@ -60,6 +60,40 @@ class MockMProductRepository extends _i1.Mock
         )),
       ) as _i4.Future<_i2.Either<_i5.Failure, List<_i6.Product>>>);
   @override
+  _i4.Future<_i2.Either<_i5.Failure, List<_i6.Product>>>
+      getAllFavoriteProductsFromDB() => (super.noSuchMethod(
+            Invocation.method(
+              #getAllFavoriteProductsFromDB,
+              [],
+            ),
+            returnValue:
+                _i4.Future<_i2.Either<_i5.Failure, List<_i6.Product>>>.value(
+                    _FakeEither_0<_i5.Failure, List<_i6.Product>>(
+              this,
+              Invocation.method(
+                #getAllFavoriteProductsFromDB,
+                [],
+              ),
+            )),
+          ) as _i4.Future<_i2.Either<_i5.Failure, List<_i6.Product>>>);
+  @override
+  _i4.Future<_i2.Either<_i5.Failure, List<_i6.Product>>>
+      getAllFiveStartRatingProducts() => (super.noSuchMethod(
+            Invocation.method(
+              #getAllFiveStartRatingProducts,
+              [],
+            ),
+            returnValue:
+                _i4.Future<_i2.Either<_i5.Failure, List<_i6.Product>>>.value(
+                    _FakeEither_0<_i5.Failure, List<_i6.Product>>(
+              this,
+              Invocation.method(
+                #getAllFiveStartRatingProducts,
+                [],
+              ),
+            )),
+          ) as _i4.Future<_i2.Either<_i5.Failure, List<_i6.Product>>>);
+  @override
   _i4.Future<_i2.Either<_i5.Failure, _i6.Product>> getProductById(String? id) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -105,6 +139,23 @@ class MockMProductRepository extends _i1.Mock
           this,
           Invocation.method(
             #saveProductFavoriteIntoDB,
+            [product],
+          ),
+        )),
+      ) as _i4.Future<_i2.Either<_i5.Failure, _i6.Product>>);
+  @override
+  _i4.Future<_i2.Either<_i5.Failure, _i6.Product>> removeProductFavoriteIntoDB(
+          _i6.Product? product) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #removeProductFavoriteIntoDB,
+          [product],
+        ),
+        returnValue: _i4.Future<_i2.Either<_i5.Failure, _i6.Product>>.value(
+            _FakeEither_0<_i5.Failure, _i6.Product>(
+          this,
+          Invocation.method(
+            #removeProductFavoriteIntoDB,
             [product],
           ),
         )),

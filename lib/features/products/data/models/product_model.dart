@@ -1,19 +1,23 @@
-import 'dart:convert';
+import 'package:food_order_ui/features/products/data/models/category_model.dart';
 
 import '../../../../core/shared/entities/product.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'product_model.g.dart';
+
+@JsonSerializable(explicitToJson: true)
 class ProductModel extends Product {
   const ProductModel({
     required String name,
-    required String categories,
+    required List<CategoryModel> categories,
     required bool available,
-    required int rating,
+    int? rating,
     required String description,
     int? quantity,
     required int price,
-    required String img,
-    required String uid,
-    String? calories,
+    String? img,
+    required bool isDeleted,
+    String? id,
   }) : super(
           name: name,
           categories: categories,
@@ -23,38 +27,14 @@ class ProductModel extends Product {
           quantity: quantity,
           price: price,
           img: img,
-          uid: uid,
-          calories: calories,
+          isDeleted: isDeleted,
+          id: id,
         );
 
-  factory ProductModel.fromJson(String str) =>
-      ProductModel.fromMap(json.decode(str));
+  factory ProductModel.fromJson(Map<String, dynamic> json) =>
+      _$ProductModelFromJson(json);
 
-  factory ProductModel.fromMap(Map<String, dynamic> json) => ProductModel(
-        name: json["name"],
-        categories: json["categories"],
-        available: json["available"],
-        rating: json["rating"],
-        description: json["description"],
-        quantity: json["quantity"],
-        price: json["price"],
-        img: json["img"],
-        calories: json["calories"],
-        uid: json["uid"],
-      );
-
-  String toJson() => json.encode(toMap());
-
-  Map<String, dynamic> toMap() => {
-        "name": name,
-        "categories": categories,
-        "available": available,
-        "rating": rating,
-        "description": description,
-        "quantity": quantity,
-        "price": price,
-        "img": img,
-        "calories": calories,
-        "uid": uid,
-      };
+  /// Connect the generated [_$PersonToJson] function to the `toJson` method.
+  @override
+  Map<String, dynamic> toJson() => _$ProductModelToJson(this);
 }

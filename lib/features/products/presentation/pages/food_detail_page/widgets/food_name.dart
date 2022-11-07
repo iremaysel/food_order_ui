@@ -28,11 +28,11 @@ class FoodName extends StatelessWidget {
                     fontFamily: "Roboto"),
               ),
             ),
-            Text(food.categories,
-                style: TextStyle(
-                  color: Colors.black45,
-                  fontSize: SizeConfig.blockSizeHorizontal! * 5,
-                )),
+            // Text(food.categories,
+            //     style: TextStyle(
+            //       color: Colors.black45,
+            //       fontSize: SizeConfig.blockSizeHorizontal! * 5,
+            //     )),
           ],
         ),
         const Spacer(),

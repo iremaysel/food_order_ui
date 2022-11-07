@@ -1,12 +1,17 @@
+import 'dart:async';
+
 import 'package:data_connection_checker_tv/data_connection_checker.dart';
+import 'package:food_order_ui/core/platform/network/bloc/internet_bloc.dart';
 import 'package:food_order_ui/features/auth/data/repositories/auth_user_repository_impl.dart';
 import 'package:food_order_ui/features/auth/domain/repositories/auth_user_repository.dart';
 import 'package:food_order_ui/features/auth/domain/usecases/login_user_with_email_and_password_usecase.dart';
 import 'package:food_order_ui/features/auth/domain/usecases/register_user_with_email_and_password_usecase.dart';
-import 'package:food_order_ui/features/auth/presentation/pages/bloc/authetication/authentication_bloc.dart';
-import 'package:food_order_ui/features/auth/presentation/pages/bloc/login/login_bloc.dart';
-
 import 'features/auth/data/datasource/user_remote_data_source.dart';
+import 'features/auth/presentation/bloc/authetication/authentication_bloc.dart';
+import 'features/auth/presentation/bloc/cubit/login_text_fields_helper_cubit.dart';
+import 'features/auth/presentation/bloc/login/login_bloc.dart';
+import 'features/auth/presentation/bloc/register/register_bloc.dart';
+
 import 'features/products/data/datasources/product_local_data_source.dart';
 import 'features/products/domain/usecases/create_product_usecase.dart';
 import 'features/products/domain/usecases/get_all_favorite_products_form_DB.dart';
@@ -93,6 +98,9 @@ Future<void> init() async {
       getAllProductsUseCase: getIt<GetAllProductsUseCase>(),
     ),
   );
+  getIt.registerFactory<InternetBloc>(
+    () => InternetBloc(dataConnectionChecker: getIt()),
+  );
   getIt.registerFactory<FiveStartProductsBloc>(
     () => FiveStartProductsBloc(
         getAllFiveStartRatingProductsUseCase:
@@ -113,13 +121,21 @@ Future<void> init() async {
     ),
   );
   final SharedPreferences sharedPreferencesInstance = await getIt.getAsync();
-  getIt.registerFactory<AuthenticationBloc>(
-      () => AuthenticationBloc(sharedPreferences: sharedPreferencesInstance));
+  getIt.registerSingleton<AuthenticationBloc>(
+      AuthenticationBloc(sharedPreferences: sharedPreferencesInstance));
 
-  getIt.registerFactoryAsync(() async => LoginBloc(
+  getIt.registerSingletonAsync(() async => LoginBloc(
       authenticationBloc: getIt<AuthenticationBloc>(),
       sharedPreferences: sharedPreferencesInstance,
       usecase: getIt<LoginUserWithEmailAndPasswordUsecase>()));
+
+  getIt.registerFactoryAsync(() async => RegisterBloc(
+      authenticationBloc: getIt<AuthenticationBloc>(),
+      sharedPreferences: sharedPreferencesInstance,
+      usecase: getIt<RegisterUserWithEmailAndPasswordUsecase>()));
+
+  getIt.registerFactory<LoginTextFieldsHelperCubit>(
+      () => LoginTextFieldsHelperCubit());
 
   //Core
 }

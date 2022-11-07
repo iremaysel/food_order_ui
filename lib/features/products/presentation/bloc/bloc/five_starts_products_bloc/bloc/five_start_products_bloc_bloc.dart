@@ -31,6 +31,7 @@ class FiveStartProductsBloc
       print('Si entra aqui fue que dio error');
       emit(FiveStartProductsBlocErrorState());
     }, (fiveStartProductList) {
+      print(fiveStartProductList);
       emit(FiveStartProductsBlocLoadedSuccessState(fiveStartProductList));
     });
   }

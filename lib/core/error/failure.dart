@@ -15,6 +15,10 @@ class ServerFailure extends Failure {
       : super(properties: properties);
 }
 
+class CartFailure extends Failure {
+  const CartFailure({required List properties}) : super(properties: properties);
+}
+
 class CacheFailure extends Failure {
   const CacheFailure({required List properties})
       : super(properties: properties);

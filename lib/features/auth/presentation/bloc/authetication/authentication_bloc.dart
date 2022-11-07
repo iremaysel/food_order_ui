@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:food_order_ui/features/auth/domain/entities/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 part 'authentication_event.dart';
@@ -29,7 +30,8 @@ class AuthenticationBloc
   FutureOr<void> _onLoggedInEventToState(
       LoggedIn event, Emitter<AuthenticationState> emit) {
     emit(AuthenticationLoading());
-    emit(AuthenticationAuthenticated());
+
+    emit(AuthenticationAuthenticated(token: event.token, user: event.user));
   }
 
   FutureOr<void> _onLoggedOutEventToState(

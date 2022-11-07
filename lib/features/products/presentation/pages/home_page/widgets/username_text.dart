@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_order_ui/features/auth/presentation/pages/bloc/login/login_bloc.dart';
 
+import '../../../../../auth/presentation/bloc/authetication/authentication_bloc.dart';
 import '../components/colors.dart';
 import '../components/size_config.dart';
 
 class UserNameText extends StatelessWidget {
-  final String username;
-
-  const UserNameText({Key? key, required this.username}) : super(key: key);
+  const UserNameText({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,11 +35,11 @@ class UserNameText extends StatelessWidget {
                         top: SizeConfig.blockSizeVertical! * 1,
                         bottom: SizeConfig.blockSizeVertical! * 1),
 
-                    child: BlocBuilder<LoginBloc, LoginState>(
+                    child: BlocBuilder<AuthenticationBloc, AuthenticationState>(
                       builder: (context, state) {
-                        if (state is LoginSussess) {
+                        if (state is AuthenticationAuthenticated) {
                           return Text(
-                            "Hola ${state.user.fullName}",
+                            "Hola ${state.user.fullname}",
                             style: TextStyle(
                                 fontSize: SizeConfig.blockSizeHorizontal! * 8,
                                 fontWeight: FontWeight.bold,

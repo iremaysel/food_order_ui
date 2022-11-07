@@ -28,7 +28,7 @@ class FoodImage extends StatelessWidget {
                     fit: BoxFit.fill,
                     placeholder: const AssetImage('assets/main/loading.gif'),
                     image: NetworkImage(
-                      '$apiUrl/uploads/products/${product.uid}',
+                      '$apiUrl/uploads/products/${product.id}',
                     ),
                   )),
         Padding(

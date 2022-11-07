@@ -5,9 +5,9 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i4;
 
+import 'package:food_order_ui/core/shared/entities/product.dart' as _i2;
 import 'package:food_order_ui/features/products/data/models/product_model.dart'
     as _i5;
-import 'package:food_order_ui/core/shared/entities/product.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 
 import 'product_repository_impl_test.dart' as _i3;
@@ -46,6 +46,15 @@ class MockFakeProductRemoteDataSource extends _i1.Mock
   _i4.Future<List<_i2.Product>> getAllProducts() => (super.noSuchMethod(
         Invocation.method(
           #getAllProducts,
+          [],
+        ),
+        returnValue: _i4.Future<List<_i2.Product>>.value(<_i2.Product>[]),
+      ) as _i4.Future<List<_i2.Product>>);
+  @override
+  _i4.Future<List<_i2.Product>> getAllFiveStartRatingProducts() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getAllFiveStartRatingProducts,
           [],
         ),
         returnValue: _i4.Future<List<_i2.Product>>.value(<_i2.Product>[]),
@@ -106,6 +115,31 @@ class MockFakeProductLocalDataSource extends _i1.Mock
           ),
         )),
       ) as _i4.Future<_i2.Product>);
+  @override
+  _i4.Future<_i2.Product> removeProductFavoriteIntoDB(
+          _i5.ProductModel? product) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #removeProductFavoriteIntoDB,
+          [product],
+        ),
+        returnValue: _i4.Future<_i2.Product>.value(_FakeProduct_0(
+          this,
+          Invocation.method(
+            #removeProductFavoriteIntoDB,
+            [product],
+          ),
+        )),
+      ) as _i4.Future<_i2.Product>);
+  @override
+  _i4.Future<List<_i2.Product>> getAllFavoriteProductsFromDB() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getAllFavoriteProductsFromDB,
+          [],
+        ),
+        returnValue: _i4.Future<List<_i2.Product>>.value(<_i2.Product>[]),
+      ) as _i4.Future<List<_i2.Product>>);
 }
 
 /// A class which mocks [FakeNetworkInfo].

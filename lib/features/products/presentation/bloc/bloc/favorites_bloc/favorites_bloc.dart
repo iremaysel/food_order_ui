@@ -38,7 +38,7 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
               (producList) {
         for (var i = 0; i < event.listProduct.length; i++) {
           for (var j = 0; j < producList.length; j++) {
-            if (event.listProduct[i].uid == producList[j].uid) {
+            if (event.listProduct[i].id == producList[j].id) {
               favoriteList.add(event.listProduct[i]);
               saveProductFavoriteIntoDBUseCase(event.listProduct[i]);
             }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../main_components/bloc/cubit/nav_bar_cubit_cubit.dart';
 import 'widgets/past_search.dart';
 import 'widgets/recent_search.dart';
 import 'widgets/search_textfield.dart';
@@ -11,6 +13,9 @@ class SearchPageView extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        leading: GestureDetector(
+            onTap: () => context.read<NavBarCubitCubit>().updateIndexNavBar(0),
+            child: const Icon(Icons.arrow_back)),
         centerTitle: true,
         title: const Text(
           "Buscar",

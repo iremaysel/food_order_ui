@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../main_components/bloc/cubit/nav_bar_cubit_cubit.dart';
 import '../../bloc/bloc/favorites_bloc/favorites_bloc.dart';
 import '../../widgets/custom_food_card.dart';
 import '../home_page/components/size_config.dart';
@@ -13,6 +14,9 @@ class FavoritePageView extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        leading: GestureDetector(
+            onTap: () => context.read<NavBarCubitCubit>().updateIndexNavBar(0),
+            child: const Icon(Icons.arrow_back)),
         centerTitle: true,
         title: const Text(
           "Favoritos",

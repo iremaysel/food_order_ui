@@ -14,12 +14,12 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
 
-    var productBloc = BlocProvider.of<ProductBloc>(context);
     var favoriteBloc = BlocProvider.of<FavoritesBloc>(context);
-    var fiveStartProductsBloc = BlocProvider.of<FiveStartProductsBloc>(context);
+    var productBloc = BlocProvider.of<ProductBloc>(context);
+    var fiveStartBloc = BlocProvider.of<FiveStartProductsBloc>(context);
 
     productBloc.add(OnGetProductsEvent());
-    fiveStartProductsBloc.add(StartedFiveStartProductsEvent());
+    fiveStartBloc.add(StartedFiveStartProductsEvent());
 
     return BlocListener<ProductBloc, ProductState>(
         listener: (context, ProductState state) {
