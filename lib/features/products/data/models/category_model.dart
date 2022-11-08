@@ -11,7 +11,7 @@ class CategoryModel extends Category {
     required String id,
     required String reference,
     required String name,
-    required List<ProductModel> products,
+    required List<String> products,
   }) : super(
           id: id,
           name: name,

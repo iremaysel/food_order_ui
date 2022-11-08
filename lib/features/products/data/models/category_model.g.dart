@@ -11,9 +11,8 @@ CategoryModel _$CategoryModelFromJson(Map<String, dynamic> json) =>
       id: json['_id'] as String,
       reference: json['reference'] as String,
       name: json['name'] as String,
-      products: (json['products'] as List<dynamic>)
-          .map((e) => ProductModel.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      products:
+          (json['products'] as List<dynamic>).map((e) => e as String).toList(),
     );
 
 Map<String, dynamic> _$CategoryModelToJson(CategoryModel instance) =>
@@ -21,5 +20,5 @@ Map<String, dynamic> _$CategoryModelToJson(CategoryModel instance) =>
       '_id': instance.id,
       'reference': instance.reference,
       'name': instance.name,
-      'products': instance.products.map((e) => e.toJson()).toList(),
+      'products': instance.products,
     };

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_order_ui/core/platform/network/bloc/internet_bloc.dart';
+import 'package:food_order_ui/features/products/presentation/bloc/bloc/category/category_bloc.dart';
+import 'package:food_order_ui/features/products/presentation/bloc/bloc/product_by_category.dart/product_by_category_bloc.dart';
 
 import 'features/auth/domain/usecases/login_user_with_email_and_password_usecase.dart';
 import 'features/auth/domain/usecases/register_user_with_email_and_password_usecase.dart';
@@ -8,6 +10,8 @@ import 'features/auth/presentation/bloc/authetication/authentication_bloc.dart';
 import 'features/auth/presentation/bloc/cubit/login_text_fields_helper_cubit.dart';
 import 'features/auth/presentation/bloc/login/login_bloc.dart';
 import 'features/auth/presentation/bloc/register/register_bloc.dart';
+import 'features/main_components/bloc/cubit/nav_bar_cubit_cubit.dart';
+import 'features/products/domain/usecases/category/get_categories_usecase.dart';
 import 'features/products/presentation/bloc/bloc/favorites_bloc/favorites_bloc.dart';
 import 'features/products/presentation/bloc/bloc/five_starts_products_bloc/bloc/five_start_products_bloc_bloc.dart';
 import 'dependency_Injection.dart' as sl;
@@ -15,12 +19,12 @@ import 'features/main_components/pages/splash_screen.dart';
 
 import 'dependency_Injection.dart';
 import 'features/payments/presentation/bloc/cart_bloc.dart';
-import 'features/products/domain/usecases/get_all_favorite_products_form_DB.dart';
-import 'features/products/domain/usecases/get_all_five_start_rating_product_use_case.dart';
-import 'features/products/domain/usecases/get_all_products_usecase.dart';
-import 'features/products/domain/usecases/get_product_by_id_usecase.dart';
-import 'features/products/domain/usecases/remove_favorite_product_from_DB.dart';
-import 'features/products/domain/usecases/save_product_favorites_into_db.dart';
+import 'features/products/domain/usecases/products/get_all_favorite_products_form_DB.dart';
+import 'features/products/domain/usecases/products/get_all_five_start_rating_product_use_case.dart';
+import 'features/products/domain/usecases/products/get_all_products_usecase.dart';
+import 'features/products/domain/usecases/products/get_product_by_id_usecase.dart';
+import 'features/products/domain/usecases/products/remove_favorite_product_from_DB.dart';
+import 'features/products/domain/usecases/products/save_product_favorites_into_db.dart';
 import 'features/products/presentation/bloc/bloc/product_bloc/product_bloc.dart';
 
 void main() async {
@@ -29,6 +33,9 @@ void main() async {
   runApp(
     MultiBlocProvider(
       providers: [
+        BlocProvider(
+          create: (_) => NavBarCubitCubit(),
+        ),
         BlocProvider(
             create: (_) => InternetBloc(
                   dataConnectionChecker: getIt(),
@@ -75,6 +82,15 @@ void main() async {
               saveProductFavoriteIntoDBUseCase:
                   getIt<SaveProductFavoriteIntoDBUseCase>()),
         ),
+        BlocProvider(
+          create: (_) =>
+              CategoryBloc(getCategoriesUseCase: getIt<GetCategoriesUseCase>())
+                ..add(CategoryStatedEvent()),
+        ),
+        BlocProvider(
+          create: (context) => ProductByCategoryBloc(
+              getProductByIdUseCase: getIt<GetProductByIdUseCase>()),
+        )
       ],
       child: const MyApp(),
     ),

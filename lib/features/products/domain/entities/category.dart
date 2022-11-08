@@ -15,13 +15,13 @@ class Category extends Equatable {
   final String id;
   final String reference;
   final String name;
-  final List<Product> products;
+  final List<String> products;
 
   Category copyWith({
     String? id,
     String? reference,
     String? name,
-    List<Product>? products,
+    List<String>? products,
     int? v,
   }) =>
       Category(
@@ -32,12 +32,7 @@ class Category extends Equatable {
       );
 
   @override
-  List<Object?> get props => [
-        id,
-        reference,
-        name,
-        products,
-      ];
+  List<Object?> get props => [id, reference, name, products];
 
   factory Category.fromJson(Map<String, dynamic> json) =>
       _$CategoryFromJson(json);

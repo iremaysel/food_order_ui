@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import '../../../../../domain/usecases/get_all_five_start_rating_product_use_case.dart';
+import '../../../../../domain/usecases/products/get_all_five_start_rating_product_use_case.dart';
 
 import '../../../../../../../core/shared/entities/product.dart';
 

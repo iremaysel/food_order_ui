@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_order_ui/features/products/domain/entities/category.dart';
+import 'package:food_order_ui/features/products/presentation/bloc/bloc/product_by_category.dart/product_by_category_bloc.dart';
 
-import '../../../../main_components/bloc/cubit/nav_bar_cubit_cubit.dart';
-import '../../bloc/bloc/favorites_bloc/favorites_bloc.dart';
 import '../../widgets/custom_food_card.dart';
 import '../home_page/components/size_config.dart';
 
-class FavoritePageView extends StatelessWidget {
-  const FavoritePageView({Key? key}) : super(key: key);
+class CategoryPageView extends StatelessWidget {
+  final Category category;
+  const CategoryPageView({Key? key, required this.category}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,12 +16,12 @@ class FavoritePageView extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         leading: GestureDetector(
-            onTap: () => context.read<NavBarCubitCubit>().updateIndexNavBar(0),
+            onTap: () => Navigator.pop(context),
             child: const Icon(Icons.arrow_back)),
         centerTitle: true,
-        title: const Text(
-          "Favoritos",
-          style: TextStyle(color: Colors.black),
+        title: Text(
+          category.name,
+          style: const TextStyle(color: Colors.black),
         ),
         elevation: 0,
         backgroundColor: Colors.white,
@@ -30,25 +31,25 @@ class FavoritePageView extends StatelessWidget {
           padding: EdgeInsets.symmetric(
               horizontal: SizeConfig.blockSizeHorizontal! * 1,
               vertical: SizeConfig.blockSizeVertical! * 1),
-          child: BlocBuilder<FavoritesBloc, FavoritesState>(
-            builder: (context, FavoritesState state) {
-              if (state is FavoritesLoadedState) {
+          child: BlocBuilder<ProductByCategoryBloc, ProductByCategoryState>(
+            builder: (context, state) {
+              if (state is ProductByCategoryLoaded) {
                 return GridView.builder(
-                    itemCount: state.productList.length,
+                    itemCount: state.products.length,
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                       childAspectRatio: 2 / 3,
                     ),
                     itemBuilder: (context, index) {
-                      var product = state.productList[index];
+                      var product = state.products[index];
                       return CustomFoodCard(
                         product: product,
-                        isWishList: true,
+                        isWishList: false,
                       );
                     });
-              } else if (state is FavoritesErrorState) {
-                return Text(state.message);
+              } else if (state is ProductByCategoryError) {
+                return const Text('Error');
               } else {
                 return const Center(
                   child: CircularProgressIndicator(),

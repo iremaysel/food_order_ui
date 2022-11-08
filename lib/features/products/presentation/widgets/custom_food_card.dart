@@ -110,13 +110,19 @@ class CustomFoodCard extends StatelessWidget {
                                   fontSize: SizeConfig.blockSizeVertical! * 2.6,
                                   fontWeight: FontWeight.w700),
                             ),
-                            // Text(
-                            //   product.categories,
-                            //   style: TextStyle(
-                            //       color: Colors.black38,
-                            //       fontSize: SizeConfig.blockSizeVertical! * 2,
-                            //       fontWeight: FontWeight.w400),
-                            // ),
+                            Row(
+                              children: product.categories
+                                  .map((e) => Text(
+                                        e.name,
+                                        style: TextStyle(
+                                            color: Colors.black38,
+                                            fontSize:
+                                                SizeConfig.blockSizeVertical! *
+                                                    2,
+                                            fontWeight: FontWeight.w400),
+                                      ))
+                                  .toList(),
+                            ),
                           ],
                         ),
                       ),

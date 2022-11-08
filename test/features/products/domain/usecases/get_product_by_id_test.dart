@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 
 import 'package:food_order_ui/core/shared/entities/product.dart';
 import 'package:food_order_ui/features/products/domain/repositories/product_repository.dart';
-import 'package:food_order_ui/features/products/domain/usecases/get_product_by_id_usecase.dart';
+import 'package:food_order_ui/features/products/domain/usecases/products/get_product_by_id_usecase.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';

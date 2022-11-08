@@ -3,10 +3,10 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import '../../../../../../core/shared/entities/product.dart';
-import '../../../../domain/usecases/get_all_favorite_products_form_DB.dart';
+import '../../../../domain/usecases/products/get_all_favorite_products_form_DB.dart';
 
-import '../../../../domain/usecases/remove_favorite_product_from_DB.dart';
-import '../../../../domain/usecases/save_product_favorites_into_db.dart';
+import '../../../../domain/usecases/products/remove_favorite_product_from_DB.dart';
+import '../../../../domain/usecases/products/save_product_favorites_into_db.dart';
 
 part 'favorites_event.dart';
 part 'favorites_state.dart';

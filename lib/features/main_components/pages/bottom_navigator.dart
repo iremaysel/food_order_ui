@@ -40,41 +40,34 @@ class MyHomePage extends StatelessWidget {
       Icon(Icons.person, size: SizeConfig.blockSizeHorizontal! * 8.5),
     ];
 
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (_) => NavBarCubitCubit(),
+    return SafeArea(
+      child: Scaffold(
+        extendBody: true,
+        backgroundColor: Colors.white,
+        body: BlocBuilder<NavBarCubitCubit, NavBarCubitState>(
+          builder: (context, state) {
+            return screen[state.index];
+          },
         ),
-      ],
-      child: SafeArea(
-        child: Scaffold(
-          extendBody: true,
-          backgroundColor: Colors.white,
-          body: BlocBuilder<NavBarCubitCubit, NavBarCubitState>(
+        bottomNavigationBar: Theme(
+          data: Theme.of(context)
+              .copyWith(iconTheme: const IconThemeData(color: Colors.white)),
+          child: BlocBuilder<NavBarCubitCubit, NavBarCubitState>(
             builder: (context, state) {
-              return screen[state.index];
+              return CurvedNavigationBar(
+                key: navigationKey,
+                color: Colors.black45,
+                backgroundColor: Colors.transparent,
+                buttonBackgroundColor: buttonColor,
+                height: SizeConfig.blockSizeVertical! * 8,
+                animationCurve: Curves.easeInOut,
+                animationDuration: const Duration(milliseconds: 400),
+                index: state.index,
+                items: items,
+                onTap: (index) =>
+                    context.read<NavBarCubitCubit>().updateIndexNavBar(index),
+              );
             },
-          ),
-          bottomNavigationBar: Theme(
-            data: Theme.of(context)
-                .copyWith(iconTheme: const IconThemeData(color: Colors.white)),
-            child: BlocBuilder<NavBarCubitCubit, NavBarCubitState>(
-              builder: (context, state) {
-                return CurvedNavigationBar(
-                  key: navigationKey,
-                  color: Colors.black45,
-                  backgroundColor: Colors.transparent,
-                  buttonBackgroundColor: buttonColor,
-                  height: SizeConfig.blockSizeVertical! * 8,
-                  animationCurve: Curves.easeInOut,
-                  animationDuration: const Duration(milliseconds: 400),
-                  index: state.index,
-                  items: items,
-                  onTap: (index) =>
-                      context.read<NavBarCubitCubit>().updateIndexNavBar(index),
-                );
-              },
-            ),
           ),
         ),
       ),
