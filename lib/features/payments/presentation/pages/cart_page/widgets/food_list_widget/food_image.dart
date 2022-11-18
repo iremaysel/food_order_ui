@@ -13,7 +13,7 @@ class FoodImage extends StatelessWidget {
     return SizedBox(
         height: SizeConfig.blockSizeVertical! * 10,
         width: SizeConfig.blockSizeHorizontal! * 25,
-        child: product.img == 'no-image.png'
+        child: product.image == 'no-image.jpg'
             ? ClipRRect(
                 borderRadius: BorderRadius.all(
                   Radius.circular(SizeConfig.blockSizeHorizontal! * 4),

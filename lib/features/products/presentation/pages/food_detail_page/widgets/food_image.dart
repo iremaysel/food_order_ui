@@ -19,13 +19,19 @@ class FoodImage extends StatelessWidget {
       children: [
         SizedBox(
             height: SizeConfig.blockSizeVertical! * 38,
-            child: product.img == 'no-image.png'
+            child: product.image == 'no-image.png'
                 ? Image.asset(
                     'assets/main/no_image.jpeg',
-                    fit: BoxFit.cover,
+                    fit: BoxFit.fill,
                   )
                 : FadeInImage(
-                    fit: BoxFit.fill,
+                    fit: BoxFit.cover,
+                    imageErrorBuilder: (context, error, stackTrace) {
+                      return Image.asset(
+                        'assets/main/no_image.jpeg',
+                        fit: BoxFit.cover,
+                      );
+                    },
                     placeholder: const AssetImage('assets/main/loading.gif'),
                     image: NetworkImage(
                       '$apiUrl/uploads/products/${product.id}',

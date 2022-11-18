@@ -17,7 +17,7 @@ void main() {
     price: 100,
     img: "bc507322-47e5-4c50-b4ec-762c5f84d21e.png",
     calories: "",
-    uid: '62d6f062a6a2d738a753302c',
+    id: '62d6f062a6a2d738a753302c',
   );
 
   test('Should be a subclass of Product entity', () {

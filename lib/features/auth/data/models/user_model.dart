@@ -1,57 +1,55 @@
-import 'dart:convert';
+import 'package:json_annotation/json_annotation.dart';
 
 import '../../domain/entities/user.dart';
+part 'user_model.g.dart';
 
+@JsonSerializable()
 class UserModel extends User {
   const UserModel({
-    required String uid,
-    required String fullName,
     required String email,
-    required String rol,
-    required bool status,
-    bool? google,
+    int? id,
+    String? image,
+    String? role,
+    String? mobileUuid,
+    String? address,
+    String? phoneNumber,
+    String? reference,
+    String? createdAt,
+    bool? isVerified,
+    bool? isDeleted,
+    String? name,
   }) : super(
-          uid: uid,
-          fullname: fullName,
-          email: email,
-          rol: rol,
-          status: status,
-          google: google,
-        );
+            email: email,
+            id: id,
+            image: image,
+            role: role,
+            mobileUuid: mobileUuid,
+            address: address,
+            phoneNumber: phoneNumber,
+            reference: reference,
+            createdAt: createdAt,
+            isDeleted: isDeleted,
+            isVerified: isVerified,
+            name: name);
 
   @override
   List<Object?> get props => [
-        uid,
-        fullname,
         email,
-        rol,
-        status,
-        google,
+        id,
+        image,
+        role,
+        mobileUuid,
+        address,
+        phoneNumber,
+        reference,
+        createdAt,
+        isVerified,
+        isDeleted,
+        name,
       ];
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'uid': uid,
-      'fullname': fullname,
-      'email': email,
-      'rol': rol,
-      'status': status,
-      'google': google,
-    };
-  }
+  factory UserModel.fromJson(Map<String, dynamic> json) =>
+      _$UserModelFromJson(json);
 
-  factory UserModel.fromMap(Map<String, dynamic> map) {
-    return UserModel(
-        uid: map['uid'],
-        fullName: map['fullname'],
-        email: map['email'],
-        rol: map['rol'],
-        status: map['status'],
-        google: map['google']);
-  }
-
-  String toJson() => json.encode(toMap());
-
-  factory UserModel.fromJson(String source) =>
-      UserModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => _$UserModelToJson(this);
 }

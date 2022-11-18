@@ -6,8 +6,10 @@
 import 'dart:async' as _i4;
 
 import 'package:food_order_ui/core/shared/entities/product.dart' as _i2;
-import 'package:food_order_ui/features/products/data/models/product_model.dart'
+import 'package:food_order_ui/features/products/data/models/category_model.dart'
     as _i5;
+import 'package:food_order_ui/features/products/data/models/product_model.dart'
+    as _i6;
 import 'package:mockito/mockito.dart' as _i1;
 
 import 'product_repository_impl_test.dart' as _i3;
@@ -51,6 +53,15 @@ class MockFakeProductRemoteDataSource extends _i1.Mock
         returnValue: _i4.Future<List<_i2.Product>>.value(<_i2.Product>[]),
       ) as _i4.Future<List<_i2.Product>>);
   @override
+  _i4.Future<List<_i2.Product>> getProductsByCategory(_i5.CategoryModel? cat) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getProductsByCategory,
+          [cat],
+        ),
+        returnValue: _i4.Future<List<_i2.Product>>.value(<_i2.Product>[]),
+      ) as _i4.Future<List<_i2.Product>>);
+  @override
   _i4.Future<List<_i2.Product>> getAllFiveStartRatingProducts() =>
       (super.noSuchMethod(
         Invocation.method(
@@ -60,7 +71,7 @@ class MockFakeProductRemoteDataSource extends _i1.Mock
         returnValue: _i4.Future<List<_i2.Product>>.value(<_i2.Product>[]),
       ) as _i4.Future<List<_i2.Product>>);
   @override
-  _i4.Future<_i2.Product> createProduct(_i5.ProductModel? product) =>
+  _i4.Future<_i2.Product> createProduct(_i6.ProductModel? product) =>
       (super.noSuchMethod(
         Invocation.method(
           #createProduct,
@@ -101,7 +112,7 @@ class MockFakeProductLocalDataSource extends _i1.Mock
 
   @override
   _i4.Future<_i2.Product> saveProductFavoriteIntoDB(
-          _i5.ProductModel? product) =>
+          _i6.ProductModel? product) =>
       (super.noSuchMethod(
         Invocation.method(
           #saveProductFavoriteIntoDB,
@@ -117,7 +128,7 @@ class MockFakeProductLocalDataSource extends _i1.Mock
       ) as _i4.Future<_i2.Product>);
   @override
   _i4.Future<_i2.Product> removeProductFavoriteIntoDB(
-          _i5.ProductModel? product) =>
+          _i6.ProductModel? product) =>
       (super.noSuchMethod(
         Invocation.method(
           #removeProductFavoriteIntoDB,

@@ -4,7 +4,7 @@ abstract class LoginState extends Equatable {
   const LoginState();
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [];
 }
 
 class LoginInitial extends LoginState {}
@@ -21,4 +21,10 @@ class LoginSussess extends LoginState {
   List<Object> get props => [user, token];
 }
 
-class LoginError extends LoginState {}
+class LoginError extends LoginState {
+  final String? message;
+
+  const LoginError(this.message);
+  @override
+  List<Object?> get props => [message];
+}

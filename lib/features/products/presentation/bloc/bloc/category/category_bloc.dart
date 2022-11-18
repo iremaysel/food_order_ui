@@ -28,6 +28,8 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
           (categories) {
         emit(CategoryLoadedState(categories: categories));
       });
-    } catch (e) {}
+    } catch (e) {
+      emit(const CategoryErrorState(message: 'Error'));
+    }
   }
 }

@@ -7,30 +7,30 @@ part of 'product_model.dart';
 // **************************************************************************
 
 ProductModel _$ProductModelFromJson(Map<String, dynamic> json) => ProductModel(
-      name: json['name'] as String,
-      categories: (json['categories'] as List<dynamic>)
-          .map((e) => CategoryModel.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      available: json['available'] as bool,
+      id: json['id'] as int?,
+      name: json['name'] as String?,
       rating: json['rating'] as int?,
-      description: json['description'] as String,
-      quantity: json['quantity'] as int?,
-      price: json['price'] as int,
-      img: json['img'] as String?,
-      isDeleted: json['isDeleted'] as bool,
-      id: json['_id'] as String?,
+      isRecommended: json['isRecommended'] as bool?,
+      description: json['description'] as String?,
+      price: (json['price'] as num?)?.toDouble(),
+      image: json['image'] as String?,
+      category: json['category'] == null
+          ? null
+          : CategoryModel.fromJson(json['category'] as Map<String, dynamic>),
+      createdAt: json['createdAt'] as String?,
+      isDeleted: json['isDeleted'] as bool?,
     );
 
 Map<String, dynamic> _$ProductModelToJson(ProductModel instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'name': instance.name,
-      'categories': instance.categories.map((e) => e.toJson()).toList(),
-      'available': instance.available,
       'rating': instance.rating,
+      'isRecommended': instance.isRecommended,
       'description': instance.description,
-      'quantity': instance.quantity,
       'price': instance.price,
-      'img': instance.img,
+      'image': instance.image,
+      'category': instance.category?.toJson(),
+      'createdAt': instance.createdAt,
       'isDeleted': instance.isDeleted,
-      '_id': instance.id,
     };

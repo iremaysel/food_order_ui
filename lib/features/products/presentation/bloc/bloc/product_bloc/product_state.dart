@@ -11,10 +11,10 @@ class ProductInitialState extends ProductState {}
 
 class ProductLoadindState extends ProductState {}
 
-class ProductsLoadedSussesState extends ProductState {
+class ProductsLoadedState extends ProductState {
   final List<Product> productList;
 
-  const ProductsLoadedSussesState({required this.productList});
+  const ProductsLoadedState({required this.productList});
   @override
   List<Object> get props => [productList];
 }

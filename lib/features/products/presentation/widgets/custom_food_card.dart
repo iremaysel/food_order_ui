@@ -64,7 +64,7 @@ class CustomFoodCard extends StatelessWidget {
                               topRight: Radius.circular(
                                   SizeConfig.blockSizeHorizontal! * 4)),
                         ),
-                        child: product.img == 'no-image.png'
+                        child: product.image == 'no-image.jpg'
                             ? ClipRRect(
                                 borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(
@@ -101,7 +101,7 @@ class CustomFoodCard extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              product.name,
+                              product.name ?? "No name",
                               overflow: TextOverflow.ellipsis,
                               maxLines: 2,
                               textAlign: TextAlign.start,
@@ -110,19 +110,13 @@ class CustomFoodCard extends StatelessWidget {
                                   fontSize: SizeConfig.blockSizeVertical! * 2.6,
                                   fontWeight: FontWeight.w700),
                             ),
-                            Row(
-                              children: product.categories
-                                  .map((e) => Text(
-                                        e.name,
-                                        style: TextStyle(
-                                            color: Colors.black38,
-                                            fontSize:
-                                                SizeConfig.blockSizeVertical! *
-                                                    2,
-                                            fontWeight: FontWeight.w400),
-                                      ))
-                                  .toList(),
-                            ),
+                            Text(
+                              product.category?.name ?? 'No Category',
+                              style: TextStyle(
+                                  color: Colors.black38,
+                                  fontSize: SizeConfig.blockSizeVertical! * 2,
+                                  fontWeight: FontWeight.w400),
+                            )
                           ],
                         ),
                       ),
@@ -146,7 +140,7 @@ class CustomFoodCard extends StatelessWidget {
                   bottom: SizeConfig.blockSizeVertical! * 1,
                   left: SizeConfig.blockSizeHorizontal! * 2.5,
                   child: Text(
-                    "\$${product.price}",
+                    "\$${product.price ?? 0.0}",
                     style: TextStyle(
                         color: buttonColor,
                         fontSize: SizeConfig.blockSizeVertical! * 2.3,

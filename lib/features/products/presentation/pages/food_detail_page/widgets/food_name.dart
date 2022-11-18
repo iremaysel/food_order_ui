@@ -19,7 +19,7 @@ class FoodName extends StatelessWidget {
             SizedBox(
               width: SizeConfig.blockSizeHorizontal! * 72,
               child: Text(
-                food.name,
+                food.name ?? "No Name",
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(

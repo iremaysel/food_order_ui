@@ -45,7 +45,7 @@ class TopCustomShape extends StatelessWidget {
                   final state = context.watch<AuthenticationBloc>().state;
                   if (state is AuthenticationAuthenticated) {
                     return Text(
-                      state.user.fullname,
+                      state.user.name!,
                       style: const TextStyle(
                           fontWeight: FontWeight.w400, color: Colors.black45),
                     );

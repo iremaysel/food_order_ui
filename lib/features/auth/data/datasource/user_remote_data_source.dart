@@ -29,7 +29,7 @@ class UserRemoteDataSourceImpl extends UserRemoteDataSource {
   @override
   Future<User> loginUserWithEmailAndPassword(
       {required String email, required String password}) async {
-    Uri uri = Uri.parse('$apiUrl/api/auth/login/');
+    Uri uri = Uri.parse('$apiUrl/auth/login/');
 
     final response = await client.post(uri,
         headers: {'Content-Type': 'application/json'},
@@ -38,10 +38,13 @@ class UserRemoteDataSourceImpl extends UserRemoteDataSource {
     if (response.statusCode == 200) {
       Map<String, dynamic> responseUserMap = json.decode(response.body);
 
-      sharedPreferences.setString('token', responseUserMap['token']);
-      final User user = UserModel.fromMap(responseUserMap['user']);
+      sharedPreferences.setString('jwt', responseUserMap['jwt']);
+      final User user = UserModel.fromJson(responseUserMap['user']);
       print(user);
       return user;
+    }
+    if (response.statusCode == 401) {
+      throw UnauthorizedExeption();
     } else {
       throw ServerExeption();
     }
@@ -62,8 +65,8 @@ class UserRemoteDataSourceImpl extends UserRemoteDataSource {
 
     if (response.statusCode == 200) {
       Map<String, dynamic> responseUserMap = json.decode(response.body);
-      sharedPreferences.setString('token', responseUserMap['token']);
-      return UserModel.fromMap(responseUserMap['user']);
+      sharedPreferences.setString('jwt', responseUserMap['jwt']);
+      return UserModel.fromJson(responseUserMap['user']);
     } else {
       throw ServerExeption();
     }

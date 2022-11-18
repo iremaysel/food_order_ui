@@ -2,16 +2,17 @@ import 'dart:convert';
 
 import 'package:food_order_ui/core/constantes/constantes.dart';
 import 'package:food_order_ui/core/error/exeptions.dart';
+import 'package:food_order_ui/features/products/data/models/category_model.dart';
 
 import '../../domain/entities/category.dart';
 import 'package:http/http.dart' as http;
 
 abstract class CategoryRemoteDataSource {
   Future<List<Category>> getCategories();
-  Future<Category> createCategory(Category cat);
+  Future<Category> createCategory(CategoryModel cat);
   Future<Category> getCategoryById(String catId);
-  Future<Category> updateCategory(Category cat);
-  Future<Category> removeCategory(Category cat);
+  Future<Category> updateCategory(CategoryModel cat);
+  Future<Category> removeCategory(CategoryModel cat);
 }
 
 class CategoryRemoteDataSourceImpl extends CategoryRemoteDataSource {
@@ -20,7 +21,7 @@ class CategoryRemoteDataSourceImpl extends CategoryRemoteDataSource {
   CategoryRemoteDataSourceImpl(this.client);
 
   @override
-  Future<Category> createCategory(Category cat) async {
+  Future<Category> createCategory(CategoryModel cat) async {
     try {
       final url = Uri.parse('$apiUrl/categories/');
       final response = await client.post(url,
@@ -29,7 +30,7 @@ class CategoryRemoteDataSourceImpl extends CategoryRemoteDataSource {
 
       if (response.statusCode == 201) {
         final Map<String, dynamic> catMap = jsonDecode(response.body);
-        return Category.fromJson(catMap);
+        return CategoryModel.fromJson(catMap);
       } else {
         throw ServerExeption();
       }
@@ -49,10 +50,12 @@ class CategoryRemoteDataSourceImpl extends CategoryRemoteDataSource {
 
         final Map<String, dynamic> categoryMapResponse =
             jsonDecode(response.body);
-        final List<dynamic> categoryLisy = categoryMapResponse['categories'];
-        categoryLisy
-            .map((category) => list.add(Category.fromJson(category)))
-            .toList();
+        final List<dynamic> categoryList = categoryMapResponse['categories'];
+
+        for (var i = 0; i < categoryList.length; i++) {
+          list.add(CategoryModel.fromJson(categoryList[i]));
+        }
+
         return list;
       } else {
         throw ServerExeption();
@@ -70,7 +73,7 @@ class CategoryRemoteDataSourceImpl extends CategoryRemoteDataSource {
           await client.get(url, headers: {'Content-Type': 'application/json'});
       if (response.statusCode == 200) {
         final Map<String, dynamic> catMap = json.decode(response.body);
-        return Category.fromJson(catMap);
+        return CategoryModel.fromJson(catMap);
       } else {
         throw ServerExeption();
       }

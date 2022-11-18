@@ -46,7 +46,9 @@ class IncreaseDecrease extends StatelessWidget {
                       IncreaseDecreaseButtonsState>(
                     builder: (context, state) {
                       return Text(
-                        "\$${product.price * state.cant}",
+                        product.price == null
+                            ? '0.0'
+                            : "\$${product.price! * state.cant}",
                         style: TextStyle(
                             color: Colors.black,
                             fontSize: SizeConfig.blockSizeVertical! * 4),

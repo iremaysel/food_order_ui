@@ -13,11 +13,11 @@ class FoodDescription extends StatelessWidget {
       padding: EdgeInsets.only(top: SizeConfig.blockSizeVertical! * 2),
 
       /// 15.0
-      child: const Text(
-        //TODO: Add food Description in food Entity ..
-
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud eslednjn",
-        style: TextStyle(color: Colors.black38),
+      child: Text(
+        product.description ?? "El Producto no tiene descripcion",
+        style: TextStyle(
+            color: Colors.black38,
+            fontSize: SizeConfig.blockSizeHorizontal! * 6),
         textAlign: TextAlign.justify,
       ),
     );

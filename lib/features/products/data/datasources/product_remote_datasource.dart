@@ -3,6 +3,7 @@ import 'dart:convert';
 import '../../../../core/constantes/constantes.dart';
 
 import '../../../../core/error/exeptions.dart';
+import '../models/category_model.dart';
 import '../models/product_model.dart';
 
 import '../../../../core/shared/entities/product.dart';
@@ -10,6 +11,7 @@ import 'package:http/http.dart' as http;
 
 abstract class ProductRemoteDataSource {
   Future<List<Product>> getAllProducts();
+  Future<List<Product>> getProductsByCategory(CategoryModel cat);
   Future<List<Product>> getAllFiveStartRatingProducts();
   Future<Product> createProduct(ProductModel product);
 
@@ -78,6 +80,26 @@ class ProductRemoteDataSourceImpl implements ProductRemoteDataSource {
       List<Product> list = [];
       Map<String, dynamic> responseProductlist = json.decode(response.body);
       List<dynamic> listProducts = responseProductlist['products'];
+      listProducts
+          .map((item) => list.add(ProductModel.fromJson(item)))
+          .toList();
+      return list;
+    } else {
+      throw ServerExeption();
+    }
+  }
+
+  @override
+  Future<List<Product>> getProductsByCategory(CategoryModel cat) async {
+    Uri uri = Uri.parse('$apiUrl/products/category/${cat.id}');
+    final response =
+        await client.get(uri, headers: {'Content-Type': 'application/json'});
+
+    if (response.statusCode == 200) {
+      List<Product> list = [];
+      Map<String, dynamic> responseProductlist = json.decode(response.body);
+      List<dynamic> listProducts = responseProductlist['products'];
+
       listProducts
           .map((item) => list.add(ProductModel.fromJson(item)))
           .toList();

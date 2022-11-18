@@ -61,8 +61,7 @@ class _LoginPageBody extends StatelessWidget {
               }
               if (state is LoginError) {
                 Navigator.pop(context);
-                SnackBar snackBar = const SnackBar(
-                    content: Text('Ha ocurrido algun error en el server'));
+                SnackBar snackBar = SnackBar(content: Text(state.message!));
                 ScaffoldMessenger.of(context).showSnackBar(snackBar);
               }
             },

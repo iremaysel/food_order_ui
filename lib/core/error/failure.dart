@@ -28,3 +28,8 @@ class NoInternetFailure extends Failure {
   const NoInternetFailure({required List properties})
       : super(properties: properties);
 }
+
+class UnauthorizedFailure extends Failure {
+  const UnauthorizedFailure({required List properties})
+      : super(properties: properties);
+}

@@ -5,6 +5,7 @@ import 'package:dartz/dartz.dart';
 import 'package:food_order_ui/features/products/domain/repositories/category_repository.dart';
 
 import '../../../../core/platform/network/network_info.dart';
+import '../models/category_model.dart';
 
 class CategoryRepositoryImpl extends CategoryRepository {
   final CategoryRemoteDataSource remoteDataSource;
@@ -13,7 +14,7 @@ class CategoryRepositoryImpl extends CategoryRepository {
   CategoryRepositoryImpl(
       {required this.remoteDataSource, required this.networkInfo});
   @override
-  Future<Either<Failure, Category>> createCategory(Category cat) async {
+  Future<Either<Failure, Category>> createCategory(CategoryModel cat) async {
     try {
       if (await networkInfo.isConnected) {
         return Right(await remoteDataSource.createCategory(cat));
@@ -52,7 +53,7 @@ class CategoryRepositoryImpl extends CategoryRepository {
   }
 
   @override
-  Future<Either<Failure, Category>> removeCategory(Category cat) async {
+  Future<Either<Failure, Category>> removeCategory(CategoryModel cat) async {
     try {
       if (await networkInfo.isConnected) {
         return Right(await remoteDataSource.removeCategory(cat));
@@ -65,7 +66,7 @@ class CategoryRepositoryImpl extends CategoryRepository {
   }
 
   @override
-  Future<Either<Failure, Category>> updateCategory(Category cat) async {
+  Future<Either<Failure, Category>> updateCategory(CategoryModel cat) async {
     try {
       if (await networkInfo.isConnected) {
         return Right(await remoteDataSource.updateCategory(cat));

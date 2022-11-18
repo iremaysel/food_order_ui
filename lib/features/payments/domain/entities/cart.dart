@@ -3,8 +3,13 @@ import 'package:food_order_ui/core/shared/entities/product.dart';
 
 class Cart extends Equatable {
   final List<Product> product;
-  double get subtotal =>
-      product.fold(0, (total, current) => total + current.price);
+  double get subtotal => product.fold(0, (total, current) {
+        if (current.price != null) {
+          return total + current.price!;
+        } else {
+          return total + 0;
+        }
+      });
 
   const Cart({required this.product});
 
@@ -12,7 +17,7 @@ class Cart extends Equatable {
     if (subtotal >= 500) {
       return 0.0;
     } else {
-      return 50;
+      return 10;
     }
   }
 

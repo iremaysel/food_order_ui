@@ -8,6 +8,7 @@ import 'package:food_order_ui/features/auth/domain/usecases/login_user_with_emai
 import 'package:food_order_ui/features/auth/domain/usecases/register_user_with_email_and_password_usecase.dart';
 import 'package:food_order_ui/features/products/data/repositories/category_repository_impl.dart';
 import 'package:food_order_ui/features/products/domain/usecases/category/create_category_usecase.dart';
+import 'package:food_order_ui/features/products/domain/usecases/products/get_products_by_category_usecase.dart';
 import 'package:food_order_ui/features/products/presentation/bloc/bloc/category/category_bloc.dart';
 import 'package:food_order_ui/features/products/presentation/bloc/bloc/product_by_category.dart/product_by_category_bloc.dart';
 import 'features/auth/data/datasource/user_remote_data_source.dart';
@@ -97,6 +98,8 @@ Future<void> init() async {
   //?Product UseCases...
 
   getIt.registerSingleton(GetAllProductsUseCase(getIt<ProductRepository>()));
+  getIt.registerSingleton(
+      GetProductsByCategoryUseCase(getIt<ProductRepository>()));
   getIt.registerSingleton(CreateProductUseCase(getIt<ProductRepository>()));
   getIt.registerSingleton(GetProductByIdUseCase(getIt<ProductRepository>()));
   getIt.registerSingleton(
@@ -163,8 +166,8 @@ Future<void> init() async {
 
   getIt.registerFactory(
       () => CategoryBloc(getCategoriesUseCase: getIt<GetCategoriesUseCase>()));
-  getIt.registerFactory(() => ProductByCategoryBloc(
-      getProductByIdUseCase: getIt<GetProductByIdUseCase>()));
+  getIt.registerFactory(
+      () => ProductByCategoryBloc(getIt<GetProductsByCategoryUseCase>()));
 
   //Core
 }

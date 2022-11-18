@@ -25,7 +25,7 @@ void main() {
       available: true,
       description: 'Este producto no tiene descripción',
       price: 180,
-      uid: '6357f9cf09b60afb2d79861b',
+      id: '6357f9cf09b60afb2d79861b',
       img: 'no-image.png');
 
   test('Should Create a product From the Product Repository', () {

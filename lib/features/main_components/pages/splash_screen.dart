@@ -24,7 +24,7 @@ class SplashScreen extends StatelessWidget {
 
     return BlocListener<ProductBloc, ProductState>(
         listener: (context, ProductState state) {
-          if (state is ProductsLoadedSussesState) {
+          if (state is ProductsLoadedState) {
             favoriteBloc.add(StartProductToFavoritesEvent(state.productList));
           } else if (state is ProductErrorState) {
             SnackBar snackBar = const SnackBar(

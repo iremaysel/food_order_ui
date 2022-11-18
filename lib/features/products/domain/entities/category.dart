@@ -1,42 +1,43 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
-import '../../../../core/shared/entities/product.dart';
-part 'category.g.dart';
+//  part 'category.g.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable()
 class Category extends Equatable {
   const Category({
     required this.id,
-    required this.reference,
     required this.name,
-    required this.products,
+    required this.image,
+    required this.isDeleted,
+    required this.createdAt,
   });
 
-  final String id;
-  final String reference;
+  final int id;
   final String name;
-  final List<String> products;
+  final String image;
+  final bool isDeleted;
+  final String createdAt;
 
   Category copyWith({
-    String? id,
+    int? id,
     String? reference,
     String? name,
-    List<String>? products,
-    int? v,
+    bool? isDeleted,
+    String? createdAt,
   }) =>
       Category(
-        id: id ?? this.id,
-        reference: reference ?? this.reference,
-        name: name ?? this.name,
-        products: products ?? this.products,
-      );
+          id: id ?? this.id,
+          image: reference ?? image,
+          name: name ?? this.name,
+          isDeleted: isDeleted ?? this.isDeleted,
+          createdAt: createdAt ?? this.createdAt);
 
   @override
-  List<Object?> get props => [id, reference, name, products];
+  List<Object?> get props => [id, image, name, isDeleted, createdAt];
 
-  factory Category.fromJson(Map<String, dynamic> json) =>
-      _$CategoryFromJson(json);
+  // factory Category.fromJson(Map<String, dynamic> json) =>
+  //     _$CategoryFromJson(json);
 
-  /// Connect the generated [_$PersonToJson] function to the `toJson` method.
-  Map<String, dynamic> toJson() => _$CategoryToJson(this);
+  // /// Connect the generated [_$PersonToJson] function to the `toJson` method.
+  // Map<String, dynamic> toJson() => _$CategoryToJson(this);
 }

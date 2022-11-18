@@ -136,7 +136,7 @@ class HorizontalCartCardFood extends StatelessWidget {
               FoodImage(product: product),
               SizedBox(width: SizeConfig.blockSizeHorizontal! * 3),
               FoodTextBody(
-                foodName: product.name,
+                foodName: product.name ?? "no name",
                 foodPrice: product.price.toString(),
                 cantity: quantity,
               ),

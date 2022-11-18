@@ -30,7 +30,6 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     result.fold(
         (failure) =>
             emit(const ProductErrorState(errorMesagge: 'Server Error')),
-        (productList) =>
-            emit(ProductsLoadedSussesState(productList: productList)));
+        (productList) => emit(ProductsLoadedState(productList: productList)));
   }
 }

@@ -4,44 +4,39 @@ import '../components/checkbox_save.dart';
 import '../components/checkout_textfield.dart';
 import '../components/page_name.dart';
 
-class Payment extends StatefulWidget {
+class Payment extends StatelessWidget {
   const Payment({Key? key}) : super(key: key);
 
-  @override
-  _PaymentState createState() => _PaymentState();
-}
-
-class _PaymentState extends State<Payment> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          PageName(text_name: "Card Holder Name"),
-          CheckoutTextField(
-            enter_text: "Your card holder name",
-            size_width: 1.18,
+          LabelName(textName: "Card Holder Name"),
+          const CheckoutTextField(
+            enterText: "Your card holder name",
+            sizewidth: 1.18,
           ), //350
-          PageName(text_name: "Card Number"),
-          CheckoutTextField(
-            enter_text: "Your card number",
-            size_width: 1.18,
+          LabelName(textName: "Card Number"),
+          const CheckoutTextField(
+            enterText: "Your card number",
+            sizewidth: 1.18,
           ),
           Row(
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  PageName(text_name: "Month/Year"),
-                  CheckoutTextField(enter_text: "mm/yy", size_width: 3.0)
+                  LabelName(textName: "Month/Year"),
+                  const CheckoutTextField(enterText: "mm/yy", sizewidth: 3.0)
                 ],
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  PageName(text_name: "CVV"),
-                  CheckoutTextField(enter_text: "***", size_width: 3.0)
+                  LabelName(textName: "CVV"),
+                  const CheckoutTextField(enterText: "***", sizewidth: 3.0)
                 ],
               )
             ],

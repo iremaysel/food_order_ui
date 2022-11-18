@@ -30,7 +30,7 @@ void main() {
         description: 'description',
         quantity: 1,
         price: 100,
-        uid: '62d6f062a6a2d738a753302c'),
+        id: '62d6f062a6a2d738a753302c'),
   ];
 
   test('should get all Products from the repository', () async {

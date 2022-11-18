@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:food_order_ui/core/error/failure.dart';
 import 'package:food_order_ui/features/auth/domain/usecases/login_user_with_email_and_password_usecase.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -27,19 +28,22 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   FutureOr<void> _onLoginButtonEventToState(
       LoginButtonPressed event, Emitter<LoginState> emit) async {
     emit(LoginLoading());
-    try {
-      final eitherUser =
-          await usecase(email: event.email, password: event.password);
 
-      eitherUser.fold(
-        (failure) => emit(LoginError()),
-        (user) {
-          emit(LoginSussess(
-              user: user, token: sharedPreferences.getString('token')!));
-        },
-      );
-    } catch (e) {
-      emit(LoginError());
-    }
+    final eitherUser =
+        await usecase(email: event.email, password: event.password);
+
+    eitherUser.fold(
+      (failure) {
+        if (failure is UnauthorizedFailure) {
+          emit(const LoginError('Error de usuario o contraseña'));
+        } else {
+          emit(const LoginError('Ha Occurido algo en el server'));
+        }
+      },
+      (user) {
+        emit(LoginSussess(
+            user: user, token: sharedPreferences.getString('jwt')!));
+      },
+    );
   }
 }

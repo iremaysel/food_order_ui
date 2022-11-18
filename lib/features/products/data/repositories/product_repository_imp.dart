@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:food_order_ui/features/products/data/models/category_model.dart';
 
 import '../../../../core/error/exeptions.dart';
 import '../../../../core/error/failure.dart';
@@ -97,6 +98,20 @@ class ProductRepositoryImpl extends ProductRepository {
       return Right(await remoteDataSource.getAllFiveStartRatingProducts());
     } on ServerExeption {
       return const Left(ServerFailure(properties: []));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<Product>>> getProductsByCategory(
+      CategoryModel cat) async {
+    if (await networkInfo.isConnected) {
+      try {
+        return Right(await remoteDataSource.getProductsByCategory(cat));
+      } on ServerExeption {
+        return const Left(ServerFailure(properties: []));
+      }
+    } else {
+      return const Left(NoInternetFailure(properties: []));
     }
   }
 }

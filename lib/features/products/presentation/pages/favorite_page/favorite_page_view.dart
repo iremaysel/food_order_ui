@@ -33,6 +33,31 @@ class FavoritePageView extends StatelessWidget {
           child: BlocBuilder<FavoritesBloc, FavoritesState>(
             builder: (context, FavoritesState state) {
               if (state is FavoritesLoadedState) {
+                if (state.productList.isEmpty) {
+                  return Center(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                            height: SizeConfig.blockSizeVertical! * 35,
+                            child: const Image(
+                                fit: BoxFit.cover,
+                                image: AssetImage('assets/food/no_food.jpg'))),
+                        SizedBox(
+                          height: SizeConfig.blockSizeVertical! * 5,
+                        ),
+                        Text(
+                          textAlign: TextAlign.center,
+                          'No hay Productos agrdegados a favoritos',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: SizeConfig.blockSizeHorizontal! * 6),
+                        )
+                      ],
+                    ),
+                  );
+                }
+
                 return GridView.builder(
                     itemCount: state.productList.length,
                     gridDelegate:

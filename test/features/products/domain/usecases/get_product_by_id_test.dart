@@ -29,7 +29,7 @@ void main() {
       description: 'Descrip[tiom in here',
       quantity: 2,
       price: 200,
-      uid: id);
+      id: id);
 
   test('should get a Product from a repository', () async {
     //assert

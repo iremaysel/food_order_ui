@@ -39,7 +39,7 @@ class UserNameText extends StatelessWidget {
                       builder: (context, state) {
                         if (state is AuthenticationAuthenticated) {
                           return Text(
-                            "Hola ${state.user.fullname}",
+                            "Hola ${state.user.name}",
                             style: TextStyle(
                                 fontSize: SizeConfig.blockSizeHorizontal! * 8,
                                 fontWeight: FontWeight.bold,

@@ -12,6 +12,7 @@ import 'features/auth/presentation/bloc/login/login_bloc.dart';
 import 'features/auth/presentation/bloc/register/register_bloc.dart';
 import 'features/main_components/bloc/cubit/nav_bar_cubit_cubit.dart';
 import 'features/products/domain/usecases/category/get_categories_usecase.dart';
+import 'features/products/domain/usecases/products/get_products_by_category_usecase.dart';
 import 'features/products/presentation/bloc/bloc/favorites_bloc/favorites_bloc.dart';
 import 'features/products/presentation/bloc/bloc/five_starts_products_bloc/bloc/five_start_products_bloc_bloc.dart';
 import 'dependency_Injection.dart' as sl;
@@ -88,8 +89,8 @@ void main() async {
                 ..add(CategoryStatedEvent()),
         ),
         BlocProvider(
-          create: (context) => ProductByCategoryBloc(
-              getProductByIdUseCase: getIt<GetProductByIdUseCase>()),
+          create: (context) =>
+              ProductByCategoryBloc(getIt<GetProductsByCategoryUseCase>()),
         )
       ],
       child: const MyApp(),

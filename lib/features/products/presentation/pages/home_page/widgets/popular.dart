@@ -31,7 +31,7 @@ class _PopularFoodBody extends StatelessWidget {
               child: CircularProgressIndicator(),
             ),
           );
-        } else if (state is ProductsLoadedSussesState) {
+        } else if (state is ProductsLoadedState) {
           return SizedBox(
             height: SizeConfig.blockSizeVertical! * 45,
             child: ListView.builder(

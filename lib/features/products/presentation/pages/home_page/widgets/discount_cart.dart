@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_order_ui/features/products/presentation/bloc/bloc/five_starts_products_bloc/bloc/five_start_products_bloc_bloc.dart';
 
 import '../../../../../../core/constantes/constantes.dart';
+import '../../food_detail_page/food_detail_view.dart';
 import '../components/size_config.dart';
 
 class DiscountCard extends StatelessWidget {
@@ -32,33 +33,40 @@ class DiscountCard extends StatelessWidget {
                 autoPlay: false,
               ),
               items: state.fiveStartProductList
-                  .map((product) => ClipRRect(
-                        borderRadius: BorderRadius.circular(
-                            SizeConfig.blockSizeHorizontal! * 5.5),
-                        child: Stack(
-                          fit: StackFit.expand,
-                          children: [
-                            product.img == 'no-image.png'
-                                ? Image.asset(
-                                    'assets/main/no_image.jpeg',
-                                    fit: BoxFit.cover,
-                                  )
-                                : FadeInImage(
-                                    //? Rivisar esto aqui...
-                                    imageErrorBuilder:
-                                        (context, error, stackTrace) {
-                                      return const Image(
-                                          image: AssetImage(
-                                              'assets/main/loading.gif'));
-                                    },
-                                    fit: BoxFit.fill,
-                                    placeholder: const AssetImage(
-                                        'assets/main/loading.gif'),
-                                    image: NetworkImage(
-                                      '$apiUrl/uploads/products/${product.id}',
-                                    ),
-                                  )
-                          ],
+                  .map((product) => GestureDetector(
+                        onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    FoodDetailView(food: product))),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(
+                              SizeConfig.blockSizeHorizontal! * 5.5),
+                          child: Stack(
+                            fit: StackFit.expand,
+                            children: [
+                              product.image == 'no-image.jpg'
+                                  ? Image.asset(
+                                      'assets/main/no_image.jpeg',
+                                      fit: BoxFit.cover,
+                                    )
+                                  : FadeInImage(
+                                      //? Rivisar esto aqui...
+                                      imageErrorBuilder:
+                                          (context, error, stackTrace) {
+                                        return const Image(
+                                            image: AssetImage(
+                                                'assets/main/loading.gif'));
+                                      },
+                                      fit: BoxFit.fill,
+                                      placeholder: const AssetImage(
+                                          'assets/main/loading.gif'),
+                                      image: NetworkImage(
+                                        '$apiUrl/uploads/products/${product.id}',
+                                      ),
+                                    )
+                            ],
+                          ),
                         ),
                       ))
                   .toList(),

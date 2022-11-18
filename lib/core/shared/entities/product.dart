@@ -1,76 +1,51 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:equatable/equatable.dart';
+import 'package:food_order_ui/features/products/data/models/category_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import '../../../features/products/domain/entities/category.dart';
 part 'product.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Product extends Equatable {
-  final String name;
-  final List<Category> categories;
-  final bool available;
-
+  final int? id;
+  final String? name;
   final int? rating;
-  final String description;
-  final int? quantity;
-  final int price;
-  final String? img;
+  final bool? isRecommended;
+  final String? description;
+  final double? price;
+  final String? image;
+  final CategoryModel? category;
+
+  final String? createdAt;
   final bool? isDeleted;
-  final String? id;
 
   const Product({
-    required this.name,
-    required this.categories,
-    required this.available,
+    this.id,
+    this.name,
     this.rating,
-    required this.description,
-    this.quantity,
-    required this.price,
-    this.img,
+    this.isRecommended,
+    this.category,
+    this.description,
+    this.price,
+    this.image,
     this.isDeleted,
-    required this.id,
+    this.createdAt,
   });
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return [
+      id,
       name,
-      categories,
-      available,
-      rating ?? 0,
+      category,
+      rating,
       description,
-      quantity ?? 0,
       price,
-      img ?? '',
-      isDeleted ?? false,
-      id ?? '',
+      image,
+      isDeleted,
+      createdAt,
+      isRecommended
     ];
-  }
-
-  Product copyWith({
-    String? name,
-    List<Category>? categories,
-    bool? available,
-    int? rating,
-    String? description,
-    int? quantity,
-    int? price,
-    String? img,
-    bool? isDeleted,
-    String? id,
-  }) {
-    return Product(
-      name: name ?? this.name,
-      categories: categories ?? this.categories,
-      available: available ?? this.available,
-      rating: rating ?? this.rating,
-      description: description ?? this.description,
-      quantity: quantity ?? this.quantity,
-      price: price ?? this.price,
-      img: img ?? this.img,
-      isDeleted: isDeleted ?? this.isDeleted,
-      id: id ?? this.id,
-    );
   }
 
   factory Product.fromJson(Map<String, dynamic> json) =>
@@ -78,4 +53,30 @@ class Product extends Equatable {
 
   /// Connect the generated [_$PersonToJson] function to the `toJson` method.
   Map<String, dynamic> toJson() => _$ProductToJson(this);
+
+  Product copyWith({
+    int? id,
+    String? name,
+    int? rating,
+    bool? isRecommended,
+    String? description,
+    double? price,
+    String? image,
+    CategoryModel? category,
+    String? createdAt,
+    bool? isDeleted,
+  }) {
+    return Product(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      rating: rating ?? this.rating,
+      isRecommended: isRecommended ?? this.isRecommended,
+      description: description ?? this.description,
+      price: price ?? this.price,
+      image: image ?? this.image,
+      category: category ?? this.category,
+      createdAt: createdAt ?? this.createdAt,
+      isDeleted: isDeleted ?? this.isDeleted,
+    );
+  }
 }

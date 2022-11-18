@@ -25,6 +25,8 @@ class AuthUserRepositoryImpl extends AuthUserRepository {
             email: email, password: password));
       } on ServerExeption {
         return const Left(ServerFailure(properties: []));
+      } on UnauthorizedExeption {
+        return const Left(UnauthorizedFailure(properties: []));
       }
     } else {
       return const Left(NoInternetFailure(properties: []));

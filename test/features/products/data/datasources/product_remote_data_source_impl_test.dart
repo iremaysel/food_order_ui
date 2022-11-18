@@ -46,7 +46,7 @@ void main() {
       price: 100,
       img: "bc507322-47e5-4c50-b4ec-762c5f84d21e.png",
       calories: "",
-      uid: id,
+      id: id,
     );
     test(
         'should perform a get request on a URL with an id in the empoint and with application/json Header',
@@ -94,7 +94,7 @@ void main() {
         price: 100,
         img: "fa659adf-f140-4d09-afa9-3c47c7c0bdde.jpeg",
         calories: "",
-        uid: "62d6f062a6a2d738a753302c");
+        id: "62d6f062a6a2d738a753302c");
 
     const tProducModel2 = ProductModel(
         name: "Agua Natural 1500ml",
@@ -105,7 +105,7 @@ void main() {
         quantity: 0,
         price: 200,
         img: "no-image.png",
-        uid: "62d6f089a6a2d738a753302e");
+        id: "62d6f089a6a2d738a753302e");
 
     const Product tProduct = tProductModel;
 
@@ -162,7 +162,7 @@ void main() {
       price: 100,
       img: "bc507322-47e5-4c50-b4ec-762c5f84d21e.png",
       calories: "",
-      uid: '62d6f062a6a2d738a753302c',
+      id: '62d6f062a6a2d738a753302c',
     );
     test(
         'should perform a Post request on a URL and with application/json Header and body',

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../../../../../products/presentation/pages/home_page/components/size_config.dart';
 
-class PageName extends StatelessWidget {
-  String text_name;
-  PageName({required this.text_name});
+class LabelName extends StatelessWidget {
+  final String textName;
+  const LabelName({super.key, required this.textName});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class PageName extends StatelessWidget {
           /// 10.0
           ),
       child: Text(
-        text_name,
+        textName,
         style: TextStyle(
             fontSize: SizeConfig.screenHeight! / 40.18,
             fontWeight: FontWeight.w500,

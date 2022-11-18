@@ -8,9 +8,11 @@ abstract class ProductByCategoryEvent extends Equatable {
 }
 
 class ProductByCategoriesRequestedEvent extends ProductByCategoryEvent {
-  final Category category;
+  final CategoryModel category;
 
-  const ProductByCategoriesRequestedEvent(this.category);
+  const ProductByCategoriesRequestedEvent({
+    required this.category,
+  });
 
   @override
   List<Object> get props => [category];

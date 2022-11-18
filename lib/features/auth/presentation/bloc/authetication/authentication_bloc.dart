@@ -37,7 +37,7 @@ class AuthenticationBloc
   FutureOr<void> _onLoggedOutEventToState(
       LoggedOut event, Emitter<AuthenticationState> emit) async {
     emit(AuthenticationLoading());
-    await sharedPreferences.remove('token');
+    await sharedPreferences.remove('jwt');
     emit(AuthenticationUnauthenticated());
   }
 }
