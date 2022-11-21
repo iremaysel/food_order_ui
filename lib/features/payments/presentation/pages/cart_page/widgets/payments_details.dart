@@ -9,14 +9,19 @@ import 'bottom_bar_widget/bottombar_text.dart';
 import 'bottom_bar_widget/checkout_button.dart';
 
 class PaymentDetails extends StatelessWidget {
-  const PaymentDetails({Key? key}) : super(key: key);
+  final bool? isFinalStep;
+  const PaymentDetails({Key? key, this.isFinalStep}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(
-        vertical: SizeConfig.blockSizeVertical! * 3,
-        horizontal: SizeConfig.blockSizeHorizontal! * 6,
+        vertical: isFinalStep == true
+            ? SizeConfig.blockSizeVertical! * 1
+            : SizeConfig.blockSizeVertical! * 3,
+        horizontal: isFinalStep == true
+            ? SizeConfig.blockSizeHorizontal! * 2
+            : SizeConfig.blockSizeHorizontal! * 6,
       ),
       // height: 174,
       decoration: const BoxDecoration(

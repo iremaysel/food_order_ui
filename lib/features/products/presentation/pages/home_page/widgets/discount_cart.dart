@@ -45,7 +45,7 @@ class DiscountCard extends StatelessWidget {
                           child: Stack(
                             fit: StackFit.expand,
                             children: [
-                              product.image == 'no-image.jpg'
+                              product.image == 'no-image.png'
                                   ? Image.asset(
                                       'assets/main/no_image.jpeg',
                                       fit: BoxFit.cover,

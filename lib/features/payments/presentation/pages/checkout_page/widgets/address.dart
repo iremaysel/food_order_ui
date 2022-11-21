@@ -79,6 +79,14 @@ class _LocalTabBarBody extends StatelessWidget {
           enterText: "Escribe el numero de la mesa",
           sizewidth: 1.18,
         ),
+        SizedBox(
+          height: SizeConfig.blockSizeVertical! * 2,
+        ),
+        const LabelName(textName: "Nombre"),
+        const CheckoutTextField(
+          enterText: "Escribe el nombre del que va a realizar el pago",
+          sizewidth: 1.18,
+        ),
       ],
     );
   }

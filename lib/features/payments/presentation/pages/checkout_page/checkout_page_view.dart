@@ -8,7 +8,7 @@ import '../success_page/success_page_view.dart';
 import 'components/checkout_textfield.dart';
 import 'components/page_name.dart';
 import 'widgets/address.dart';
-import 'widgets/payment.dart';
+import 'widgets/final_resume.dart';
 
 class CheckoutPageView extends StatelessWidget {
   const CheckoutPageView({Key? key}) : super(key: key);
@@ -45,7 +45,7 @@ class CheckoutPageView extends StatelessWidget {
               fontSize: 18,
             ),
           ),
-          content: const Payment(),
+          content: const FinalResume(),
         ),
       ];
 
