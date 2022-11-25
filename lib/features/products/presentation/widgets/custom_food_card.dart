@@ -64,7 +64,7 @@ class CustomFoodCard extends StatelessWidget {
                               topRight: Radius.circular(
                                   SizeConfig.blockSizeHorizontal! * 4)),
                         ),
-                        child: product.image == 'no-image.jpg'
+                        child: product.image == 'no-image.png'
                             ? ClipRRect(
                                 borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(
