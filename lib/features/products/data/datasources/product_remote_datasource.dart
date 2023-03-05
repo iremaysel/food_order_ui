@@ -70,9 +70,10 @@ class ProductRemoteDataSourceImpl implements ProductRemoteDataSource {
     }
   }
 
+//no esta implementado todavia este metdo en la api
   @override
   Future<List<Product>> getAllFiveStartRatingProducts() async {
-    Uri uri = Uri.parse('$apiUrl/products/rated');
+    Uri uri = Uri.parse('$apiUrl/products/favorites');
     final response =
         await client.get(uri, headers: {'Content-Type': 'application/json'});
 

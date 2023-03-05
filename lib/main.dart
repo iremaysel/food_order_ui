@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_order_ui/core/platform/network/bloc/internet_bloc.dart';
 import 'package:food_order_ui/features/products/presentation/bloc/bloc/category/category_bloc.dart';
@@ -31,71 +32,75 @@ import 'features/products/presentation/bloc/bloc/product_bloc/product_bloc.dart'
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await sl.init();
-  runApp(
-    MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (_) => NavBarCubitCubit(),
-        ),
-        BlocProvider(
-            create: (_) => InternetBloc(
-                  dataConnectionChecker: getIt(),
-                )),
-        BlocProvider(create: (_) => LoginTextFieldsHelperCubit()),
-        BlocProvider(
-            create: (_) => AuthenticationBloc(sharedPreferences: getIt())
-              ..add(AppStarted())),
-        BlocProvider(
-          create: (context) => LoginBloc(
-            usecase: getIt<LoginUserWithEmailAndPasswordUsecase>(),
-            authenticationBloc: getIt<AuthenticationBloc>(),
-            sharedPreferences: getIt(),
+
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((_) {
+    runApp(
+      MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (_) => NavBarCubitCubit(),
           ),
-        ),
-        BlocProvider(
-          create: (context) => RegisterBloc(
-            usecase: getIt<RegisterUserWithEmailAndPasswordUsecase>(),
-            authenticationBloc: getIt<AuthenticationBloc>(),
-            sharedPreferences: getIt(),
+          BlocProvider(
+              create: (_) => InternetBloc(
+                    dataConnectionChecker: getIt(),
+                  )),
+          BlocProvider(create: (_) => LoginTextFieldsHelperCubit()),
+          BlocProvider(
+              create: (_) => AuthenticationBloc(sharedPreferences: getIt())
+                ..add(AppStarted())),
+          BlocProvider(
+            create: (context) => LoginBloc(
+              usecase: getIt<LoginUserWithEmailAndPasswordUsecase>(),
+              authenticationBloc: getIt<AuthenticationBloc>(),
+              sharedPreferences: getIt(),
+            ),
           ),
-        ),
-        BlocProvider(
-          create: (_) => ProductBloc(
-            getAllProductsUseCase: getIt<GetAllProductsUseCase>(),
-            getProductByIdUseCase: getIt<GetProductByIdUseCase>(),
+          BlocProvider(
+            create: (context) => RegisterBloc(
+              usecase: getIt<RegisterUserWithEmailAndPasswordUsecase>(),
+              authenticationBloc: getIt<AuthenticationBloc>(),
+              sharedPreferences: getIt(),
+            ),
           ),
-        ),
-        BlocProvider(
-          create: (_) => FiveStartProductsBloc(
-            getAllFiveStartRatingProductsUseCase:
-                getIt<GetAllFiveStartRatingProductsUseCase>(),
+          BlocProvider(
+            create: (_) => ProductBloc(
+              getAllProductsUseCase: getIt<GetAllProductsUseCase>(),
+              getProductByIdUseCase: getIt<GetProductByIdUseCase>(),
+            ),
           ),
-        ),
-        BlocProvider(
-          create: (_) => CartBloc(),
-        ),
-        BlocProvider(
-          create: (_) => FavoritesBloc(
-              getAllFavoriteProductsFromDBUseCase:
-                  getIt<GetAllFavoriteProductsFromDBUseCase>(),
-              removeFavoriteProductFromDBUseCase:
-                  getIt<RemoveFavoriteProductFromDBUseCase>(),
-              saveProductFavoriteIntoDBUseCase:
-                  getIt<SaveProductFavoriteIntoDBUseCase>()),
-        ),
-        BlocProvider(
-          create: (_) =>
-              CategoryBloc(getCategoriesUseCase: getIt<GetCategoriesUseCase>())
-                ..add(CategoryStatedEvent()),
-        ),
-        BlocProvider(
-          create: (context) =>
-              ProductByCategoryBloc(getIt<GetProductsByCategoryUseCase>()),
-        )
-      ],
-      child: const MyApp(),
-    ),
-  );
+          BlocProvider(
+            create: (_) => FiveStartProductsBloc(
+              getAllFiveStartRatingProductsUseCase:
+                  getIt<GetAllFiveStartRatingProductsUseCase>(),
+            ),
+          ),
+          BlocProvider(
+            create: (_) => CartBloc(),
+          ),
+          BlocProvider(
+            create: (_) => FavoritesBloc(
+                getAllFavoriteProductsFromDBUseCase:
+                    getIt<GetAllFavoriteProductsFromDBUseCase>(),
+                removeFavoriteProductFromDBUseCase:
+                    getIt<RemoveFavoriteProductFromDBUseCase>(),
+                saveProductFavoriteIntoDBUseCase:
+                    getIt<SaveProductFavoriteIntoDBUseCase>()),
+          ),
+          BlocProvider(
+            create: (_) => CategoryBloc(
+                getCategoriesUseCase: getIt<GetCategoriesUseCase>())
+              ..add(CategoryStatedEvent()),
+          ),
+          BlocProvider(
+            create: (context) =>
+                ProductByCategoryBloc(getIt<GetProductsByCategoryUseCase>()),
+          )
+        ],
+        child: const MyApp(),
+      ),
+    );
+  });
 }
 
 class MyApp extends StatelessWidget {

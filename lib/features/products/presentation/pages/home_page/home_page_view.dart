@@ -5,7 +5,7 @@ import '../../../../../core/platform/network/bloc/internet_bloc.dart';
 import '../../widgets/food_part.dart';
 import 'components/size_config.dart';
 import 'widgets/categories.dart';
-import 'widgets/discount_cart.dart';
+import 'widgets/discount_card.dart';
 import 'widgets/popular.dart';
 import 'widgets/recommed.dart';
 import 'widgets/search_food.dart';

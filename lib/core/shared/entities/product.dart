@@ -7,7 +7,7 @@ part 'product.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Product extends Equatable {
-  final int? id;
+  final String? id;
   final String? name;
   final int? rating;
   final bool? isRecommended;
@@ -55,7 +55,7 @@ class Product extends Equatable {
   Map<String, dynamic> toJson() => _$ProductToJson(this);
 
   Product copyWith({
-    int? id,
+    String? id,
     String? name,
     int? rating,
     bool? isRecommended,

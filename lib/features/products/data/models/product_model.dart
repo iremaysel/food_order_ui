@@ -8,7 +8,7 @@ part 'product_model.g.dart';
 @JsonSerializable(explicitToJson: true)
 class ProductModel extends Product {
   const ProductModel({
-    int? id,
+    String? id,
     String? name,
     int? rating,
     bool? isRecommended,
