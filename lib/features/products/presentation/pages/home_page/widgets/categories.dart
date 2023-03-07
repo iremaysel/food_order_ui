@@ -74,13 +74,13 @@ class CategoriesCustomWidget extends StatelessWidget {
                   SizedBox(
                       height: SizeConfig.blockSizeVertical! * 8,
                       width: SizeConfig.blockSizeHorizontal! * 20,
-                      child: category.image == 'isci.svg'
+                      child: category.reference == 'isci.svg'
                           ? Image.asset('assets/category/recurso4.png')
                           : Image(
                               errorBuilder: (context, error, stackTrace) =>
                                   Image.asset('assets/category/recurso4.png'),
                               image: AssetImage(
-                                  'assets/category/${category.image}'))),
+                                  'assets/category/${category.reference}'))),
                   Text(
                     category.name,
                     style: TextStyle(

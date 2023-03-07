@@ -28,7 +28,8 @@ class SplashScreen extends StatelessWidget {
             favoriteBloc.add(StartProductToFavoritesEvent(state.productList));
           } else if (state is ProductErrorState) {
             SnackBar snackBar = const SnackBar(
-                content: Text('Ha ocurrido algun error en el server'));
+                content: Text(
+                    'Ha ocurrido Algun error en la carga de los productos en el server'));
             ScaffoldMessenger.of(context).showSnackBar(snackBar);
           }
         },

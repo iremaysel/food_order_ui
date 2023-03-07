@@ -7,16 +7,16 @@ part of 'product_model.dart';
 // **************************************************************************
 
 ProductModel _$ProductModelFromJson(Map<String, dynamic> json) => ProductModel(
-      id: json['id'] as int?,
+      id: json['_id'] as String?,
       name: json['name'] as String?,
       rating: json['rating'] as int?,
       isRecommended: json['isRecommended'] as bool?,
       description: json['description'] as String?,
       price: (json['price'] as num?)?.toDouble(),
-      image: json['image'] as String?,
+      image: json['img'] as String?,
       category: json['category'] == null
           ? null
-          : CategoryModel.fromJson(json['category'] as Map<String, dynamic>),
+          : CategoryModel.fromJson(json['category'] as String),
       createdAt: json['createdAt'] as String?,
       isDeleted: json['isDeleted'] as bool?,
     );

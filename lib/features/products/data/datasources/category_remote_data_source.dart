@@ -30,7 +30,7 @@ class CategoryRemoteDataSourceImpl extends CategoryRemoteDataSource {
 
       if (response.statusCode == 201) {
         final Map<String, dynamic> catMap = jsonDecode(response.body);
-        return CategoryModel.fromJson(catMap);
+        return CategoryModel.fromMap(catMap);
       } else {
         throw ServerExeption();
       }
@@ -41,10 +41,14 @@ class CategoryRemoteDataSourceImpl extends CategoryRemoteDataSource {
 
   @override
   Future<List<Category>> getCategories() async {
+    // Uri uri = Uri.parse('$apiUrl/products/');
+    //   final response =
+    //       await client.get(uri, headers: {'Content-Type': 'application/json'});
+
     try {
-      final url = Uri.parse('$apiUrl/categories/');
+      Uri uri = Uri.parse('$apiUrl/categories/');
       final response =
-          await client.get(url, headers: {'Content-Type': 'application/json'});
+          await client.get(uri, headers: {'Content-Type': 'application/json'});
       if (response.statusCode == 200) {
         final List<Category> list = [];
 
@@ -53,7 +57,7 @@ class CategoryRemoteDataSourceImpl extends CategoryRemoteDataSource {
         final List<dynamic> categoryList = categoryMapResponse['categories'];
 
         for (var i = 0; i < categoryList.length; i++) {
-          list.add(CategoryModel.fromJson(categoryList[i]));
+          list.add(CategoryModel.fromMap(categoryList[i]));
         }
 
         return list;
@@ -73,7 +77,7 @@ class CategoryRemoteDataSourceImpl extends CategoryRemoteDataSource {
           await client.get(url, headers: {'Content-Type': 'application/json'});
       if (response.statusCode == 200) {
         final Map<String, dynamic> catMap = json.decode(response.body);
-        return CategoryModel.fromJson(catMap);
+        return CategoryModel.fromMap(catMap);
       } else {
         throw ServerExeption();
       }

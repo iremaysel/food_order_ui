@@ -7,45 +7,28 @@ part 'user_model.g.dart';
 class UserModel extends User {
   const UserModel({
     required String email,
-    int? id,
-    String? image,
-    String? role,
-    String? mobileUuid,
-    String? address,
-    String? phoneNumber,
-    String? reference,
-    String? createdAt,
-    bool? isVerified,
-    bool? isDeleted,
-    String? name,
+    required String fullName,
+    required String role,
+    required bool status,
+    required bool google,
+    required String uid,
   }) : super(
-            email: email,
-            id: id,
-            image: image,
-            role: role,
-            mobileUuid: mobileUuid,
-            address: address,
-            phoneNumber: phoneNumber,
-            reference: reference,
-            createdAt: createdAt,
-            isDeleted: isDeleted,
-            isVerified: isVerified,
-            name: name);
+          email: email,
+          fullName: fullName,
+          role: email,
+          status: status,
+          google: google,
+          uid: uid,
+        );
 
   @override
   List<Object?> get props => [
+        fullName,
         email,
-        id,
-        image,
         role,
-        mobileUuid,
-        address,
-        phoneNumber,
-        reference,
-        createdAt,
-        isVerified,
-        isDeleted,
-        name,
+        status,
+        google,
+        uid,
       ];
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>

@@ -94,6 +94,7 @@ class ProductRepositoryImpl extends ProductRepository {
 
   @override
   Future<Either<Failure, List<Product>>> getAllFiveStartRatingProducts() async {
+    //agregar la comprobacion de si hay o no conexion
     try {
       return Right(await remoteDataSource.getAllFiveStartRatingProducts());
     } on ServerExeption {

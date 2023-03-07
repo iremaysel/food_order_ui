@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_order_ui/features/products/presentation/bloc/bloc/five_starts_products_bloc/bloc/five_start_products_bloc_bloc.dart';
+import 'package:food_order_ui/features/products/presentation/bloc/bloc/product_bloc/product_bloc.dart';
 
 import '../../../../../../core/constantes/constantes.dart';
 import '../../food_detail_page/food_detail_view.dart';
@@ -18,21 +18,21 @@ class DiscountCard extends StatelessWidget {
           bottom: SizeConfig.blockSizeVertical! * 2),
 
       /// 20.0 - 10.0
-      child: BlocBuilder<FiveStartProductsBloc, FiveStartProductsBlocState>(
+      child: BlocBuilder<ProductBloc, ProductState>(
         builder: (context, state) {
-          if (state is FiveStartProductsBlocLoadingState) {
+          if (state is ProductLoadindState) {
             return const Center(
               child: CircularProgressIndicator(),
             );
           }
-          if (state is FiveStartProductsBlocLoadedSuccessState) {
+          if (state is ProductsLoadedState) {
             return CarouselSlider(
               options: CarouselOptions(
                 enableInfiniteScroll: true,
                 enlargeCenterPage: true,
                 autoPlay: false,
               ),
-              items: state.fiveStartProductList
+              items: state.productList
                   .map((product) => GestureDetector(
                         onTap: () => Navigator.push(
                             context,
