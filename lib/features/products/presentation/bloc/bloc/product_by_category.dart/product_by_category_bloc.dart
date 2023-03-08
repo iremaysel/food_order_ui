@@ -10,19 +10,23 @@ import '../../../../data/models/category_model.dart';
 part 'product_by_category_event.dart';
 part 'product_by_category_state.dart';
 
-class ProductByCategoryBloc
-    extends Bloc<ProductByCategoryEvent, ProductByCategoryState> {
+class ProductByCategoryBloc extends Bloc<ProductByCategoryEvent, ProductByCategoryState> {
+    
   final GetProductsByCategoryUseCase getProductsByCategory;
 
   ProductByCategoryBloc(this.getProductsByCategory)
       : super(ProductByCategoryInitial()) {
-    on<ProductByCategoriesRequestedEvent>(
-        _onProductByCategoriesRequestedEventToState);
+
+
+    on<ProductByCategoriesRequestedEvent>(_onProductByCategoriesRequestedEventToState);
+    
+        
   }
 
   FutureOr<void> _onProductByCategoriesRequestedEventToState(
       ProductByCategoriesRequestedEvent event,
       Emitter<ProductByCategoryState> emit) async {
+    
     emit(ProductByCategoryLoading());
 
     final eitherResult = await getProductsByCategory(event.category);

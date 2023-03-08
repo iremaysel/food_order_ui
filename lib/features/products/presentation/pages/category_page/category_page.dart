@@ -74,7 +74,11 @@ class CategoryPageView extends StatelessWidget {
                       );
                     });
               } else if (state is ProductByCategoryError) {
-                return const Text('Error');
+                return const Center(
+                    child: Text(
+                  'Ha sucedidio algo con la respuesta del server\nIntente mas tarde',
+                  textAlign: TextAlign.center,
+                ));
               } else {
                 return const Center(
                   child: CircularProgressIndicator(),

@@ -16,7 +16,6 @@ import 'features/auth/presentation/bloc/authetication/authentication_bloc.dart';
 import 'features/auth/presentation/bloc/cubit/login_text_fields_helper_cubit.dart';
 import 'features/auth/presentation/bloc/login/login_bloc.dart';
 import 'features/auth/presentation/bloc/register/register_bloc.dart';
-
 import 'features/products/data/datasources/category_remote_data_source.dart';
 import 'features/products/data/datasources/product_local_data_source.dart';
 import 'features/products/domain/repositories/category_repository.dart';
@@ -39,7 +38,6 @@ import 'features/products/domain/usecases/products/save_product_favorites_into_d
 import 'features/products/presentation/bloc/bloc/favorites_bloc/favorites_bloc.dart';
 import 'features/products/presentation/bloc/bloc/product_bloc/product_bloc.dart';
 import 'package:get_it/get_it.dart';
-
 import 'features/products/data/datasources/product_remote_datasource.dart';
 import 'features/products/domain/repositories/product_repository.dart';
 import 'features/products/domain/usecases/products/get_all_products_usecase.dart';

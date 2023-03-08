@@ -87,14 +87,43 @@ class CategoryRemoteDataSourceImpl extends CategoryRemoteDataSource {
   }
 
   @override
-  Future<Category> removeCategory(Category cat) {
-    // TODO: implement removeCategory
-    throw UnimplementedError();
+  Future<Category> removeCategory(Category cat) async {
+    try {
+      final url = Uri.parse('$apiUrl/categories/${cat.id}');
+      final response = await client.delete(url, headers: {'Content-Type': 'application/json'});
+          
+      if (response.statusCode == 200) {
+
+        final Map<String, dynamic> catMap = json.decode(response.body);
+        return CategoryModel.fromMap(catMap);
+
+      } else {
+        throw ServerExeption();
+      }
+    } catch (e) {
+      throw ServerExeption();
+    }
   }
 
   @override
-  Future<Category> updateCategory(Category cat) {
-    // TODO: implement updateCategory
-    throw UnimplementedError();
+  Future<Category> updateCategory(Category cat) async{
+    CategoryModel category = cat as CategoryModel;
+    try {
+      final url = Uri.parse('$apiUrl/categories/${cat.id}');
+      final response = await client.put(url,
+        body: category.toJson(),
+       headers: {'Content-Type': 'application/json'});
+          
+      if (response.statusCode == 200) {
+
+        final Map<String, dynamic> catMap = json.decode(response.body);
+        return CategoryModel.fromMap(catMap);
+
+      } else {
+        throw ServerExeption();
+      }
+    } catch (e) {
+      throw ServerExeption();
+    }
   }
 }

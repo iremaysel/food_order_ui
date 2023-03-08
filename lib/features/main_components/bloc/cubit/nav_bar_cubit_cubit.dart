@@ -6,4 +6,5 @@ class NavBarCubitCubit extends Cubit<NavBarCubitState> {
   NavBarCubitCubit() : super(const NavBarCubitState(0));
 
   void updateIndexNavBar(int index) => emit(NavBarCubitState(index));
+  
 }
