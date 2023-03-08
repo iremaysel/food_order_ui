@@ -25,6 +25,7 @@ class _LoginTextFieldState extends State<LoginTextField> {
           TextFieldInput(
             onValidator: (value) {
               if (value == null || value.isEmpty) {
+                // TODO: Buscar un validacion correcta para el email.
                 return 'Please enter some text';
               }
               return null;
@@ -37,6 +38,7 @@ class _LoginTextFieldState extends State<LoginTextField> {
             ltext: "Email",
           ),
           TextFieldPassword(
+              // TODO: Buscar un validacion correcta para el password.
             onValidator: (value) {
               if (value == null || value.isEmpty) {
                 return 'Please enter some text';

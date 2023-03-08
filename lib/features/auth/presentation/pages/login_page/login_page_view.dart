@@ -37,10 +37,7 @@ class _LoginPageBody extends StatelessWidget {
       child: Column(
         children: [
           const LogoImage(),
-          Form(
-              key: _formKey,
-              autovalidateMode: AutovalidateMode.onUserInteraction,
-              child: const LoginTextField()),
+          Form(key: _formKey, child: const LoginTextField()),
           const ForgotPassword(),
           BlocListener<LoginBloc, LoginState>(
             listener: (context, state) {
