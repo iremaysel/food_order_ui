@@ -12,6 +12,7 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(
       role: json['rol'] as String,
       status: json['status'] as bool,
       google: json['google'] as bool,
+      isDeleted: json['isDeleted'] as bool,
       uid: json['uid'] as String,
     );
 
@@ -21,5 +22,6 @@ Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
       'rol': instance.role,
       'status': instance.status,
       'google': instance.google,
+      'isDeleted': instance.isDeleted,
       'uid': instance.uid,
     };

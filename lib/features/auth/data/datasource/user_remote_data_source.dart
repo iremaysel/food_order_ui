@@ -65,7 +65,7 @@ class UserRemoteDataSourceImpl extends UserRemoteDataSource {
 
     if (response.statusCode == 200) {
       Map<String, dynamic> responseUserMap = json.decode(response.body);
-      sharedPreferences.setString('jwt', responseUserMap['jwt']);
+      sharedPreferences.setString('token', responseUserMap['token']);
       return UserModel.fromJson(responseUserMap['user']);
     } else {
       throw ServerExeption();

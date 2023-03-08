@@ -36,7 +36,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
         (failure) => emit(RegisterError()),
         (user) {
           emit(RegisterSussess(
-              user: user, token: sharedPreferences.getString('jwt')!));
+              user: user, token: sharedPreferences.getString('token')!));
         },
       );
     } catch (e) {

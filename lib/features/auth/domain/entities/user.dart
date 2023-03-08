@@ -6,6 +6,7 @@ class User extends Equatable {
   final String? role;
   final bool? status;
   final bool? google;
+  final bool? isDeleted;
   final String? uid;
 
   const User({
@@ -14,6 +15,7 @@ class User extends Equatable {
     this.role,
     this.status,
     this.google,
+    this.isDeleted,
     this.uid,
   });
 
@@ -24,6 +26,7 @@ class User extends Equatable {
         role,
         status,
         google,
+        isDeleted,
         uid,
       ];
 }

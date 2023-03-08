@@ -11,6 +11,7 @@ class UserModel extends User {
     required String role,
     required bool status,
     required bool google,
+    required bool isDeleted,
     required String uid,
   }) : super(
           email: email,
@@ -18,6 +19,7 @@ class UserModel extends User {
           role: email,
           status: status,
           google: google,
+          isDeleted: isDeleted,
           uid: uid,
         );
 
@@ -27,6 +29,7 @@ class UserModel extends User {
         email,
         role,
         status,
+        isDeleted,
         google,
         uid,
       ];
