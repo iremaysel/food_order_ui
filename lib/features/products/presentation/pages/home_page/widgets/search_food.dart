@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../search_products/presentation/pages/search_page/search_page_view.dart';
+import '../../../../../main_components/bloc/cubit/nav_bar_cubit_cubit.dart';
 import '../components/size_config.dart';
 
 class SearchFood extends StatelessWidget {
@@ -15,12 +16,7 @@ class SearchFood extends StatelessWidget {
           vertical: SizeConfig.blockSizeVertical! * 2,
         ),
         child: InkWell(
-          onTap: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const SearchPageView()));
-          },
+          onTap: () => context.read<NavBarCubitCubit>().updateIndexNavBar(1),
           child: Container(
               height: SizeConfig.blockSizeVertical! * 6,
               width: SizeConfig.blockSizeHorizontal! * 80,
