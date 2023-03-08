@@ -89,8 +89,7 @@ void main() async {
           ),
           BlocProvider(
             create: (_) => CategoryBloc(
-                getCategoriesUseCase: getIt<GetCategoriesUseCase>())
-              ..add(CategoryStatedEvent()),
+                getCategoriesUseCase: getIt<GetCategoriesUseCase>()),
           ),
           BlocProvider(
             create: (context) =>

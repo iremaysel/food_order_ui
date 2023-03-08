@@ -29,6 +29,7 @@ class SearchTextField extends StatelessWidget {
               )
             ]),
         child: TextField(
+          
           style: TextStyle(color: textColor),
           cursorColor: textColor,
           decoration: InputDecoration(

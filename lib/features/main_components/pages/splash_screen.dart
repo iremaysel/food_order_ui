@@ -18,40 +18,41 @@ class SplashScreen extends StatelessWidget {
     var favoriteBloc = BlocProvider.of<FavoritesBloc>(context);
     var productBloc = BlocProvider.of<ProductBloc>(context);
     var fiveStartBloc = BlocProvider.of<FiveStartProductsBloc>(context);
+    var categoryBloc = BlocProvider.of<CategoryBloc>(context);
 
     productBloc.add(ProductsStartedEvent());
     fiveStartBloc.add(StartedFiveStartProductsEvent());
+    categoryBloc.add(CategoryStatedEvent());
 
-    return BlocListener<ProductBloc, ProductState>(
-        listener: (context, ProductState state) {
-          if (state is ProductsLoadedState) {
-            favoriteBloc.add(StartProductToFavoritesEvent(state.productList));
-          } else if (state is ProductErrorState) {
-            SnackBar snackBar = const SnackBar(
-                content: Text(
-                    'Ha ocurrido Algun error en la carga de los productos en el server'));
-            ScaffoldMessenger.of(context).showSnackBar(snackBar);
-          }
-        },
-        child: BlocListener<FiveStartProductsBloc, FiveStartProductsBlocState>(
-          listener: (context, state) {},
-          child: BlocListener<CategoryBloc, CategoryState>(
-            listener: (context, state) {
-              if (state is CategoryLoadedState) {
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => MyHomePage()));
-              }
-            },
-            child: Scaffold(
-              body: Container(
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage("assets/main/splashscreen.gif"),
-                      fit: BoxFit.cover),
-                ),
+    return FutureBuilder(
+      future: Future.wait([
+        productBloc.stream.firstWhere((state) => state is ProductsLoadedState),
+        fiveStartBloc.stream.firstWhere(
+            (state) => state is FiveStartProductsBlocLoadedSuccessState),
+        categoryBloc.stream.firstWhere((state) => state is CategoryLoadedState)
+      ]),
+      builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          // Muestra un indicador de carga mientras esperas que se carguen los datos
+          return Scaffold(
+            body: Container(
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage("assets/main/splashscreen.gif"),
+                    fit: BoxFit.cover),
               ),
             ),
-          ),
-        ));
+          );
+        } else if (snapshot.connectionState == ConnectionState.done) {
+          // Navega a la pantalla de inicio una vez que se cargan los datos
+          favoriteBloc
+              .add(StartProductToFavoritesEvent(snapshot.data![0].productList));
+
+          return MyHomePage();
+        } else {
+          return const Text("Algo salio mal");
+        }
+      },
+    );
   }
 }

@@ -48,7 +48,7 @@ class ProductLocalDataSourceImpl extends ProductLocalDataSource {
 
       listProducts.add(product);
       listProducts.sort(
-        (a, b) => a.id!.compareTo(b.id!),
+        (a, b) => a.name!.compareTo(b.name!),
       );
 
       print(listProducts);

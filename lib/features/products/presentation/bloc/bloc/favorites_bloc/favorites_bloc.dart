@@ -35,6 +35,7 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
 
       eitherProductList
           .fold((failure) => emit(const FavoritesErrorState('Server Error')),
+          
               (producList) {
         for (var i = 0; i < event.listProduct.length; i++) {
           for (var j = 0; j < producList.length; j++) {
