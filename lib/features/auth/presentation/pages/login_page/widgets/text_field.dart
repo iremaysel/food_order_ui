@@ -24,9 +24,13 @@ class _LoginTextFieldState extends State<LoginTextField> {
         children: [
           TextFieldInput(
             onValidator: (value) {
+              final emailRegExp =
+                  RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
               if (value == null || value.isEmpty) {
-                // TODO: Buscar un validacion correcta para el email.
                 return 'Please enter some text';
+              }
+              if (!emailRegExp.hasMatch(value)) {
+                return "Introduce un valor Valido";
               }
               return null;
             },
@@ -38,10 +42,14 @@ class _LoginTextFieldState extends State<LoginTextField> {
             ltext: "Email",
           ),
           TextFieldPassword(
-              // TODO: Buscar un validacion correcta para el password.
             onValidator: (value) {
+              final passwordRegExp = RegExp(
+                  r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
               if (value == null || value.isEmpty) {
                 return 'Please enter some text';
+              }
+              if (!passwordRegExp.hasMatch(value)) {
+                return 'La contrasena debe tener al menos una letra minúscula, un número,carácter especial, 8 caracteres de longitud';
               }
               return null;
             },
