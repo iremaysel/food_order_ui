@@ -27,6 +27,9 @@ class AuthUserRepositoryImpl extends AuthUserRepository {
         return const Left(ServerFailure(properties: []));
       } on UnauthorizedExeption {
         return const Left(UnauthorizedFailure(properties: []));
+      } on BadRequestExeption catch (e) {
+        return Left(
+            BadRequestFailure(properties: [e.message], meesageFailure: ''));
       }
     } else {
       return const Left(NoInternetFailure(properties: []));
@@ -45,6 +48,9 @@ class AuthUserRepositoryImpl extends AuthUserRepository {
                 fullName: fullName, email: email, password: password));
       } on ServerExeption {
         return const Left(ServerFailure(properties: []));
+      } on BadRequestExeption catch (e) {
+        return Left(
+            BadRequestFailure(properties: const [], meesageFailure: e.message));
       }
     } else {
       return const Left(NoInternetFailure(properties: []));

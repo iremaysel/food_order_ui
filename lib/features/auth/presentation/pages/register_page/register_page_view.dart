@@ -39,8 +39,11 @@ class RegisterPageView extends StatelessWidget {
         }
         if (state is RegisterError) {
           Navigator.pop(context);
-          SnackBar snackBar = const SnackBar(
-              content: Text('Ha ocurrido algun error en el server'));
+          SnackBar snackBar = SnackBar(
+              content: state.message == null
+                  ? const Text('Ha ocurrido algun error en el server')
+                  : Text(state.message!));
+
           ScaffoldMessenger.of(context).showSnackBar(snackBar);
         }
       },

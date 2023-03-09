@@ -4,7 +4,7 @@ abstract class RegisterState extends Equatable {
   const RegisterState();
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [];
 }
 
 class RegisterInitial extends RegisterState {}
@@ -21,4 +21,10 @@ class RegisterSussess extends RegisterState {
   List<Object> get props => [user, token];
 }
 
-class RegisterError extends RegisterState {}
+class RegisterError extends RegisterState {
+  final String? message;
+
+  const RegisterError({this.message});
+  @override
+  List<Object?> get props => [message];
+}

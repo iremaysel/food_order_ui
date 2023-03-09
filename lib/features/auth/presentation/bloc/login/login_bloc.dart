@@ -36,13 +36,15 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       (failure) {
         if (failure is UnauthorizedFailure) {
           emit(const LoginError('Error de usuario o contraseña'));
+        } else if (failure is BadRequestFailure) {
+          emit(const LoginError('Ha Occurido algo en el server'));
         } else {
           emit(const LoginError('Ha Occurido algo en el server'));
         }
       },
       (user) {
         emit(LoginSussess(
-            user: user, token: sharedPreferences.getString('jwt')!));
+            user: user, token: sharedPreferences.getString('token')!));
       },
     );
   }

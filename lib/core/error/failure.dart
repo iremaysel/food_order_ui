@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 
 abstract class Failure extends Equatable {
   final List properties = const <dynamic>[];
+
   const Failure({required properties});
 
   @override
@@ -32,4 +33,18 @@ class NoInternetFailure extends Failure {
 class UnauthorizedFailure extends Failure {
   const UnauthorizedFailure({required List properties})
       : super(properties: properties);
+}
+
+class BadRequestFailure extends Failure {
+  final String meesageFailure;
+
+  const BadRequestFailure(
+      {required List<dynamic> properties, required this.meesageFailure})
+      : super(properties: properties);
+
+  @override
+  List<Object> get props => [properties, meesageFailure];
+
+  @override
+  bool? get stringify => true;
 }

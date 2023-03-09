@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../../../core/error/failure.dart';
 import '../../../domain/entities/user.dart';
 import '../../../domain/usecases/register_user_with_email_and_password_usecase.dart';
 import '../authetication/authentication_bloc.dart';
@@ -33,14 +34,20 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
           fullName: event.fullname);
 
       eitherUser.fold(
-        (failure) => emit(RegisterError()),
+        (failure) {
+          if (failure is BadRequestFailure) {
+            return emit(RegisterError(message: failure.meesageFailure));
+          }
+
+          
+        },
         (user) {
           emit(RegisterSussess(
               user: user, token: sharedPreferences.getString('token')!));
         },
       );
     } catch (e) {
-      emit(RegisterError());
+      emit(const RegisterError());
     }
   }
 }
