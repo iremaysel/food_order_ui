@@ -3,10 +3,16 @@ import 'package:flutter/material.dart';
 import '../../../../../products/presentation/pages/home_page/components/colors.dart';
 import '../../../../../products/presentation/pages/home_page/components/size_config.dart';
 
-class SearchTextField extends StatelessWidget {
+class SearchTextField extends StatefulWidget {
   final String hintText;
   const SearchTextField({Key? key, required this.hintText}) : super(key: key);
 
+  @override
+  State<SearchTextField> createState() => _SearchTextFieldState();
+}
+
+class _SearchTextFieldState extends State<SearchTextField> {
+  final TextEditingController controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -28,8 +34,8 @@ class SearchTextField extends StatelessWidget {
                 color: Colors.black.withOpacity(0.2),
               )
             ]),
-        child: TextField(
-          
+        child: TextFormField(
+          controller: controller,
           style: TextStyle(color: textColor),
           cursorColor: textColor,
           decoration: InputDecoration(
@@ -46,7 +52,7 @@ class SearchTextField extends StatelessWidget {
               borderRadius:
                   BorderRadius.circular(SizeConfig.blockSizeHorizontal! * 5),
             ),
-            hintText: hintText,
+            hintText: widget.hintText,
             hintStyle: const TextStyle(color: Colors.black26),
           ),
         ),

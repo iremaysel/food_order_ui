@@ -16,77 +16,85 @@ class ProfilePageView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AuthenticationBloc, AuthenticationState>(
-      builder: (context, state) {
-        if (state is AuthenticationAuthenticated) {
-          return SafeArea(
-            child: LayoutBuilder(
-              builder: (context, constraints) {
-                return Scaffold(
-                  backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
-                  appBar: AppBar(
-                    leading: GestureDetector(
-                        onTap: () => context
-                            .read<NavBarCubitCubit>()
-                            .updateIndexNavBar(0),
-                        child: const Icon(Icons.arrow_back)),
-                    centerTitle: true,
-                    elevation: 0,
-                    title: const Text(
-                      "Perfil",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
-                  body: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const TopCustomShape(),
-                      SizedBox(
-                        height: constraints.biggest.height * 0.05,
-                      ),
-                      const UserSection(
-                          iconName: Icons.account_circle,
-                          sectionText: "My information"),
-                      const UserSection(
-                          iconName: Icons.credit_card,
-                          sectionText: "Credit Card"),
-                      const UserSection(
-                          iconName: Icons.shopping_basket,
-                          sectionText: "Past orders"),
-                      const UserSection(
-                          iconName: Icons.location_city,
-                          sectionText: "Address information"),
-                      UserSection(
-                          onTap: () {
-                            context.read<AuthenticationBloc>().add(LoggedOut());
-                          },
-                          iconName: Icons.logout_outlined,
-                          sectionText: "Cerrar Session"),
-                    ],
-                  ),
-                );
-              },
-            ),
-          );
-        } else {
-          return Center(
-            child: Column(
-              children: [
-                const TopCustomShape(),
-                LottieBuilder.asset('assets/main/login_icon.json'),
-                LoginButton(
-                    textButton: 'Iniciar Session',
-                    colorButton: buttonColor,
-                    colorTextButton: Colors.white,
-                    onPressed: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const LoginPageView())))
-              ],
-            ),
-          );
-        }
+    return WillPopScope(
+      onWillPop: () async {
+        context.read<NavBarCubitCubit>().updateIndexNavBar(0);
+        return false;
       },
+      child: BlocBuilder<AuthenticationBloc, AuthenticationState>(
+        builder: (context, state) {
+          if (state is AuthenticationAuthenticated) {
+            return SafeArea(
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  return Scaffold(
+                    backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
+                    appBar: AppBar(
+                      leading: GestureDetector(
+                          onTap: () => context
+                              .read<NavBarCubitCubit>()
+                              .updateIndexNavBar(0),
+                          child: const Icon(Icons.arrow_back)),
+                      centerTitle: true,
+                      elevation: 0,
+                      title: const Text(
+                        "Perfil",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                    body: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const TopCustomShape(),
+                        SizedBox(
+                          height: constraints.biggest.height * 0.05,
+                        ),
+                        const UserSection(
+                            iconName: Icons.account_circle,
+                            sectionText: "My information"),
+                        const UserSection(
+                            iconName: Icons.credit_card,
+                            sectionText: "Credit Card"),
+                        const UserSection(
+                            iconName: Icons.shopping_basket,
+                            sectionText: "Past orders"),
+                        const UserSection(
+                            iconName: Icons.location_city,
+                            sectionText: "Address information"),
+                        UserSection(
+                            onTap: () {
+                              context
+                                  .read<AuthenticationBloc>()
+                                  .add(LoggedOut());
+                            },
+                            iconName: Icons.logout_outlined,
+                            sectionText: "Cerrar Session"),
+                      ],
+                    ),
+                  );
+                },
+              ),
+            );
+          } else {
+            return Center(
+              child: Column(
+                children: [
+                  const TopCustomShape(),
+                  LottieBuilder.asset('assets/main/login_icon.json'),
+                  LoginButton(
+                      textButton: 'Iniciar Session',
+                      colorButton: buttonColor,
+                      colorTextButton: Colors.white,
+                      onPressed: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const LoginPageView())))
+                ],
+              ),
+            );
+          }
+        },
+      ),
     );
   }
 }

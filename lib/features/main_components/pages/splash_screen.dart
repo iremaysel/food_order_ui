@@ -47,8 +47,20 @@ class SplashScreen extends StatelessWidget {
           // Navega a la pantalla de inicio una vez que se cargan los datos
           favoriteBloc
               .add(StartProductToFavoritesEvent(snapshot.data![0].productList));
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            Navigator.pushReplacement(
+                context, MaterialPageRoute(builder: (context) => MyHomePage()));
+          });
 
-          return MyHomePage();
+          return Scaffold(
+            body: Container(
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage("assets/main/splashscreen.gif"),
+                    fit: BoxFit.cover),
+              ),
+            ),
+          );
         } else {
           return const Text("Algo salio mal");
         }

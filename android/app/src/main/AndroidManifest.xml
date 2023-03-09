@@ -7,6 +7,8 @@
    <application
         android:label="food_order_ui"
         android:name="${applicationName}"
+        android:enableOnBackInvokedCallback="true"
+        android:windowSoftInputMode="stateVisible"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

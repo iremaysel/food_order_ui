@@ -11,14 +11,9 @@ import 'widgets/recommed.dart';
 import 'widgets/search_food.dart';
 import 'widgets/username_text.dart';
 
-class HomePageView extends StatefulWidget {
+class HomePageView extends StatelessWidget {
   const HomePageView({Key? key}) : super(key: key);
 
-  @override
-  _HomePageViewState createState() => _HomePageViewState();
-}
-
-class _HomePageViewState extends State<HomePageView> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
