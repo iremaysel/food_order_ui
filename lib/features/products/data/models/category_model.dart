@@ -1,8 +1,9 @@
 import 'dart:convert';
 
-import 'package:food_order_ui/features/products/data/models/product_model.dart';
+
 import 'package:json_annotation/json_annotation.dart';
 
+import '../../../../core/shared/models/product_model.dart';
 import '../../domain/entities/category.dart';
 
 @JsonSerializable()

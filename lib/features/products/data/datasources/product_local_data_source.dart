@@ -3,12 +3,14 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../core/shared/entities/product.dart';
-import '../models/product_model.dart';
+import '../../../../core/shared/models/product_model.dart';
 
 abstract class ProductLocalDataSource {
   Future<Product> saveProductFavoriteIntoDB(ProductModel product);
   Future<Product> removeProductFavoriteIntoDB(ProductModel product);
   Future<List<Product>> getAllFavoriteProductsFromDB();
+  Future<List<Product>> searchProducts(
+      {required String query, required List<Product> productList});
 }
 
 class ProductLocalDataSourceImpl extends ProductLocalDataSource {
@@ -51,8 +53,6 @@ class ProductLocalDataSourceImpl extends ProductLocalDataSource {
         (a, b) => a.name!.compareTo(b.name!),
       );
 
-      print(listProducts);
-
       String newProductList = json.encode(listProducts);
 
       sharedP.setString('favorites', newProductList);
@@ -78,5 +78,20 @@ class ProductLocalDataSourceImpl extends ProductLocalDataSource {
     sharedP.setString('favorites', newProductList);
 
     return Future.value(product);
+  }
+
+  @override
+  Future<List<Product>> searchProducts(
+      {required String query, required List<Product>productList}) async {
+    List<Product> list = [];
+    if (query.isNotEmpty) {
+      for (var producto in productList) {
+        if (producto.name!.toLowerCase().contains(query.toLowerCase())) {
+          list.add(producto);
+        }
+      }
+    }
+
+    return list;
   }
 }

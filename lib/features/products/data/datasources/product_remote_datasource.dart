@@ -3,8 +3,8 @@ import 'dart:convert';
 import '../../../../core/constantes/constantes.dart';
 
 import '../../../../core/error/exeptions.dart';
+import '../../../../core/shared/models/product_model.dart';
 import '../models/category_model.dart';
-import '../models/product_model.dart';
 
 import '../../../../core/shared/entities/product.dart';
 import 'package:http/http.dart' as http;
@@ -16,6 +16,8 @@ abstract class ProductRemoteDataSource {
   Future<Product> createProduct(ProductModel product);
 
   Future<Product> getProductById(String id);
+
+  Future<List<Product>> searchProducts(String query);
 }
 
 class ProductRemoteDataSourceImpl implements ProductRemoteDataSource {
@@ -108,5 +110,11 @@ class ProductRemoteDataSourceImpl implements ProductRemoteDataSource {
     } else {
       throw ServerExeption();
     }
+  }
+
+  @override
+  Future<List<Product>> searchProducts(String query) {
+    // TODO: implement searchProducts
+    throw ServerExeption();
   }
 }

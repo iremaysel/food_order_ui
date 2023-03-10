@@ -5,10 +5,10 @@ import '../../../../core/error/exeptions.dart';
 import '../../../../core/error/failure.dart';
 import '../../../../core/platform/network/network_info.dart';
 import '../../../../core/shared/entities/product.dart';
+import '../../../../core/shared/models/product_model.dart';
 import '../../domain/repositories/product_repository.dart';
 import '../datasources/product_local_data_source.dart';
 import '../datasources/product_remote_datasource.dart';
-import '../models/product_model.dart';
 
 class ProductRepositoryImpl extends ProductRepository {
   final ProductRemoteDataSource remoteDataSource;

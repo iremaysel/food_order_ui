@@ -7,7 +7,7 @@ import '../../products/presentation/pages/favorite_page/favorite_page_view.dart'
 import '../../products/presentation/pages/home_page/components/colors.dart';
 import '../../products/presentation/pages/home_page/components/size_config.dart';
 import '../../products/presentation/pages/home_page/home_page_view.dart';
-import '../../search_products/presentation/pages/search_page/search_page_view.dart';
+import '../../search/presentation/pages/search_page_view.dart';
 import '../../user_profile/presentation/pages/profile_page/profile_page_view.dart';
 import '../bloc/cubit/nav_bar_cubit_cubit.dart';
 

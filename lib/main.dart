@@ -4,6 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_order_ui/core/platform/network/bloc/internet_bloc.dart';
 import 'package:food_order_ui/features/products/presentation/bloc/bloc/category/category_bloc.dart';
 import 'package:food_order_ui/features/products/presentation/bloc/bloc/product_by_category.dart/product_by_category_bloc.dart';
+import 'package:food_order_ui/features/search/domain/usecases/product_search_caseuse.dart';
+import 'package:food_order_ui/features/search/presentation/bloc/cubit_search/cubit/search_texts_field_cubit_cubit.dart';
+import 'package:food_order_ui/features/search/presentation/bloc/search_bloc.dart';
 
 import 'features/auth/domain/usecases/login_user_with_email_and_password_usecase.dart';
 import 'features/auth/domain/usecases/register_user_with_email_and_password_usecase.dart';
@@ -46,6 +49,7 @@ void main() async {
                     dataConnectionChecker: getIt(),
                   )),
           BlocProvider(create: (_) => LoginTextFieldsHelperCubit()),
+          BlocProvider(create: (_) => SearchTextsFieldCubitCubit()),
           BlocProvider(
               create: (_) => AuthenticationBloc(sharedPreferences: getIt())
                 ..add(AppStarted())),
@@ -67,6 +71,11 @@ void main() async {
             create: (_) => ProductBloc(
               getAllProductsUseCase: getIt<GetAllProductsUseCase>(),
               getProductByIdUseCase: getIt<GetProductByIdUseCase>(),
+            ),
+          ),
+          BlocProvider(
+            create: (_) => SearchBloc(
+              getIt<ProductSearchUseCase>(),
             ),
           ),
           BlocProvider(

@@ -18,6 +18,7 @@ class CartView extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
+          
           leading: GestureDetector(
               onTap: () =>
                   context.read<NavBarCubitCubit>().updateIndexNavBar(0),

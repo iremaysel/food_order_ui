@@ -11,6 +11,11 @@ import 'package:food_order_ui/features/products/domain/usecases/category/create_
 import 'package:food_order_ui/features/products/domain/usecases/products/get_products_by_category_usecase.dart';
 import 'package:food_order_ui/features/products/presentation/bloc/bloc/category/category_bloc.dart';
 import 'package:food_order_ui/features/products/presentation/bloc/bloc/product_by_category.dart/product_by_category_bloc.dart';
+import 'package:food_order_ui/features/search/data/repositories/product_search_repository_impl.dart';
+import 'package:food_order_ui/features/search/domain/repositories/product_search_repository.dart';
+import 'package:food_order_ui/features/search/domain/usecases/product_search_caseuse.dart';
+import 'package:food_order_ui/features/search/presentation/bloc/cubit_search/cubit/search_texts_field_cubit_cubit.dart';
+import 'package:food_order_ui/features/search/presentation/bloc/search_bloc.dart';
 import 'features/auth/data/datasource/user_remote_data_source.dart';
 import 'features/auth/presentation/bloc/authetication/authentication_bloc.dart';
 import 'features/auth/presentation/bloc/cubit/login_text_fields_helper_cubit.dart';
@@ -85,6 +90,13 @@ Future<void> init() async {
       networkInfo: getIt<NetworkInfo>(),
       remoteDataSource: getIt<ProductRemoteDataSource>()));
 
+  //?Search- //
+  getIt.registerSingleton<ProductSearchRepository>(ProductSearchRepositoryImpl(
+      localDataSource: getIt<ProductLocalDataSource>(),
+      networkInfo: getIt<NetworkInfo>(),
+      remoteDataSource: getIt<ProductRemoteDataSource>()));
+  //
+
   //? UseCases
   //?Categories UseCases...
   getIt.registerSingleton(CreateCategoryUseCase(getIt<CategoryRepository>()));
@@ -108,6 +120,8 @@ Future<void> init() async {
       SaveProductFavoriteIntoDBUseCase(getIt<ProductRepository>()));
   getIt.registerSingleton(
       RemoveFavoriteProductFromDBUseCase(getIt<ProductRepository>()));
+  getIt.registerSingleton(
+      ProductSearchUseCase(getIt<ProductSearchRepository>()));
 
   //? User UseCase...
   getIt.registerLazySingleton(
@@ -121,6 +135,11 @@ Future<void> init() async {
     () => ProductBloc(
       getProductByIdUseCase: getIt<GetProductByIdUseCase>(),
       getAllProductsUseCase: getIt<GetAllProductsUseCase>(),
+    ),
+  );
+  getIt.registerFactory<SearchBloc>(
+    () => SearchBloc(
+      getIt<ProductSearchUseCase>(),
     ),
   );
   getIt.registerFactory<InternetBloc>(
@@ -145,6 +164,7 @@ Future<void> init() async {
           getIt<SaveProductFavoriteIntoDBUseCase>(),
     ),
   );
+
   final SharedPreferences sharedPreferencesInstance = await getIt.getAsync();
   getIt.registerSingleton<AuthenticationBloc>(
       AuthenticationBloc(sharedPreferences: sharedPreferencesInstance));
@@ -161,6 +181,8 @@ Future<void> init() async {
 
   getIt.registerFactory<LoginTextFieldsHelperCubit>(
       () => LoginTextFieldsHelperCubit());
+  getIt.registerFactory<SearchTextsFieldCubitCubit>(
+      () => SearchTextsFieldCubitCubit());
 
   getIt.registerFactory(
       () => CategoryBloc(getCategoriesUseCase: getIt<GetCategoriesUseCase>()));
