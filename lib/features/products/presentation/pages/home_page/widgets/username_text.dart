@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -38,12 +39,16 @@ class UserNameText extends StatelessWidget {
                     child: BlocBuilder<AuthenticationBloc, AuthenticationState>(
                       builder: (context, state) {
                         if (state is AuthenticationAuthenticated) {
-                          return Text(
-                            "Hola ${state.user.fullName}",
-                            style: TextStyle(
-                                fontSize: SizeConfig.blockSizeHorizontal! * 8,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black87),
+                          return SizedBox(
+                            width: SizeConfig.blockSizeHorizontal! * 50,
+                            child: AutoSizeText(
+                              "Hola ${state.user.fullName}",
+                              maxLines: 1,
+                              style: TextStyle(
+                                  fontSize: SizeConfig.blockSizeHorizontal! * 8,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black87),
+                            ),
                           );
                         } else {
                           return Text(
@@ -63,7 +68,7 @@ class UserNameText extends StatelessWidget {
                     height: SizeConfig.blockSizeVertical! * 4,
 
                     /// 30.0
-                    width: SizeConfig.blockSizeHorizontal! * 10,
+                    width: SizeConfig.blockSizeHorizontal! * 8,
 
                     /// 30.0
                     decoration: const BoxDecoration(

@@ -38,7 +38,7 @@ class UserRemoteDataSourceImpl extends UserRemoteDataSource {
     if (response.statusCode == 200) {
       Map<String, dynamic> responseUserMap = json.decode(response.body);
 
-      await sharedPreferences.setString('jwt', responseUserMap['token']);
+      await sharedPreferences.setString('token', responseUserMap['token']);
       final User user = UserModel.fromJson(responseUserMap['user']);
       print(user);
       return user;
@@ -69,7 +69,7 @@ class UserRemoteDataSourceImpl extends UserRemoteDataSource {
       return UserModel.fromJson(responseUserMap['user']);
     }
     if (response.statusCode == 400) {
-       Map<String, dynamic> responseUserMap = json.decode(response.body);
+      Map<String, dynamic> responseUserMap = json.decode(response.body);
 
       throw BadRequestExeption(responseUserMap['msg']);
     } else {
