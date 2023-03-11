@@ -72,13 +72,18 @@ class SearchPageView extends StatelessWidget {
                         gridDelegate:
                             const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
-                          childAspectRatio: 2 / 3 ,
+                          childAspectRatio: 3 / 4,
                         ),
                         itemBuilder: (context, index) {
                           var product = state.products[index];
-                          return CustomFoodCard(
-                            product: product,
-                            isWishList: false,
+                          return Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal:
+                                    SizeConfig.blockSizeHorizontal! * 2),
+                            child: CustomFoodCard(
+                              product: product,
+                              isWishList: false,
+                            ),
                           );
                         }),
                   );
