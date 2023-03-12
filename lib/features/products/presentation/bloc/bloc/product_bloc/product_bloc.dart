@@ -23,13 +23,15 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
 
   FutureOr<void> _onGetProductCallback(
       ProductsStartedEvent event, Emitter<ProductState> emit) async {
+        
     emit(ProductLoadindState());
 
     final result = await getAllProductsUseCase();
 
-    result.fold(
-        (failure) =>
-            emit(const ProductErrorState(errorMesagge: 'Server Error')),
-        (productList) => emit(ProductsLoadedState(productList: productList)));
+    final newState = result.fold(
+        (failure) => const ProductErrorState(errorMesagge: 'Server Error'),
+        (productList) => ProductsLoadedState(productList: productList));
+
+    emit(newState);
   }
 }

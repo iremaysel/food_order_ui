@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:food_order_ui/features/products/presentation/bloc/bloc/product_bloc/product_bloc.dart';
 import 'package:food_order_ui/features/search/presentation/bloc/cubit_search/cubit/search_texts_field_cubit_cubit.dart';
 import 'package:food_order_ui/features/search/presentation/bloc/search_bloc.dart';
 
+import '../../../../core/util/debouncer.dart';
 import '../../../products/presentation/pages/home_page/components/colors.dart';
 import '../../../products/presentation/pages/home_page/components/size_config.dart';
 
@@ -46,8 +48,12 @@ class _SearchTextFieldState extends State<SearchTextField> {
               onChanged: (query) {
                 context.read<SearchTextsFieldCubitCubit>().updateQuery(query);
 
-                searchBloc.add(SearchRequestedEvent(
-                    query: query, products: productBlocState.productList));
+                final debouncer = Debouncer(milliseconds: 150);
+                debouncer.run(() {
+                  // Acción a realizar después de que se complete el tiempo de espera
+                  searchBloc.add(SearchRequestedEvent(
+                      query: query, products: productBlocState.productList));
+                });
               },
               style: TextStyle(color: textColor),
               cursorColor: textColor,

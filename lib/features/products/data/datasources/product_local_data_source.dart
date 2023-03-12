@@ -82,11 +82,20 @@ class ProductLocalDataSourceImpl extends ProductLocalDataSource {
 
   @override
   Future<List<Product>> searchProducts(
-      {required String query, required List<Product>productList}) async {
+      {required String query, required List<Product> productList}) async {
     List<Product> list = [];
+
+    // Verificar si el query es vacío o solo contiene espacios en blanco
+    if (query.trim().isEmpty) {
+      return list;
+    }
+
     if (query.isNotEmpty) {
       for (var producto in productList) {
-        if (producto.name!.toLowerCase().contains(query.toLowerCase())) {
+        if (producto.name!
+            .trim()
+            .toLowerCase()
+            .contains(query..toLowerCase())) {
           list.add(producto);
         }
       }

@@ -38,7 +38,7 @@ class SearchPageView extends StatelessWidget {
             BlocBuilder<SearchBloc, SearchState>(
               builder: (context, state) {
                 if (state is SearchLoadingState) {
-                  return const CircularProgressIndicator();
+                  return const SizedBox();
                 }
                 if (state is SearchLoadedState) {
                   if (state.products.isEmpty) {

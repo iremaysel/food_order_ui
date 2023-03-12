@@ -19,12 +19,14 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       SearchRequestedEvent event, Emitter<SearchState> emit) async {
     emit(SearchLoadingState());
 
+    
+
     final result = await productSearchUseCase.call(
         query: event.query, products: event.products);
 
-    result.fold((failure) => emit(SearchErrorState()),
+      result.fold((failure) => emit(SearchErrorState()),
         (products) => emit(SearchLoadedState(products)));
-
+      
         
   }
 }
