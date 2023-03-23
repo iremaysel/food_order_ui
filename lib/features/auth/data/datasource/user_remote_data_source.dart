@@ -43,7 +43,7 @@ class UserRemoteDataSourceImpl extends UserRemoteDataSource {
       print(user);
       return user;
     }
-    if (response.statusCode == 401) {
+    if (response.statusCode == 400) {
       throw UnauthorizedExeption();
     } else {
       throw ServerExeption();
