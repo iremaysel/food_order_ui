@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../../../core/constantes/constantes.dart';
 import '../../../../../../core/shared/entities/product.dart';
 import '../../home_page/components/size_config.dart';
+import '../../home_page/widgets/cart_icon_count.dart';
 import '../components/arrow_back.dart';
 import '../components/favorite_food.dart';
 
@@ -43,10 +44,11 @@ class FoodImage extends StatelessWidget {
               vertical: SizeConfig.blockSizeVertical! * 3),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const ArrowBack(),
+              const Spacer(),
               FavoriteFood(product: product),
+              const CartIconCount()
             ],
           ),
         ),

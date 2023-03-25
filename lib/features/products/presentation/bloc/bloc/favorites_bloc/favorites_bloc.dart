@@ -67,7 +67,7 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
 
       eitherProductList.fold(
           (failure) => emit(
-              const FavoritesErrorState('No c pudo adicionar el producto')),
+              const FavoritesErrorState('No se pudo adicionar el producto')),
           (product) => emit(FavoritesLoadedState(favoriteList)));
       // await addFavoriteListToSharedP(event.product);
 

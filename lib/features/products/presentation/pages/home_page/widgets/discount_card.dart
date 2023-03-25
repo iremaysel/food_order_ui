@@ -28,6 +28,7 @@ class DiscountCard extends StatelessWidget {
           if (state is ProductsLoadedState) {
             return CarouselSlider(
               options: CarouselOptions(
+                
                 enableInfiniteScroll: true,
                 enlargeCenterPage: true,
                 autoPlay: false,

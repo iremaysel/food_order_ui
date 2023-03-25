@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../core/shared/entities/product.dart';
 import '../../../../core/shared/models/product_model.dart';
+import '../models/category_model.dart';
 
 abstract class ProductLocalDataSource {
   Future<Product> saveProductFavoriteIntoDB(ProductModel product);
@@ -25,9 +26,22 @@ class ProductLocalDataSourceImpl extends ProductLocalDataSource {
       List<Product> listProducts = [];
       List<dynamic> responseProductlist = json.decode(productListJson);
 
-      responseProductlist
-          .map((item) => listProducts.add(ProductModel.fromJson(item)))
-          .toList();
+      responseProductlist.map((item) {
+        listProducts.add(ProductModel(
+          id: item['id'] as String?,
+          name: item['name'] as String?,
+          rating: item['rating'] as int?,
+          isRecommended: item['isRecommended'] as bool?,
+          description: item['description'] as String?,
+          price: (item['price'] as num?)?.toDouble(),
+          image: item['img'] as String?,
+          category: item['category'] == null
+              ? null
+              : CategoryModel.fromJson(item['category'] as String),
+          createdAt: item['createdAt'] as String?,
+          isDeleted: item['isDeleted'] as bool?,
+        ));
+      }).toList();
 
       return listProducts;
     } else {
@@ -71,7 +85,9 @@ class ProductLocalDataSourceImpl extends ProductLocalDataSource {
   Future<Product> removeProductFavoriteIntoDB(ProductModel product) async {
     List<Product> listProducts = getListOfFavoritesProductFromDb();
 
-    listProducts.remove(product);
+    listProducts.removeWhere(
+      (producto) => producto.id == product.id,
+    );
 
     String newProductList = json.encode(listProducts);
 

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../auth/presentation/bloc/authetication/authentication_bloc.dart';
-import '../components/colors.dart';
 import '../components/size_config.dart';
+import 'cart_icon_count.dart';
 
 class UserNameText extends StatelessWidget {
   const UserNameText({
@@ -31,46 +31,35 @@ class UserNameText extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Padding(
-                    padding: EdgeInsets.only(
-                        top: SizeConfig.blockSizeVertical! * 1,
-                        bottom: SizeConfig.blockSizeVertical! * 1),
-
-                    child: BlocBuilder<AuthenticationBloc, AuthenticationState>(
-                      builder: (context, state) {
-                        if (state is AuthenticationAuthenticated) {
-                          return SizedBox(
-                            width: SizeConfig.blockSizeHorizontal! * 50,
-                            child: AutoSizeText(
-                              "Hola ${state.user.fullName}",
-                              maxLines: 1,
-                              style: TextStyle(
-                                  fontSize: SizeConfig.blockSizeHorizontal! * 8,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black87),
-                            ),
-                          );
-                        } else {
-                          return Text(
-                            "Hola Usuario",
+                  BlocBuilder<AuthenticationBloc, AuthenticationState>(
+                    builder: (context, state) {
+                      if (state is AuthenticationAuthenticated) {
+                        return SizedBox(
+                          width: SizeConfig.blockSizeHorizontal! * 50,
+                          child: AutoSizeText(
+                            "Hola ${state.user.fullName}",
+                            maxLines: 1,
                             style: TextStyle(
                                 fontSize: SizeConfig.blockSizeHorizontal! * 8,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black87),
-                          );
-                        }
-                      },
-                    ),
-
-                    /// 23
+                          ),
+                        );
+                      } else {
+                        return Text(
+                          "Hola Usuario",
+                          style: TextStyle(
+                            fontSize: SizeConfig.blockSizeHorizontal! * 8,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black87,
+                          ),
+                        );
+                      }
+                    },
                   ),
                   Container(
                     height: SizeConfig.blockSizeVertical! * 4,
-
-                    /// 30.0
                     width: SizeConfig.blockSizeHorizontal! * 8,
-
-                    /// 30.0
                     decoration: const BoxDecoration(
                         image: DecorationImage(
                             image: AssetImage("assets/main/waving-hand.png"))),
@@ -83,56 +72,9 @@ class UserNameText extends StatelessWidget {
                     fontSize: SizeConfig.blockSizeHorizontal! * 5.5,
                     color: Colors.black54),
               )
-
-              /// 17
             ],
           ),
-          Stack(
-            children: [
-              Container(
-                height: SizeConfig.blockSizeVertical! * 6,
-
-                /// 40.0
-                width: SizeConfig.blockSizeHorizontal! * 20,
-
-                /// 80.0
-                decoration: BoxDecoration(
-                    color: lightColor.withOpacity(0.5),
-                    borderRadius: BorderRadius.circular(
-                        SizeConfig.blockSizeHorizontal! * 10)),
-              ),
-              Positioned(
-                left: SizeConfig.blockSizeHorizontal! * 0.25,
-                child: Container(
-                    height: SizeConfig.blockSizeVertical! * 6,
-
-                    /// 40.0
-                    width: SizeConfig.blockSizeHorizontal! * 11,
-
-                    /// 40.0
-                    decoration: BoxDecoration(
-                        color: buttonColor.withOpacity(0.5),
-                        borderRadius: BorderRadius.circular(
-                            SizeConfig.blockSizeHorizontal! * 20)),
-                    child: const Icon(
-                      Icons.notifications_none,
-                      color: Colors.white,
-                    )),
-              ),
-              Positioned(
-                  right: SizeConfig.blockSizeHorizontal! * 4,
-
-                  /// 20.0
-                  bottom: SizeConfig.blockSizeVertical! * 1.9, //
-
-                  /// 11.0
-                  child: const Text(
-                    "3",
-                    style: TextStyle(
-                        color: Colors.black87, fontWeight: FontWeight.bold),
-                  ))
-            ],
-          ),
+          const CartIconCount(),
         ],
       ),
     );
