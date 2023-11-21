@@ -13,10 +13,11 @@ abstract class UserRemoteDataSource {
       {required String email, required String password});
 
   //////////////////////
-  Future<User> registerUserWithEmailAndPassword(
-      {required String fullName,
-      required String email,
-      required String password});
+  Future<User> registerUserWithEmailAndPassword({
+    required String fullName,
+    required String email,
+    required String password,
+  });
 }
 
 class UserRemoteDataSourceImpl extends UserRemoteDataSource {

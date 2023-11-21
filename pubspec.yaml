@@ -19,6 +19,7 @@ dependencies:
   dartz: ^0.10.1
   data_connection_checker_tv: ^0.3.5-nullsafety
   equatable: ^2.0.5
+  floating_navbar: ^2.0.2
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.1

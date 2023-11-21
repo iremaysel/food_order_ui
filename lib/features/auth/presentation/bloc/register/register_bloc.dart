@@ -38,8 +38,6 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
           if (failure is BadRequestFailure) {
             return emit(RegisterError(message: failure.meesageFailure));
           }
-
-          
         },
         (user) {
           emit(RegisterSussess(
