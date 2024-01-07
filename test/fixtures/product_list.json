@@ -1,0 +1,30 @@
+{
+    "count": 158,
+    "products": [
+        {
+            "name": "Agua Natural 500ml",
+            "categories": "Bebidas",
+            "available": true,
+            
+            "rating": 2,
+            "description": "Este producto no tiene descripción ",
+            "quantity": 0,
+            "price": 100,
+            "img": "fa659adf-f140-4d09-afa9-3c47c7c0bdde.jpeg",
+            "calories": "",
+            "uid": "62d6f062a6a2d738a753302c"
+        },
+        {
+            "name": "Agua Natural 1500ml",
+            "categories": "Bebidas",
+            "available": true,
+            "rating": 1,
+            "description": "Este producto no tiene descripción ",
+            "quantity": 0,
+            "price": 200,
+            "img": "no-image.png",
+            "uid": "62d6f089a6a2d738a753302e"
+        }
+        
+    ]
+}
